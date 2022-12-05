@@ -55,6 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5492429005328917679
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +186,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -208,6 +211,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &5492429005604626265
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -233,7 +237,7 @@ GameObject:
   - component: {fileID: 5492429006128236052}
   - component: {fileID: 5492429006128236053}
   m_Layer: 0
-  m_Name: Paper_Pentagon
+  m_Name: 2_Paper_Pentagon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foldingsParent: {fileID: 5492429006675388927}
+  paperTexture: {fileID: 0}
   paperBackRenderer: {fileID: 6627208157909446060}
   paperFrontRenderer: {fileID: 5492429005604626267}
   verticesElevationStep: 0.005
