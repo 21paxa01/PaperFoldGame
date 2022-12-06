@@ -69,15 +69,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1089776357210341977, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.052659675
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1089776357210341977, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.19621024
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1089776357210341977, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.2538607
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1089776357210341977, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: m_LocalRotation.w
@@ -109,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1089776357210341978, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: m_Name
-      value: Level12--4_Paper_Square 2
+      value: Level12--4_Paper_Square 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1089776357210341978, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: m_IsActive

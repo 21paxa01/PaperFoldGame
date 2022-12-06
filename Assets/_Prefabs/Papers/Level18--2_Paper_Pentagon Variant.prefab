@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 2425065845178550547}
     - target: {fileID: 5492429006128236055, guid: 7dcf4ac93aaf749ebaf69eaeb630ba87, type: 3}
       propertyPath: m_Name
-      value: Level18--2_Paper_Pentagon
+      value: Level18--2_Paper_Pentagon Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5492429006128236055, guid: 7dcf4ac93aaf749ebaf69eaeb630ba87, type: 3}
       propertyPath: m_IsActive

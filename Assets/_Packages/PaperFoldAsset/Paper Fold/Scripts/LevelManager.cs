@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         level = PlayerPrefs.GetInt("LEVEL");
+        level = 1;
 
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
     }
@@ -63,7 +64,8 @@ public class LevelManager : MonoBehaviour
 
         SpawnLevel();
 
-        AdManager.instance.ShowInterstitialAd();
+        if(AdManager.instance != null)
+            AdManager.instance.ShowInterstitialAd();
     }
 
     public void RetryLevel()

@@ -117,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 7722443863593238577}
     - target: {fileID: 3041974685000305523, guid: 2a847dc2dc5d44ed6bbf5ea559e10757, type: 3}
       propertyPath: m_Name
-      value: Level19--3_Paper_Losange
+      value: Level19--3_Paper_Losange Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3041974685000305523, guid: 2a847dc2dc5d44ed6bbf5ea559e10757, type: 3}
       propertyPath: m_IsActive

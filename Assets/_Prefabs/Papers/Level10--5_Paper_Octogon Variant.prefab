@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6026566952714108156, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: m_Name
-      value: Level10--5_Paper_Octogon
+      value: Level10--5_Paper_Octogon Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6026566952714108156, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: m_IsActive

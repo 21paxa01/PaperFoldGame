@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7905087541032764080, guid: 176d8304048ed4b01b123d52ef48272f, type: 3}
       propertyPath: m_Name
-      value: Level17--1_Paper_Square
+      value: Level17--1_Paper_Square Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7905087541032764080, guid: 176d8304048ed4b01b123d52ef48272f, type: 3}
       propertyPath: m_IsActive
