@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         level = PlayerPrefs.GetInt("LEVEL");
-        level = 1;
+        level = 0;
 
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
     }
