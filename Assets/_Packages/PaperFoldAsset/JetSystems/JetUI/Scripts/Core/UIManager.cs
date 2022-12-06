@@ -103,6 +103,9 @@ namespace JetSystems
             if (instance == null)
                 instance = this;
 
+            // Store the canvases
+            canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS };
+
             // Get the coins amount
             COINS = PlayerPrefsManager.GetCoins();
             UpdateCoins();
@@ -111,14 +114,8 @@ namespace JetSystems
         // Start is called before the first frame update
         void Start()
 		{
-            // Store the canvases
-            canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS };
-
             // Configure the delegates
             ConfigureDelegates();
-
-            // Set the menu at start
-            SetMenu();
 		}
 
         private void ConfigureDelegates()
@@ -214,20 +211,18 @@ namespace JetSystems
             shopManager.gameObject.SetActive(false);
 
             // Get back to the menu
-            SetMenu();
+            SetGame();
         }
 
         public void NextLevelButtonCallback()
         {
-            SetMenu();
-
             // Invoke the next button delegate
             onNextLevelButtonPressed?.Invoke();
         }
 
         public void RetryButtonCallback()
         {
-            SetMenu();
+            SetGame();
 
             // Invoke the retry button delegate
             onRetryButtonPressed?.Invoke();
@@ -235,7 +230,7 @@ namespace JetSystems
 
         public void CloseSettings()
         {
-            SetMenu();
+            SetGame();
         }
 
         public void UpdateProgressBar(float value)

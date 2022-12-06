@@ -15,9 +15,8 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        level = PlayerPrefs.GetInt("LEVEL");
-        level = 0;
-
+        PlayerPrefsManager.SaveLevel(0);
+        level = PlayerPrefsManager.GetLevel();
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
     }
 
@@ -26,16 +25,18 @@ public class LevelManager : MonoBehaviour
         UIManager.onNextLevelButtonPressed -= SpawnNextLevel;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         SpawnLevel();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        try
+        {
+            UIManager.instance.SetMenu();
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError(ex.Message);
+        }
     }
 
     private void SpawnLevel()
@@ -60,9 +61,17 @@ public class LevelManager : MonoBehaviour
     private void SpawnNextLevel()
     {
         level++;
-        PlayerPrefs.SetInt("LEVEL", level);
-
+        PlayerPrefsManager.SaveLevel(level);
         SpawnLevel();
+
+        try
+        {
+            UIManager.instance.SetGame();
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError(ex.Message);
+        }
 
         if(AdManager.instance != null)
             AdManager.instance.ShowInterstitialAd();
