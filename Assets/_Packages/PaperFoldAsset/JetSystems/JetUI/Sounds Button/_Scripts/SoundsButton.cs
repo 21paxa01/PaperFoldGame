@@ -80,7 +80,7 @@ namespace JetSystems
             PlayerPrefsManager.SetSoundState(state ? 0 : 1);
         }
 
-        void SetSounds(int volume)
+        void SetSounds(float volume)
         {
             if (soundsParent == null) return;
 
@@ -92,20 +92,21 @@ namespace JetSystems
 
         IEnumerator SwitchStateCoroutine()
         {
-
             float t = 0;
             float duration = 0.3f;
+            Sprite currentSprite;
+
+            if (IsSoundOn())
+                currentSprite = soundOnSprite;
+            else
+                currentSprite = soundOffSprite;
+
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
+            image.sprite = currentSprite;
+
             while (t < duration + Time.deltaTime)
             {
-                if (state)
-                {
-                    image.color = Color.Lerp(offColor, onColor, t / duration);
-                }
-                else
-                {
-                    image.color = Color.Lerp(onColor, offColor, t / duration);
-                }
-
+                image.color = Color.Lerp(image.color, new Color(image.color.r, image.color.g, image.color.b, 1f), t / duration);
                 t += Time.deltaTime;
                 yield return null;
             }
