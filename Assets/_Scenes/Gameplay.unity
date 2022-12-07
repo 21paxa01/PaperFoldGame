@@ -163,10 +163,10 @@ AudioSource:
   m_GameObject: {fileID: 381035}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1746098234133495235, guid: 02343d799e8187d4cb89a5fa41d3c33d, type: 2}
   m_audioClip: {fileID: 8300000, guid: ce5353fdc7dd04771bfbdd9e9f29f890, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -625,6 +625,7 @@ Transform:
   - {fileID: 437158260}
   - {fileID: 447563546}
   - {fileID: 1342871751}
+  - {fileID: 1127973077}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -682,10 +683,10 @@ AudioSource:
   m_GameObject: {fileID: 437158259}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1746098234133495235, guid: 02343d799e8187d4cb89a5fa41d3c33d, type: 2}
   m_audioClip: {fileID: 8300000, guid: 19213ef36479447c4818b3da243870db, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -809,10 +810,10 @@ AudioSource:
   m_GameObject: {fileID: 447563545}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1746098234133495235, guid: 02343d799e8187d4cb89a5fa41d3c33d, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5322243a4d7e243709e61132428b2b32, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1080,6 +1081,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111380136}
   m_CullTransparentMesh: 0
+--- !u!1 &1127973076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1127973077}
+  - component: {fileID: 1127973078}
+  m_Layer: 0
+  m_Name: MainTheme
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1127973077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127973076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 315293222}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1127973078
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127973076}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 5638860859894478302, guid: 02343d799e8187d4cb89a5fa41d3c33d, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 496fe20dfff782649919c0d51d499384, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1342871750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,10 +1248,10 @@ AudioSource:
   m_GameObject: {fileID: 1342871750}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1746098234133495235, guid: 02343d799e8187d4cb89a5fa41d3c33d, type: 2}
   m_audioClip: {fileID: 8300000, guid: 857f7da6ad1ae4cde909c4f675911f3b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1671,7 +1799,7 @@ GameObject:
   - component: {fileID: 1992867860}
   - component: {fileID: 1992867859}
   m_Layer: 5
-  m_Name: Sounds Button
+  m_Name: SFXButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1705,15 +1833,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1992867857}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0700aae767a145ceab6381634616764, type: 3}
+  m_Script: {fileID: 11500000, guid: a4edb51bd4501cf49b3eed224260c392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsParent: {fileID: 0}
-  image: {fileID: 1992867861}
-  soundOnSprite: {fileID: 21300000, guid: 3494dc956dfd7174abc07060940a2848, type: 3}
-  soundOffSprite: {fileID: 21300000, guid: df2a4f0771486da47841079811355fb1, type: 3}
-  onColor: {r: 0.34509805, g: 0.9764706, b: 0.34509805, a: 1}
-  offColor: {r: 0.75686276, g: 0.75686276, b: 0.75686276, a: 1}
+  _isOn: 0
+  _targetImage: {fileID: 1992867861}
+  _spriteSwitchOn: {fileID: 21300000, guid: 3494dc956dfd7174abc07060940a2848, type: 3}
+  _spriteSwitchOff: {fileID: 21300000, guid: df2a4f0771486da47841079811355fb1, type: 3}
 --- !u!114 &1992867860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1757,19 +1883,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1992867861}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1992867859}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: SwitchSoundState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1992867861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1822,7 +1936,7 @@ GameObject:
   - component: {fileID: 2033903402}
   - component: {fileID: 2033903401}
   m_Layer: 5
-  m_Name: Sounds Button
+  m_Name: VibrationButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1854,17 +1968,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033903399}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0700aae767a145ceab6381634616764, type: 3}
+  m_Script: {fileID: 11500000, guid: a4edb51bd4501cf49b3eed224260c392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsParent: {fileID: 0}
-  image: {fileID: 2033903403}
-  soundOnSprite: {fileID: 21300000, guid: 3494dc956dfd7174abc07060940a2848, type: 3}
-  soundOffSprite: {fileID: 21300000, guid: df2a4f0771486da47841079811355fb1, type: 3}
-  onColor: {r: 0.34509805, g: 0.9764706, b: 0.34509805, a: 1}
-  offColor: {r: 0.75686276, g: 0.75686276, b: 0.75686276, a: 1}
+  _isOn: 0
+  _targetImage: {fileID: 2033903403}
+  _spriteSwitchOn: {fileID: 21300000, guid: 3494dc956dfd7174abc07060940a2848, type: 3}
+  _spriteSwitchOff: {fileID: 21300000, guid: df2a4f0771486da47841079811355fb1, type: 3}
 --- !u!114 &2033903402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1884,7 +1996,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1908,19 +2020,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2033903403}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2033903401}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: SwitchSoundState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2033903403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2093,10 +2193,10 @@ AudioSource:
   m_GameObject: {fileID: 2110697941}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5638860859894478302, guid: 02343d799e8187d4cb89a5fa41d3c33d, type: 2}
   m_audioClip: {fileID: 8300000, guid: a458e3331d6a64f4fb0b63919c563753, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3940,24 +4040,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92664559313148274}
   m_CullTransparentMesh: 0
---- !u!114 &158752592250180938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158752592250180939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0700aae767a145ceab6381634616764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundsParent: {fileID: 0}
-  image: {fileID: 158752592250180950}
-  soundOnSprite: {fileID: 21300000, guid: 3494dc956dfd7174abc07060940a2848, type: 3}
-  soundOffSprite: {fileID: 21300000, guid: df2a4f0771486da47841079811355fb1, type: 3}
-  onColor: {r: 0.34509805, g: 0.9764706, b: 0.34509805, a: 1}
-  offColor: {r: 0.75686276, g: 0.75686276, b: 0.75686276, a: 1}
 --- !u!1 &158752592250180939
 GameObject:
   m_ObjectHideFlags: 0
@@ -3970,14 +4052,33 @@ GameObject:
   - component: {fileID: 158752592250180951}
   - component: {fileID: 158752592250180950}
   - component: {fileID: 158752592250180949}
-  - component: {fileID: 158752592250180938}
+  - component: {fileID: 158752592250180940}
   m_Layer: 5
-  m_Name: Sounds Button
+  m_Name: MusicButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &158752592250180940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158752592250180939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdd84cc521a0a7448bdb48a8cd305a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isOn: 0
+  _targetImage: {fileID: 158752592250180950}
+  _spriteSwitchOn: {fileID: 21300000, guid: 3494dc956dfd7174abc07060940a2848, type: 3}
+  _spriteSwitchOff: {fileID: 21300000, guid: df2a4f0771486da47841079811355fb1, type: 3}
+  _audioGroup: {fileID: 5638860859894478302, guid: 02343d799e8187d4cb89a5fa41d3c33d, type: 2}
+  _audioMixerGroupParameterName: MusicMixerVolume
+  _maxVolumeValue: 0
 --- !u!224 &158752592250180948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4040,19 +4141,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 158752592250180950}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 158752592250180938}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: SwitchSoundState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &158752592250180950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8472,7 +8561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.039215688, g: 0.7411765, b: 0.8901961, a: 1}
+  m_Color: {r: 0, g: 0.5294118, b: 0.9647059, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
