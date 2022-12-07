@@ -143,8 +143,7 @@ namespace JetSystems
             Utils.ShowSerializedField(serializedObject, "LEVELCOMPLETE", "Level Complete");
             Utils.ShowSerializedField(serializedObject, "GAMEOVER", "Gameover");
             Utils.ShowSerializedField(serializedObject, "SETTINGS", "Settings");
-            Utils.ShowSerializedField(serializedObject, "shopManager", "Shop Manager");
-
+            Utils.ShowSerializedField(serializedObject, "THEMES");
         }
 
         private void ShowMenuUI()

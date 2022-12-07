@@ -81,7 +81,7 @@ namespace JetSystems
         public CanvasGroup LEVELCOMPLETE;
         public CanvasGroup GAMEOVER;
         public CanvasGroup SETTINGS;
-        public ShopManager shopManager;
+        public CanvasGroup THEMES;
         public CanvasGroup[] canvases;
 
         // Menu UI
@@ -104,7 +104,7 @@ namespace JetSystems
                 instance = this;
 
             // Store the canvases
-            canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS };
+            canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS, THEMES };
 
             // Get the coins amount
             COINS = PlayerPrefsManager.GetCoins();
@@ -142,9 +142,6 @@ namespace JetSystems
         {
             gameState = GameState.MENU;
             Utils.HideAllCGs(canvases, MENU);
-
-            // Hide the shop
-            shopManager.gameObject.SetActive(false);
 
             // Invoke the delegate
             onMenuSet?.Invoke();
@@ -196,21 +193,12 @@ namespace JetSystems
         public void SetShop()
         {
             gameState = GameState.SHOP;
-
-            // Enable the shop gameobject
-            shopManager.gameObject.SetActive(true);
-
-            // Hide all the other canvases
-            Utils.HideAllCGs(canvases);
+            Utils.HideAllCGs(canvases, THEMES);
         }
 
 
         public void CloseShop()
         {
-            // Disable the shop object
-            shopManager.gameObject.SetActive(false);
-
-            // Get back to the menu
             SetGame();
         }
 
