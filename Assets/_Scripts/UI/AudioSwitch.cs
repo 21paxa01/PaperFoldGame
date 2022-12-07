@@ -17,37 +17,15 @@ public class AudioSwitch : BaseSwitch
 
         int audioSwitchValue;
         if (PlayerPrefs.HasKey(_audioMixerGroupParameterName))
-        {
             audioSwitchValue = PlayerPrefs.GetInt(_audioMixerGroupParameterName);
-        }
         else
-        {
             audioSwitchValue = IsOn ? 1 : 0;
-            PlayerPrefs.SetInt(_audioMixerGroupParameterName, audioSwitchValue);
-        }
-
 
         if (audioSwitchValue == 1)
             SwitchState(true);
         else
             SwitchState(false);
     }
-
-    /*
-    private void Start()
-    {
-        if (PlayerPrefs.HasKey(_audioMixerGroupParameterName))
-        {
-            int audioSwitchValue = PlayerPrefs.GetInt(_audioMixerGroupParameterName);
-            
-                
-
-
-        }
-
-        
-    }
-    */
 
     private void SaveAudioSwitchState(bool isAudioSwitchOn)
     {
@@ -64,14 +42,12 @@ public class AudioSwitch : BaseSwitch
     {
         base.AddEventListeners();
         ValueChanged.AddListener(SwitchAudioState);
-        ValueChanged.AddListener(SaveAudioSwitchState);
     }
 
     protected override void RemoveEventListeners()
     {
         base.RemoveEventListeners();
         ValueChanged.RemoveListener(SwitchAudioState);
-        ValueChanged.RemoveListener(SaveAudioSwitchState);
     }
 
 
@@ -81,6 +57,8 @@ public class AudioSwitch : BaseSwitch
             SetAudioGroupVolume(_maxVolumeValue);
         else
             SetAudioGroupVolume(MIN_VOLUME_VALUE);
+
+        SaveAudioSwitchState(isOn);
     }
 
     public void SetAudioGroupVolume(float volume)

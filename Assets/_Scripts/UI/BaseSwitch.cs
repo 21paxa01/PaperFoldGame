@@ -92,9 +92,6 @@ public class BaseSwitch : MonoBehaviour
 
     public void SwitchState(bool stateOn)
     {
-        if (stateOn == _isOn)
-            return;
-
         _isOn = stateOn;
         _valueChanged.Invoke(_isOn);
         StartCoroutine(SwitchStateCoroutine());
@@ -102,9 +99,6 @@ public class BaseSwitch : MonoBehaviour
 
     public void SwitchState()
     {
-        if (_isOn)
-            SwitchState(false);
-        else
-            SwitchState(true);
+        SwitchState(!_isOn);
     }
 }

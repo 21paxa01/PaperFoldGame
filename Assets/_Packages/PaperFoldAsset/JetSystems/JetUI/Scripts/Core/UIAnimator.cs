@@ -11,6 +11,7 @@ namespace JetSystems
         public RectTransform levelCompleteTextContainer;
         public RectTransform starsContainer;
         public RectTransform nextButton;
+        public RectTransform nextButtonAd;
 
         public AudioSource[] starSounds;
 
@@ -49,6 +50,7 @@ namespace JetSystems
 
             // Hide the next level button
             nextButton.localScale = Vector2.zero;
+            nextButtonAd.localScale = Vector2.zero;
 
             // 2. Move the top Ribbon down
             float ribbonDownDuration = 0.5f;
@@ -71,10 +73,18 @@ namespace JetSystems
                 yield return new WaitForSeconds(bumpDuration);
             }
 
-            // 5. Enable the next button
-            LeanTween.scale(nextButton, Vector2.one, bumpDuration).setEase(LeanTweenType.easeSpring);
+
+            
+
+            LeanTween.scale(nextButtonAd, Vector2.one, bumpDuration).setEase(LeanTweenType.easeSpring);
+            LeanTween.delayedCall(0.3f, () =>
+            {
+                // 5. Enable the next button
+                LeanTween.scale(nextButton, Vector2.one, bumpDuration).setEase(LeanTweenType.easeSpring);
+            });
 
 
+            
         }
     }
 }
