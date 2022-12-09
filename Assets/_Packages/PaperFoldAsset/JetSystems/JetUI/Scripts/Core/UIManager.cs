@@ -230,7 +230,6 @@ namespace JetSystems
         {
             menuCoinsText.text = Utils.FormatAmountString(COINS);
             gameCoinsText.text = menuCoinsText.text;
-            shopCoinsText.text = menuCoinsText.text;
             levelCompleteCoinsText.text = menuCoinsText.text;
         }
 

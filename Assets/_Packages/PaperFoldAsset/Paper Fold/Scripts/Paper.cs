@@ -43,12 +43,8 @@ public class Paper : MonoBehaviour
     {
         if(!FindObjectOfType<DecalMaster>())
             paperFrontRenderer.material.mainTexture = paperTexture;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foldings = GetFoldings();
     }
 
     public void TryFold(Folding tappedFolding)
@@ -136,9 +132,8 @@ public class Paper : MonoBehaviour
         // 1. Check if there is any folding before this one
         for (int i = foldedFoldings.Count - 1; i >= 0; i--)
         {
-
             Folding folding = foldedFoldings[i];
-            if(folding == currentFolding)
+            if (folding == currentFolding)
             {
                 //Unfold();
                 Taptic.Light();
@@ -250,18 +245,28 @@ public class Paper : MonoBehaviour
         if(folding)
             canFold = true;
 
-        CheckForLevelComplete();
+        if (AvailableFoldingsEnded() && folding)
+        {
+            yield return new WaitForSeconds(0.1f);
+            CheckForLevelComplete();
+        }
+            
+            
         onPaperStateChanged?.Invoke();
     }
 
     private void CheckForLevelComplete()
     {
         for (int i = 0; i < possibleCombinations.Length; i++)
+        {
             if (MatchPossibleCombination(possibleCombinations[i]))
             {
                 SetLevelComplete();
                 return;
             }
+        }
+
+        SetWrongFoldPaper();
     }
 
     private bool MatchPossibleCombination(PossibleCombination foldingsCombination)
@@ -283,6 +288,12 @@ public class Paper : MonoBehaviour
         UIManager.setLevelCompleteDelegate?.Invoke();
     }
 
+    private void SetWrongFoldPaper()
+    {
+        Debug.Log("Wrong!");
+        UnfoldAllFoldings();
+    }
+
     private Vector3 GetRotatedLocalVertex(Vector3 localVertexToMove, float angle)
     {
         Vector3 vertexWorldPos = paperBackRenderer.transform.TransformPoint(localVertexToMove);
@@ -300,6 +311,23 @@ public class Paper : MonoBehaviour
     public MeshRenderer GetFrontRenderer()
     {
         return paperFrontRenderer;
+    }
+
+    public bool AvailableFoldingsEnded()
+    {
+        return foldedFoldings.Count >= foldings.Length;
+    }
+
+    public void UnfoldAllFoldings()
+    {
+        if (foldedFoldings.Count <= 0 || !canFold)
+            return;
+
+        currentFolding = foldedFoldings[0];
+
+        canFold = false;
+
+        StartCoroutine(UnfoldingProcedureCoroutine());
     }
 }
 

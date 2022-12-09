@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Paper[] papersPrefabs;
     int level;
     int lastPaperIndex;
+    private Paper currentPaper;
 
     private void Awake()
     {
@@ -45,17 +46,18 @@ public class LevelManager : MonoBehaviour
         lastPaperIndex = correctedLevelIndex;
 
         transform.Clear();
-        Paper paperInstance = Instantiate(papersPrefabs[correctedLevelIndex], transform);
+        currentPaper = Instantiate(papersPrefabs[correctedLevelIndex], transform);
 
-        onPaperInstantiated?.Invoke(paperInstance);
+        onPaperInstantiated?.Invoke(currentPaper);
     }
 
     private void SpawnLevel(int levelIndex)
     {
         transform.Clear();
-        Paper paperInstance = Instantiate(papersPrefabs[levelIndex], transform);
+        
+        currentPaper = Instantiate(papersPrefabs[levelIndex], transform);
 
-        onPaperInstantiated?.Invoke(paperInstance);
+        onPaperInstantiated?.Invoke(currentPaper);
     }
 
     private void SpawnNextLevel()
@@ -79,7 +81,7 @@ public class LevelManager : MonoBehaviour
 
     public void RetryLevel()
     {
-        SpawnLevel(lastPaperIndex);
+        currentPaper.UnfoldAllFoldings();
 
         /*
         if (UIManager.IsGame())
