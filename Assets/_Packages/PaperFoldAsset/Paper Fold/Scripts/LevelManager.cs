@@ -5,25 +5,39 @@ using JetSystems;
 
 public class LevelManager : MonoBehaviour
 {
+    public const int SCALE_EARNNED_COINS_WITH_AD_VALUE = 3;
+
+
     public delegate void OnPaperInstantiated(Paper paper);
     public static OnPaperInstantiated onPaperInstantiated;
 
     [Header(" Settings ")]
+    [SerializeField] private int maxCoinsCount = 15;
+    [SerializeField] private int minCoinsCount = 5;
+    [Min(1)]
+    [SerializeField] private int takenCoinsCount = 5;
     [SerializeField] private Paper[] papersPrefabs;
-    int level;
-    int lastPaperIndex;
+
+
+    private int level;
     private Paper currentPaper;
+    private int earnedCoins;
 
     private void Awake()
     {
         PlayerPrefsManager.SaveLevel(0);
         level = PlayerPrefsManager.GetLevel();
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
+        UIManager.onNextLevelButtonPressedWithAd += SpawnNextLevelWithAdditionalCoins;
+        UIManager.wrongPaperFolded += DecreaseEarnedCoins;
+
     }
 
     private void OnDestroy()
     {
         UIManager.onNextLevelButtonPressed -= SpawnNextLevel;
+        UIManager.onNextLevelButtonPressedWithAd -= SpawnNextLevelWithAdditionalCoins;
+        UIManager.wrongPaperFolded -= DecreaseEarnedCoins;
     }
 
     void Start()
@@ -40,10 +54,17 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void SpawnNextLevelWithAdditionalCoins()
+    {
+        earnedCoins *= SCALE_EARNNED_COINS_WITH_AD_VALUE;
+        SpawnNextLevel();
+    }
+
     private void SpawnLevel()
     {
+        earnedCoins = maxCoinsCount;
+        UIManager.instance.UpdateEarnedCoins(earnedCoins);
         int correctedLevelIndex = level % papersPrefabs.Length;
-        lastPaperIndex = correctedLevelIndex;
 
         transform.Clear();
         currentPaper = Instantiate(papersPrefabs[correctedLevelIndex], transform);
@@ -62,6 +83,8 @@ public class LevelManager : MonoBehaviour
 
     private void SpawnNextLevel()
     {
+        UIManager.AddCoins(earnedCoins);
+
         level++;
         PlayerPrefsManager.SaveLevel(level);
         SpawnLevel();
@@ -82,10 +105,18 @@ public class LevelManager : MonoBehaviour
     public void RetryLevel()
     {
         currentPaper.UnfoldAllFoldings();
+    }
 
-        /*
-        if (UIManager.IsGame())
-            FindObjectOfType<Paper>().StartUnfolding();
-        */
+    private void DecreaseEarnedCoins()
+    {
+        if (earnedCoins <= minCoinsCount)
+            return;
+
+        earnedCoins -= takenCoinsCount;
+
+        if (earnedCoins < minCoinsCount)
+            earnedCoins = minCoinsCount;
+
+        UIManager.instance?.UpdateEarnedCoins(earnedCoins);
     }
 }

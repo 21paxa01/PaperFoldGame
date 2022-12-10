@@ -284,7 +284,6 @@ public class Paper : MonoBehaviour
     private void SetLevelComplete()
     {
         Debug.Log("Level Complete");
-
         UIManager.setLevelCompleteDelegate?.Invoke();
     }
 
@@ -292,6 +291,7 @@ public class Paper : MonoBehaviour
     {
         Debug.Log("Wrong!");
         UnfoldAllFoldings();
+        UIManager.wrongPaperFolded?.Invoke();
     }
 
     private Vector3 GetRotatedLocalVertex(Vector3 localVertexToMove, float angle)

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d74b87586f1094d8d004b9d3771cf4, type: 3}
   m_Name: PurpleTheme
   m_EditorClassIdentifier: 
+  _id: ac219c8f-da3a-4e4e-924b-34b244a68331
   _name: Purple
   _sprite: {fileID: 0}
-  _price: 0
+  _price: 25
   _texture: {fileID: 2800000, guid: 2b6ade12de1d9644f81c0e7681703421, type: 3}

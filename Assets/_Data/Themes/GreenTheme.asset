@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d74b87586f1094d8d004b9d3771cf4, type: 3}
   m_Name: GreenTheme
   m_EditorClassIdentifier: 
+  _id: cd8b8b75-a630-42d2-8d2f-07750b76ad19
   _name: Green
   _sprite: {fileID: 0}
-  _price: 0
+  _price: 25
   _texture: {fileID: 2800000, guid: 014704c8d46d15b4bb838e4afd54cdb8, type: 3}

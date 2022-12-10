@@ -1,17 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JetSystems;
+using System.Linq;
 
 public class UIThemesManager : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] private UITheme _uiThemePrefab;
     [SerializeField] private Transform _uiThemesParent;
-    [SerializeField] private ThemeData[] _availableThemes;
-    [SerializeField] private Board _changableBoard;
+    [SerializeField] private AvailableTheme[] _availableThemes;
+    [SerializeField] private Board _changebleBoard;
 
 
     private readonly List<UITheme> _availableThemeUIObjects = new List<UITheme>();
+    private UITheme _uiActiveTheme;
 
     private void Start()
     {
@@ -21,11 +23,62 @@ public class UIThemesManager : MonoBehaviour
 
     private void CreateThemesUI()
     {
-        foreach (ThemeData themeData in _availableThemes)
+        string activeThemeId = PlayerPrefsManager.GetUsedTheme();
+
+        foreach (AvailableTheme themeData in _availableThemes)
         {
             UITheme uiTheme = Instantiate(_uiThemePrefab, _uiThemesParent);
-            uiTheme.SetData(themeData, _changableBoard);
+            uiTheme.SetData(themeData.Theme, themeData.IsAvailable);
+            uiTheme.ThemeAvailableClicked.AddListener(ChangeTheme);
             _availableThemeUIObjects.Add(uiTheme);
+
+            if (_uiActiveTheme == null && activeThemeId == themeData.Theme.Id)
+                ChangeTheme(uiTheme, themeData.Theme);
+        }
+
+        if(_uiActiveTheme == null )
+        {
+            AvailableTheme defaultAvailableTheme = _availableThemes.FirstOrDefault((a) => a.IsAvailable);
+
+            if (defaultAvailableTheme.IsNull())
+                throw new System.Exception("Default available theme not found!");
+
+            UITheme defaultAvailableThemeUI = 
+                _availableThemeUIObjects.FirstOrDefault((ui) => ui.ThemeData.Id == defaultAvailableTheme.Theme.Id);
+
+            if(defaultAvailableThemeUI == null)
+                throw new System.Exception("Default available theme UI not found!");
+
+            ChangeTheme(defaultAvailableThemeUI, defaultAvailableThemeUI.ThemeData);
         }
     }
+
+    private void ChangeTheme(UITheme uiTheme, ThemeData themeData)
+    {
+        if (_uiActiveTheme != null)
+            _uiActiveTheme.CachedButton.interactable = true;
+
+        uiTheme.CachedButton.interactable = false;
+        _uiActiveTheme = uiTheme;
+
+        _changebleBoard.ChangeTheme(themeData);
+    }
 }
+
+
+[System.Serializable]
+public struct AvailableTheme
+{
+    [SerializeField] private bool _isAvailable;
+    [SerializeField] private ThemeData _theme;
+
+    public bool IsAvailable => _isAvailable;
+    public ThemeData Theme => _theme;
+
+
+    public bool IsNull()
+    {
+        return _theme == null;
+    }
+}
+

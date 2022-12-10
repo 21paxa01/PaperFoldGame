@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d74b87586f1094d8d004b9d3771cf4, type: 3}
   m_Name: WhiteTheme
   m_EditorClassIdentifier: 
+  _id: 7cf20f19-165c-42ba-9e44-754ed596003f
   _name: White
   _sprite: {fileID: 0}
-  _price: 0
+  _price: 25
   _texture: {fileID: 2800000, guid: ec3411ff5e8c13c40a88e51547c54e27, type: 3}

@@ -44,6 +44,8 @@ namespace JetSystems
         public delegate void OnLevelCompleteSet(int starsCount = 3);
         public static OnLevelCompleteSet onLevelCompleteSet;
 
+        public delegate void WrongPaperFolded();
+        public static WrongPaperFolded wrongPaperFolded;
 
 
         public delegate void SetGameoverDelegate();
@@ -64,10 +66,11 @@ namespace JetSystems
         public delegate void UpdateProgressBarDelegate(float value);
         public static UpdateProgressBarDelegate updateProgressBarDelegate;
 
-
-
         public delegate void OnNextLevelButtonPressed();
         public static OnNextLevelButtonPressed onNextLevelButtonPressed;
+
+        public delegate void OnNextLevelButtonPressedWithAd();
+        public static OnNextLevelButtonPressedWithAd onNextLevelButtonPressedWithAd;
 
         public delegate void OnRetryButtonPressed();
         public static OnRetryButtonPressed onRetryButtonPressed;
@@ -95,8 +98,8 @@ namespace JetSystems
         // Shop UI
         public Text shopCoinsText;
 
-        // Level Complete UI
-        public Text levelCompleteCoinsText;
+        public Text levelCompleteEarnedCoinsTextAd;
+        public Text levelCompleteEarnedCoinsText;
 
         private void Awake()
         {
@@ -208,6 +211,11 @@ namespace JetSystems
             onNextLevelButtonPressed?.Invoke();
         }
 
+        public void NextLevelButtonWithAddCallback()
+        {
+            onNextLevelButtonPressedWithAd?.Invoke();
+        }
+
         public void RetryButtonCallback()
         {
             SetGame();
@@ -228,9 +236,20 @@ namespace JetSystems
 
         private void UpdateCoins()
         {
-            menuCoinsText.text = Utils.FormatAmountString(COINS);
-            gameCoinsText.text = menuCoinsText.text;
-            levelCompleteCoinsText.text = menuCoinsText.text;
+            string coinsString = COINS.ToString();
+
+            menuCoinsText.text = coinsString;
+            gameCoinsText.text = coinsString;
+            shopCoinsText.text = coinsString;
+        }
+
+        public void UpdateEarnedCoins(int earnedCoins)
+        {
+            if (levelCompleteEarnedCoinsText != null)
+                levelCompleteEarnedCoinsText.text = $"+ {earnedCoins}";
+
+            if (levelCompleteEarnedCoinsTextAd != null)
+                levelCompleteEarnedCoinsTextAd.text = $"+ {earnedCoins * LevelManager.SCALE_EARNNED_COINS_WITH_AD_VALUE}";
         }
 
         #region Static Methods
@@ -245,6 +264,20 @@ namespace JetSystems
 
             // Save the amount of coins
             PlayerPrefsManager.SaveCoins(COINS);
+        }
+
+        public static void RemoveCoins(int amount)
+        {
+            if(amount < 0 || amount > COINS)
+            {
+                Debug.LogError("Removed coins value is less then 0 or greater then COINS");
+                return;
+            }
+
+            COINS -= amount;
+            instance.UpdateCoins();
+            PlayerPrefsManager.SaveCoins(COINS);
+                
         }
 
         public static bool IsGame()

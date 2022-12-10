@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d74b87586f1094d8d004b9d3771cf4, type: 3}
   m_Name: DefaultTheme
   m_EditorClassIdentifier: 
+  _id: 9fbf6581-1617-4cde-a170-30b07465f286
   _name: Default
   _sprite: {fileID: 0}
   _price: 0
