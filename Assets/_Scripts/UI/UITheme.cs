@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Events;
 using JetSystems;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
 public class UITheme : MonoBehaviour
@@ -11,11 +10,13 @@ public class UITheme : MonoBehaviour
     [SerializeField] private Image _themeImage;
     [SerializeField] private Text _themeText;
     [SerializeField] private Text _themePriceText;
+    [SerializeField] private Color _errorColor;
 
     private readonly UnityEvent<UITheme, ThemeData> _themeAvailableClicked = new UnityEvent<UITheme, ThemeData>();
 
     private ThemeData _themeData;
     private bool _isAvaialble;
+    private bool _isBlockClick = false;
 
 
     public UnityEvent<UITheme, ThemeData> ThemeAvailableClicked => _themeAvailableClicked;
@@ -48,6 +49,9 @@ public class UITheme : MonoBehaviour
 
     private void OnThemeButtonClick()
     {
+        if (_isBlockClick)
+            return;
+
         if (_isAvaialble)
         {
             ThemeAvailableClicked.Invoke(this, _themeData);
@@ -56,7 +60,17 @@ public class UITheme : MonoBehaviour
 
         if (UIManager.COINS < _themeData.Price)
         {
-            Debug.Log("But failed!");
+            _isBlockClick = true;
+
+            Color defaultColor = CachedButton.image.color;
+            LeanTween.color(CachedButton.image.rectTransform, _errorColor, 0.2f)
+                .setEaseLinear()
+                .setOnComplete(() =>
+                {
+                    LeanTween.color(CachedButton.image.rectTransform, defaultColor, 0.2f)
+                    .setEaseLinear()
+                    .setOnComplete(() => _isBlockClick = false);
+                });
         }
         else
         {

@@ -11,25 +11,45 @@ public class LevelManager : MonoBehaviour
     public delegate void OnPaperInstantiated(Paper paper);
     public static OnPaperInstantiated onPaperInstantiated;
 
+    public delegate void OnThemeUnlocked(ThemeData themeData, int themeUnlockLevelStep);
+    public static OnThemeUnlocked themeUnlocked;
+
+    public delegate void ThemeUnlockProgressUpdated(ThemeData themeData, int themeUnlockProgress, int themeUnlcokLevleStep);
+    public static ThemeUnlockProgressUpdated themeUnlockProgressUpdated;
+
     [Header(" Settings ")]
     [SerializeField] private int maxCoinsCount = 15;
     [SerializeField] private int minCoinsCount = 5;
     [Min(1)]
     [SerializeField] private int takenCoinsCount = 5;
+    [Min(1)]
+    [SerializeField] private int unlockThemeLevelStep;
     [SerializeField] private Paper[] papersPrefabs;
+    [SerializeField] private ThemeData[] unlockableThemes;
 
 
     private int level;
     private Paper currentPaper;
     private int earnedCoins;
+    private readonly Queue<ThemeData> unlockableThemesQueue = new Queue<ThemeData>();
 
     private void Awake()
     {
-        PlayerPrefsManager.SaveLevel(0);
+        PlayerPrefsManager.ClearAllData();
         level = PlayerPrefsManager.GetLevel();
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
         UIManager.onNextLevelButtonPressedWithAd += SpawnNextLevelWithAdditionalCoins;
         UIManager.wrongPaperFolded += DecreaseEarnedCoins;
+        UIManager.onLevelCompleteSet += IncrementThemeUnlockProgress;
+
+
+        foreach(ThemeData unlockableTheme in unlockableThemes)
+        {
+            if (PlayerPrefsManager.HasUnlokedTheme(unlockableTheme.Id))
+                continue;
+
+            unlockableThemesQueue.Enqueue(unlockableTheme);
+        }
 
     }
 
@@ -38,6 +58,7 @@ public class LevelManager : MonoBehaviour
         UIManager.onNextLevelButtonPressed -= SpawnNextLevel;
         UIManager.onNextLevelButtonPressedWithAd -= SpawnNextLevelWithAdditionalCoins;
         UIManager.wrongPaperFolded -= DecreaseEarnedCoins;
+        UIManager.onLevelCompleteSet -= IncrementThemeUnlockProgress;
     }
 
     void Start()
@@ -58,6 +79,36 @@ public class LevelManager : MonoBehaviour
     {
         earnedCoins *= SCALE_EARNNED_COINS_WITH_AD_VALUE;
         SpawnNextLevel();
+    }
+
+    private void IncrementThemeUnlockProgress(int starsCount)
+    {
+        if (unlockableThemesQueue.Count <= 0)
+            return;
+
+        if (PlayerPrefsManager.HasUnlokedTheme(unlockableThemesQueue.Peek().Id))
+            ChangeUnlockableTheme();
+
+        int unlockThemeProgress = PlayerPrefsManager.GetUnlockThemeProgress();
+        unlockThemeProgress++;
+
+        if(unlockThemeProgress >= unlockThemeLevelStep)
+        {
+            themeUnlocked?.Invoke(unlockableThemesQueue.Peek(), unlockThemeLevelStep);
+            PlayerPrefsManager.AddUnlockedTheme(unlockableThemesQueue.Peek().Id);
+            ChangeUnlockableTheme();
+        }
+        else
+        {
+            themeUnlockProgressUpdated?.Invoke(unlockableThemesQueue.Peek(), unlockThemeProgress, unlockThemeLevelStep);
+            PlayerPrefsManager.SetUnlockThemeProgress(unlockThemeProgress);
+        }
+    }
+
+    private void ChangeUnlockableTheme()
+    {
+        unlockableThemesQueue.Dequeue();
+        PlayerPrefsManager.SetUnlockThemeProgress(0);
     }
 
     private void SpawnLevel()

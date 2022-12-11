@@ -91,7 +91,6 @@ namespace JetSystems
         public Text menuCoinsText;
 
         // Game UI
-        public Slider progressBar;
         public Text gameCoinsText;
         public Text levelText;
 
@@ -100,6 +99,7 @@ namespace JetSystems
 
         public Text levelCompleteEarnedCoinsTextAd;
         public Text levelCompleteEarnedCoinsText;
+        public UIThemeUnlockProgress uiThemeUnlcokProgress;
 
         private void Awake()
         {
@@ -158,8 +158,7 @@ namespace JetSystems
             // Invoke the delegate
             onGameSet?.Invoke();
 
-            // Reset the progress bar
-            progressBar.value = 0;
+            uiThemeUnlcokProgress.gameObject.SetActive(false);
 
             // Update the level text
             levelText.text = "Level " + (PlayerPrefsManager.GetLevel() + 1);
@@ -231,7 +230,7 @@ namespace JetSystems
 
         public void UpdateProgressBar(float value)
         {
-            progressBar.value = value;
+            
         }
 
         private void UpdateCoins()

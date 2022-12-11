@@ -63,6 +63,21 @@ public class UIThemesManager : MonoBehaviour
 
         _changebleBoard.ChangeTheme(themeData);
     }
+
+
+    public void UpdateThemesUI()
+    {
+        foreach(UITheme uiTheme in _availableThemeUIObjects)
+        {
+            AvailableTheme themeData = 
+                _availableThemes.FirstOrDefault((td) => td.Theme.Id == uiTheme.ThemeData.Id);
+
+            if (themeData.IsNull())
+                continue;
+
+            uiTheme.SetData(themeData.Theme, themeData.IsAvailable);
+        }
+    }
 }
 
 

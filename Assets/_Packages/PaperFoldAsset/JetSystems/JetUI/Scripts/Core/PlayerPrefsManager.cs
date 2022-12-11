@@ -13,6 +13,7 @@ namespace JetSystems
         private const string LEVEL_KEY = "LEVEL";
         private const string USED_THEME = "USEDTHEME";
         private const string UNLOCKED_THEME = "UNLOCKED_THEME";
+        private const string UNLOCK_THEME_PROGRESS = "UNLOCK_THEME_PROGRESS";
 
 
 
@@ -60,7 +61,15 @@ namespace JetSystems
         { PlayerPrefs.SetInt(SOUND_KEY, state); }
 
 
+        public static int GetUnlockThemeProgress()
+        {
+            return PlayerPrefs.GetInt(UNLOCK_THEME_PROGRESS);
+        }
 
+        public static void SetUnlockThemeProgress(int countLevelCompleated)
+        {
+            PlayerPrefs.SetInt(UNLOCK_THEME_PROGRESS, countLevelCompleated);
+        }
 
 
 
@@ -70,5 +79,11 @@ namespace JetSystems
 
         public static void SaveLevel(int level)
         { PlayerPrefs.SetInt(LEVEL_KEY, level); }
+
+
+        public static void ClearAllData()
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 }

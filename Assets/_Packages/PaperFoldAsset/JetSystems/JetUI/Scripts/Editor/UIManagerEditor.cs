@@ -158,7 +158,6 @@ namespace JetSystems
         {
             Utils.CategoryHeader("Game UI");
 
-            Utils.ShowSerializedField(serializedObject, "progressBar");
             Utils.ShowSerializedField(serializedObject, "gameCoinsText");
             Utils.ShowSerializedField(serializedObject, "levelText");
         }
@@ -173,6 +172,7 @@ namespace JetSystems
         private void ShowLevelCompleteUI()
         {
             Utils.CategoryHeader("Level Complete");
+            Utils.ShowSerializedField(serializedObject, "uiThemeUnlcokProgress");
             Utils.ShowSerializedField(serializedObject, "levelCompleteEarnedCoinsTextAd");
             Utils.ShowSerializedField(serializedObject, "levelCompleteEarnedCoinsText");
         }

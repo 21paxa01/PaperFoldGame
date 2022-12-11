@@ -450,6 +450,7 @@ MonoBehaviour:
   _themeImage: {fileID: 9213423717923945043}
   _themeText: {fileID: 8685185580244426185}
   _themePriceText: {fileID: 2715063399318603624}
+  _errorColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &8685185580244426187
 GameObject:
   m_ObjectHideFlags: 0
