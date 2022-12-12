@@ -17,6 +17,7 @@ public class Paper : MonoBehaviour
     List<Folding> foldedFoldings = new List<Folding>();
     bool canFold = true;
     [SerializeField] private Texture2D paperTexture;
+    [SerializeField] private Transform stickerEffect;
 
     [Header(" Rendering ")]
     [SerializeField] private MeshRenderer paperBackRenderer;
@@ -251,7 +252,6 @@ public class Paper : MonoBehaviour
             CheckForLevelComplete();
         }
             
-            
         onPaperStateChanged?.Invoke();
     }
 
@@ -261,7 +261,7 @@ public class Paper : MonoBehaviour
         {
             if (MatchPossibleCombination(possibleCombinations[i]))
             {
-                SetLevelComplete();
+                StartCoroutine(SetLevelComplete());
                 return;
             }
         }
@@ -281,10 +281,18 @@ public class Paper : MonoBehaviour
         return true;
     }
 
-    private void SetLevelComplete()
+
+    private IEnumerator SetLevelComplete()
     {
         Debug.Log("Level Complete");
+
+        LeanTween.moveZ(gameObject, -20f, 1f).setEaseInBack().setOnComplete(() =>
+        {
+            
+        }).setDestroyOnComplete(true);
+
         UIManager.setLevelCompleteDelegate?.Invoke();
+        yield break;
     }
 
     private void SetWrongFoldPaper()

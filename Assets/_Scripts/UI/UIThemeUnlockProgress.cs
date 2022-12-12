@@ -24,24 +24,10 @@ public class UIThemeUnlockProgress : MonoBehaviour
     }
 
 
-    private void ThemeUnlockProgressUpdate(ThemeData themeData, int themeUnlockProgress, int themeUnlockProgressLevelStep)
+    private void ThemeUnlockProgressUpdate(int themeUnlockProgress, int themeUnlockProgressLevelStep)
     {
-
         _progressBar.value = PlayerPrefsManager.GetUnlockThemeProgress();
         gameObject.SetActive(true);
-
-        if(themeData.Sprite == null)
-        {
-            _themeImage.gameObject.SetActive(false);
-            _themeName.text = themeData.Name;
-            _themeName.gameObject.SetActive(true);
-        }
-        else
-        {
-            _themeName.gameObject.SetActive(false);
-            _themeImage.sprite = themeData.Sprite;
-            _themeImage.gameObject.SetActive(false);
-        }
 
         _progressBar.maxValue = themeUnlockProgressLevelStep;
         StartCoroutine(UpdateProgressBarCoroutine(themeUnlockProgress));
@@ -49,6 +35,7 @@ public class UIThemeUnlockProgress : MonoBehaviour
 
     private void ThemeUnlock(ThemeData themeData, int themeUnlockProgressLevelStep)
     {
+        _progressBar.value = PlayerPrefsManager.GetUnlockThemeProgress();
         gameObject.SetActive(true);
 
         if (themeData.Sprite == null)

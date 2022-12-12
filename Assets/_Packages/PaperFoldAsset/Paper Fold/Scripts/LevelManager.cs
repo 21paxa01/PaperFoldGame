@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     public delegate void OnThemeUnlocked(ThemeData themeData, int themeUnlockLevelStep);
     public static OnThemeUnlocked themeUnlocked;
 
-    public delegate void ThemeUnlockProgressUpdated(ThemeData themeData, int themeUnlockProgress, int themeUnlcokLevleStep);
+    public delegate void ThemeUnlockProgressUpdated(int themeUnlockProgress, int themeUnlcokLevleStep);
     public static ThemeUnlockProgressUpdated themeUnlockProgressUpdated;
 
     [Header(" Settings ")]
@@ -100,7 +100,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            themeUnlockProgressUpdated?.Invoke(unlockableThemesQueue.Peek(), unlockThemeProgress, unlockThemeLevelStep);
+            themeUnlockProgressUpdated?.Invoke(unlockThemeProgress, unlockThemeLevelStep);
             PlayerPrefsManager.SetUnlockThemeProgress(unlockThemeProgress);
         }
     }
