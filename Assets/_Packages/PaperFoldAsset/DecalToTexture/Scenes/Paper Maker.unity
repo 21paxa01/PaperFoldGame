@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2812344730785676278, guid: 4f3c781fefed044d5ba892e0088868dc, type: 3}
+      propertyPath: _decalPaper
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2812344730785676279, guid: 4f3c781fefed044d5ba892e0088868dc, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -265,6 +269,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3782771135623739098, guid: 6b64a78e9d2464b45b261e8cfc46b273, type: 3}
+      propertyPath: _decalPaper
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3782771135623739099, guid: 6b64a78e9d2464b45b261e8cfc46b273, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -345,7 +353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605242947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1181656823}
@@ -389,6 +397,10 @@ PrefabInstance:
     - target: {fileID: 5202290751838498128, guid: 1ee54a466b0e247f385448acbe77d8e9, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202290751838498130, guid: 1ee54a466b0e247f385448acbe77d8e9, type: 3}
+      propertyPath: _decalPaper
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5202290751838498131, guid: 1ee54a466b0e247f385448acbe77d8e9, type: 3}
       propertyPath: m_RootOrder
@@ -456,6 +468,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 962361495796494534, guid: 15e37d92774bf45f6a8f5214de8a3cca, type: 3}
+      propertyPath: _decalPaper
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 962361495796494535, guid: 15e37d92774bf45f6a8f5214de8a3cca, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -518,7 +534,8 @@ GameObject:
   - component: {fileID: 1181656823}
   - component: {fileID: 1181656822}
   - component: {fileID: 1181656821}
-  m_Layer: 0
+  - component: {fileID: 1181656824}
+  m_Layer: 4
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,12 +599,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181656820}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.046, y: 0.348, z: 0}
+  m_LocalPosition: {x: 0, y: 1.841, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 605242948}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1181656824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181656820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 600, y: 100}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1377491784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -602,6 +634,10 @@ PrefabInstance:
     - target: {fileID: 145581941504368452, guid: f93b6ddd140aa4c43b0a2e9043b417e5, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 145581941504368454, guid: f93b6ddd140aa4c43b0a2e9043b417e5, type: 3}
+      propertyPath: _decalPaper
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 145581941504368455, guid: f93b6ddd140aa4c43b0a2e9043b417e5, type: 3}
       propertyPath: m_RootOrder
@@ -711,6 +747,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9185652514474903348, guid: bb7e9e769d3a04fcfbe479c6a7b9527d, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185652514474903350, guid: bb7e9e769d3a04fcfbe479c6a7b9527d, type: 3}
+      propertyPath: _decalPaper
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9185652514474903351, guid: bb7e9e769d3a04fcfbe479c6a7b9527d, type: 3}

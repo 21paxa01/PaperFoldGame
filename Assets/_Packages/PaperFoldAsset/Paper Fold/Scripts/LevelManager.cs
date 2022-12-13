@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public delegate void OnPaperInstantiated(Paper paper);
     public static OnPaperInstantiated onPaperInstantiated;
 
-    public delegate void OnThemeUnlocked(ThemeData themeData, int themeUnlockLevelStep);
+    public delegate void OnThemeUnlocked(ThemeData themeData, int themeUnlockLevelStep = 0);
     public static OnThemeUnlocked themeUnlocked;
 
     public delegate void ThemeUnlockProgressUpdated(int themeUnlockProgress, int themeUnlcokLevleStep);
@@ -87,8 +87,12 @@ public class LevelManager : MonoBehaviour
             return;
 
         if (PlayerPrefsManager.HasUnlokedTheme(unlockableThemesQueue.Peek().Id))
+        {
             ChangeUnlockableTheme();
-
+            IncrementThemeUnlockProgress(starsCount);
+            return;
+        }
+            
         int unlockThemeProgress = PlayerPrefsManager.GetUnlockThemeProgress();
         unlockThemeProgress++;
 
@@ -96,7 +100,9 @@ public class LevelManager : MonoBehaviour
         {
             themeUnlocked?.Invoke(unlockableThemesQueue.Peek(), unlockThemeLevelStep);
             PlayerPrefsManager.AddUnlockedTheme(unlockableThemesQueue.Peek().Id);
+            UIManager.instance?.THEMES.ChangeTheme(unlockableThemesQueue.Peek());
             ChangeUnlockableTheme();
+            PlayerPrefsManager.SetUnlockThemeProgress(0);
         }
         else
         {
@@ -108,7 +114,6 @@ public class LevelManager : MonoBehaviour
     private void ChangeUnlockableTheme()
     {
         unlockableThemesQueue.Dequeue();
-        PlayerPrefsManager.SetUnlockThemeProgress(0);
     }
 
     private void SpawnLevel()

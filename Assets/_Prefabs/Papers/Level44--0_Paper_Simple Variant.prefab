@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: paperTexture
       value: 
       objectReference: {fileID: 2800000, guid: cd0872a2fce9cc646a9527348590eab9, type: 3}
+    - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
+      propertyPath: stickerEffectImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fa4b2e7d63b7c3c40942236d84dab328, type: 3}
     - target: {fileID: 2079044984652724695, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
       propertyPath: m_RootOrder
       value: 0

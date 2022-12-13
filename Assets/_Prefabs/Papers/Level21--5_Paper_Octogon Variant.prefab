@@ -28,6 +28,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2800000, guid: 05caf6e7029314c4fbc894e94492f1a5, type: 3}
     - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: stickerEffectImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 109be6992d742d543ae786a457a08cf1, type: 3}
+    - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: possibleCombinations.Array.size
       value: 4
       objectReference: {fileID: 0}

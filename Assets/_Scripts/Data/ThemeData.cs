@@ -9,13 +9,13 @@ public class ThemeData : ScriptableObject
     [SerializeField] private string _name;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private int _price;
-    [SerializeField] private Texture _texture;
+    [SerializeField] private Sprite _boardTheme;
 
     public string Id => _id;
     public string Name => _name;
     public Sprite Sprite => _sprite;
     public int Price => _price;
-    public Texture Texture => _texture;
+    public Sprite Texture => _boardTheme;
 
     private void OnValidate()
     {

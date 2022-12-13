@@ -272,8 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb596f139b4d43c2bf13c9c376ac0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _decalPaper: 0
   foldingsParent: {fileID: 5492429006675388927}
   paperTexture: {fileID: 0}
+  stickerEffectImage: {fileID: 0}
+  stickerEffect: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
   paperBackRenderer: {fileID: 6627208157909446060}
   paperFrontRenderer: {fileID: 5492429005604626267}
   verticesElevationStep: 0.005

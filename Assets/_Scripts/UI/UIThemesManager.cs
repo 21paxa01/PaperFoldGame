@@ -3,6 +3,7 @@ using UnityEngine;
 using JetSystems;
 using System.Linq;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class UIThemesManager : MonoBehaviour
 {
     [Header("General")]
@@ -15,11 +16,24 @@ public class UIThemesManager : MonoBehaviour
     private readonly List<UITheme> _availableThemeUIObjects = new List<UITheme>();
     private UITheme _uiActiveTheme;
 
+
+    private CanvasGroup _cachedCanvasGroup;
+    public CanvasGroup CachedCanvasGroup
+    {
+        get
+        {
+            if (_cachedCanvasGroup == null)
+                _cachedCanvasGroup = GetComponent<CanvasGroup>();
+            return _cachedCanvasGroup;
+        }
+    }
+
     private void Start()
     {
         if (_availableThemes != null && _availableThemes.Length > 0)
             CreateThemesUI();
     }
+
 
     private void CreateThemesUI()
     {
@@ -53,7 +67,8 @@ public class UIThemesManager : MonoBehaviour
         }
     }
 
-    private void ChangeTheme(UITheme uiTheme, ThemeData themeData)
+
+    public void ChangeTheme(UITheme uiTheme, ThemeData themeData)
     {
         if (_uiActiveTheme != null)
             _uiActiveTheme.CachedButton.interactable = true;
@@ -64,6 +79,13 @@ public class UIThemesManager : MonoBehaviour
         _changebleBoard.ChangeTheme(themeData);
     }
 
+    public void ChangeTheme(ThemeData themeData)
+    {
+        UITheme uiTheme = 
+            _availableThemeUIObjects.FirstOrDefault((tUI) => tUI.ThemeData.Id == themeData.Id);
+
+        ChangeTheme(uiTheme, themeData);
+    }
 
     public void UpdateThemesUI()
     {

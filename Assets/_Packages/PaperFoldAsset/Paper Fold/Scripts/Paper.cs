@@ -12,12 +12,14 @@ public class Paper : MonoBehaviour
     public OnPaperEvolving onPaperEvolving;
 
     [Header(" Settings ")]
+    [SerializeField] private bool _decalPaper;
     [SerializeField] private Transform foldingsParent;
     private Folding[] foldings;
     List<Folding> foldedFoldings = new List<Folding>();
     bool canFold = true;
     [SerializeField] private Texture2D paperTexture;
-    [SerializeField] private Transform stickerEffect;
+    [SerializeField] private Sprite stickerEffectImage;
+    [SerializeField] private StickerEffect stickerEffect;
 
     [Header(" Rendering ")]
     [SerializeField] private MeshRenderer paperBackRenderer;
@@ -285,11 +287,23 @@ public class Paper : MonoBehaviour
     private IEnumerator SetLevelComplete()
     {
         Debug.Log("Level Complete");
+        canFold = false;
+        if (_decalPaper)
+            yield break;
 
-        LeanTween.moveZ(gameObject, -20f, 1f).setEaseInBack().setOnComplete(() =>
+        LeanTween.moveZ(gameObject, -20f, 0.7f).setEaseInBack().setOnComplete(() =>
         {
-            
-        }).setDestroyOnComplete(true);
+
+        });
+
+        if(stickerEffect != null)
+        {
+            StickerEffect effect = Instantiate(stickerEffect);
+            effect.CachedTransform.position = transform.position;
+            yield return effect.ShowEffect(stickerEffectImage);
+            yield return new WaitForSeconds(0.5f);
+            Destroy(effect.gameObject);
+        }
 
         UIManager.setLevelCompleteDelegate?.Invoke();
         yield break;
@@ -298,6 +312,9 @@ public class Paper : MonoBehaviour
     private void SetWrongFoldPaper()
     {
         Debug.Log("Wrong!");
+        if (_decalPaper)
+            return;
+
         UnfoldAllFoldings();
         UIManager.wrongPaperFolded?.Invoke();
     }

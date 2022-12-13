@@ -6,6 +6,7 @@ using JetSystems;
 
 public class UIThemeUnlockProgress : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem[] _unlockEffects;
     [SerializeField] private Slider _progressBar;
     [SerializeField] private Image _themeImage;
     [SerializeField] private Text _themeName;
@@ -37,22 +38,16 @@ public class UIThemeUnlockProgress : MonoBehaviour
     {
         _progressBar.value = PlayerPrefsManager.GetUnlockThemeProgress();
         gameObject.SetActive(true);
-
-        if (themeData.Sprite == null)
-        {
-            _themeImage.gameObject.SetActive(false);
-            _themeName.text = themeData.Name;
-            _themeName.gameObject.SetActive(true);
-        }
-        else
-        {
-            _themeName.gameObject.SetActive(false);
-            _themeImage.sprite = themeData.Sprite;
-            _themeImage.gameObject.SetActive(false);
-        }
-
         _progressBar.maxValue = themeUnlockProgressLevelStep;
         StartCoroutine(UpdateProgressBarCoroutine(themeUnlockProgressLevelStep));
+
+        if(_unlockEffects.Length > 0)
+        {
+            foreach(ParticleSystem particleSystem in _unlockEffects)
+            {
+                particleSystem.Play();
+            }
+        }
     }
 
     private IEnumerator UpdateProgressBarCoroutine(int unlockProgress)

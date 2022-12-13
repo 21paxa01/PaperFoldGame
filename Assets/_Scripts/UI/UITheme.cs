@@ -77,6 +77,7 @@ public class UITheme : MonoBehaviour
             UIManager.RemoveCoins(_themeData.Price);
             SetAvailable(true);
             PlayerPrefsManager.AddUnlockedTheme(_themeData.Id);
+            ThemeAvailableClicked.Invoke(this, _themeData);
         }
     }
 

@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 6026566952714108159}
   - component: {fileID: 6026566952714108158}
   m_Layer: 0
-  m_Name: Paper_Losange 1
+  m_Name: 5_Paper_Octogon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb596f139b4d43c2bf13c9c376ac0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _decalPaper: 0
   foldingsParent: {fileID: 6026566954314273556}
+  paperTexture: {fileID: 0}
+  stickerEffectImage: {fileID: 0}
+  stickerEffect: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
   paperBackRenderer: {fileID: 4927851786082047815}
   paperFrontRenderer: {fileID: 6026566953239258544}
   verticesElevationStep: 0.005
@@ -255,6 +259,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -279,6 +284,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &6026566953239258546
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -431,6 +437,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -455,3 +462,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

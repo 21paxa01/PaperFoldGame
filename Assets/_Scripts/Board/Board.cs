@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using JetSystems;
+using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
-    [SerializeField] MeshRenderer _meshRenderer;
+    [SerializeField] private Image _boardImage;
     
     public void ChangeTheme(ThemeData themeData)
     {
@@ -14,6 +15,6 @@ public class Board : MonoBehaviour
         if (changedThemeId != PlayerPrefsManager.GetUsedTheme())
             PlayerPrefsManager.SetUsedTheme(changedThemeId);
 
-        _meshRenderer.materials[0].mainTexture = themeData.Texture;
+        _boardImage.sprite = themeData.Texture;
     }
 }

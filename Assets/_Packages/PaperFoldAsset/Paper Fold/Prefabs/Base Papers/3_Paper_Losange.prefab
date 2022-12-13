@@ -55,6 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3041974683396203674
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +219,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -241,6 +244,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &3041974684450181693
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -315,7 +319,7 @@ GameObject:
   - component: {fileID: 3041974685000305520}
   - component: {fileID: 3041974685000305521}
   m_Layer: 0
-  m_Name: Paper_Losange
+  m_Name: 3_Paper_Losange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,7 +354,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb596f139b4d43c2bf13c9c376ac0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _decalPaper: 0
   foldingsParent: {fileID: 3041974683396203675}
+  paperTexture: {fileID: 0}
+  stickerEffectImage: {fileID: 0}
+  stickerEffect: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
   paperBackRenderer: {fileID: 4464991901463650504}
   paperFrontRenderer: {fileID: 3041974684450181695}
   verticesElevationStep: 0.005
