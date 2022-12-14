@@ -12,7 +12,14 @@ public class Paper : MonoBehaviour
     public delegate void OnPaperEvolving();
     public OnPaperEvolving onPaperEvolving;
 
+    public delegate void PaperStartFold();
+    public PaperStartFold paperStartFold;
+
+    public delegate void PaperStartUnfold();
+    public PaperStartUnfold paperStartUnfold;
+
     [Header(" Settings ")]
+    [SerializeField] private bool _test;
     [SerializeField] private bool _decalPaper;
     [SerializeField] private Transform foldingsParent;
     private Folding[] foldings;
@@ -177,6 +184,12 @@ public class Paper : MonoBehaviour
 
     IEnumerator FoldCoroutine(bool folding)
     {
+        if(folding)
+            paperStartFold.Invoke();
+        else
+            paperStartUnfold.Invoke();
+
+
         int[] backVerticesToMove = folding ? GetVerticesToMove(backFilter, currentFolding) : currentFolding.GetBackFoldedVerticesIndices();
         int[] frontVerticesToMove = folding ? GetVerticesToMove(frontFilter, currentFolding) : currentFolding.GetFrontFoldedVerticesIndices();
 
@@ -269,7 +282,7 @@ public class Paper : MonoBehaviour
             }
         }
 
-        SetWrongFoldPaper();
+        StartCoroutine(SetWrongFoldPaper());
     }
 
     private bool MatchPossibleCombination(PossibleCombination foldingsCombination)
@@ -289,10 +302,12 @@ public class Paper : MonoBehaviour
     {
         Debug.Log("Level Complete");
 
-        if (_decalPaper)
+        if (_decalPaper || _test)
             yield break;
 
-        YandexSDK.instance.ShowInterstitial();
+
+        if(YandexSDK.instance != null)
+            YandexSDK.instance.ShowInterstitial();
 
         canFold = false;
         
@@ -314,17 +329,35 @@ public class Paper : MonoBehaviour
         yield break;
     }
 
-    private void SetWrongFoldPaper()
+    private IEnumerator SetWrongFoldPaper()
     {
+        bool animationComplete = false;
+
         Debug.Log("Wrong!");
-        if (_decalPaper)
-            return;
+
+        LeanTween.moveLocalX(gameObject, transform.position.x + 0.1f, 0.1f).setEaseShake().setOnComplete(() =>
+        {
+            LeanTween.moveLocalX(gameObject, transform.position.x - 0.1f, 0.1f).setEaseShake()
+            .setOnComplete(() =>
+            {
+                animationComplete = true;
+            });
+        });
+
+        yield return new WaitUntil(() => animationComplete);
+        animationComplete = false;
+
+        if (_decalPaper || _test)
+            yield break;
 
         UnfoldAllFoldings();
 
-        YandexSDK.instance.ShowInterstitial();
+        if(YandexSDK.instance != null)
+            YandexSDK.instance.ShowInterstitial();
 
         UIManager.wrongPaperFolded?.Invoke();
+
+        yield break;
     }
 
     private Vector3 GetRotatedLocalVertex(Vector3 localVertexToMove, float angle)

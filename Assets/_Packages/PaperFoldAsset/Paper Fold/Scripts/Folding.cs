@@ -64,6 +64,11 @@ public class Folding : MonoBehaviour
         return rotationAxis.AsPlane();
     }
 
+    public Vector3 GetFoldingPosition()
+    {
+        return rotationAxis.position;
+    }
+
 
 
     public void SetBackFoldedVerticesIndices(int[] foldedVerticesIndices)

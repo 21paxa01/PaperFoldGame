@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using JetSystems;
 using UnityEngine;
-using JetSystems;
 
 public class SoundsManager : MonoBehaviour
 {
     [Header(" Sounds ")]
-    [SerializeField] private AudioSource paperSound;
+    [SerializeField] private AudioSource paperSoundFold;
+    [SerializeField] private AudioSource paperSoundUnfold;
     [SerializeField] private AudioSource levelCompleteSound;
     Paper currentPaper;
 
@@ -20,7 +19,7 @@ public class SoundsManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        UIManager.onGameSet -= StoreCurrentPaper;
+        //UIManager.onGameSet -= StoreCurrentPaper;
         UIManager.onLevelCompleteSet -= ResetCurrentPaper;
         LevelManager.onPaperInstantiated -= StoreCurrentPaper;
 
@@ -28,33 +27,39 @@ public class SoundsManager : MonoBehaviour
 
     private void StoreCurrentPaper(Paper paper)
     {
-        currentPaper = paper;// FindObjectOfType<Paper>();
-        currentPaper.onPaperEvolving += PlayPaperSound;
+        currentPaper = paper;
+        currentPaper.paperStartFold += PlayPaperFoldSound;
+        currentPaper.paperStartUnfold += PlayPaperUnfoldSound;
     }
 
     private void StoreCurrentPaper()
     {
         currentPaper = FindObjectOfType<Paper>();
-        currentPaper.onPaperEvolving += PlayPaperSound;
+        currentPaper.paperStartFold += PlayPaperFoldSound;
+        currentPaper.paperStartUnfold += PlayPaperUnfoldSound;
     }
 
     private void ResetCurrentPaper(int none)
     {
-        currentPaper.onPaperEvolving -= PlayPaperSound;
+        //currentPaper.onPaperEvolving -= PlayPaperSound;
+
+        currentPaper.paperStartFold -= PlayPaperFoldSound;
+        currentPaper.paperStartUnfold -= PlayPaperUnfoldSound;
         currentPaper = null;
 
         levelCompleteSound.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void PlayPaperFoldSound()
     {
-        
+        paperSoundFold.pitch = Random.Range(0.9f, 1.2f);
+        paperSoundFold.Play();
     }
 
-    private void PlayPaperSound()
+    private void PlayPaperUnfoldSound()
     {
-        paperSound.pitch = Random.Range(0.9f, 1.2f);
-        paperSound.Play();
+        paperSoundUnfold.pitch = Random.Range(0.9f, 1.2f);
+        paperSoundUnfold.Play();
     }
 }

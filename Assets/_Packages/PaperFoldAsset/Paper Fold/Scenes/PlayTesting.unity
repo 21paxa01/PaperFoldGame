@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28452307, g: 0.36808342, b: 0.47608316, a: 1}
+  m_IndirectSpecularColor: {r: 0.56427526, g: 0.632573, b: 0.70732355, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -806,6 +806,7 @@ Transform:
   - {fileID: 418995654}
   - {fileID: 1824256872}
   - {fileID: 1732512587}
+  - {fileID: 7905087541066719333}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2965,8 +2966,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb596f139b4d43c2bf13c9c376ac0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _test: 0
+  _decalPaper: 0
   foldingsParent: {fileID: 352109269}
   paperTexture: {fileID: 0}
+  stickerEffectImage: {fileID: 0}
+  stickerEffect: {fileID: 0}
   paperBackRenderer: {fileID: 1711813855401707142}
   paperFrontRenderer: {fileID: 1427207281}
   verticesElevationStep: 0.005
@@ -3555,6 +3560,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &1410871214454769796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 624976259}
+    m_Modifications:
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088520065309173986, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+      propertyPath: m_Name
+      value: 1_Paper_Square_Triangle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
 --- !u!1001 &1423275209444614670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5667,6 +5729,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d5e54f46333586439f5793ea8a5c65b, type: 3}
+--- !u!4 &7905087541066719333 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9088520065309173985, guid: f0a701144418e57409308ddbc4cfa0f2, type: 3}
+  m_PrefabInstance: {fileID: 1410871214454769796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8065179251451887385
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -138,8 +138,10 @@ namespace JetSystems
 		// Update is called once per frame
 		void Update()
 		{
+            /*
             if (Input.GetKeyDown(KeyCode.C))
                 SetLevelComplete();
+            */
 		}
 
         public void SetMenu()

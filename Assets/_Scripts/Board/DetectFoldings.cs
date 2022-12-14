@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class DetectFoldings : MonoBehaviour, IPointerUpHandler, IPointerClickHandler, IPointerDownHandler
 {
     [Header(" Settings ")]
+    [SerializeField] private LayerMask detectLayers;
     [SerializeField] private bool playTesting;
     Camera mainCamera;
 
@@ -34,14 +35,10 @@ public class DetectFoldings : MonoBehaviour, IPointerUpHandler, IPointerClickHan
     private void DetectClosestFolding()
     {
         Ray tapRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Physics.Raycast(tapRay, out hit, 50);
+        Physics.Raycast(tapRay, out RaycastHit hit, 50, detectLayers);
 
         if (hit.collider == null)
             return;
-
-        Ray ray = new Ray(hit.point, (Vector3.zero - hit.point));
-        float maxDistance = Vector3.Distance(hit.point, Vector3.zero);
 
         Folding[] detectedFoldings = FindObjectsOfType<Folding>();
 
@@ -51,18 +48,12 @@ public class DetectFoldings : MonoBehaviour, IPointerUpHandler, IPointerClickHan
         for (int i = 0; i < detectedFoldings.Length; i++)
         {
             Folding currentFolding = detectedFoldings[i];
-            Plane plane = currentFolding.GetFoldingPlane();
 
-            float enter;
-            bool foldingIntersected = plane.Raycast(ray, out enter);
+            float t = Vector3.Distance(hit.point, currentFolding.GetFoldingPosition());
 
-
-            if (enter >= maxDistance || !foldingIntersected)
-                continue;
-
-            if (enter < minDistance)
+            if(t < minDistance)
             {
-                minDistance = enter;
+                minDistance = t;
                 closestFoldingIndex = i;
             }
         }

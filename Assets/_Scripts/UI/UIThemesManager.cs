@@ -11,6 +11,7 @@ public class UIThemesManager : MonoBehaviour
     [SerializeField] private Transform _uiThemesParent;
     [SerializeField] private AvailableTheme[] _availableThemes;
     [SerializeField] private Board _changebleBoard;
+    [SerializeField] private AudioSource _clickAudio;
 
 
     private readonly List<UITheme> _availableThemeUIObjects = new List<UITheme>();
@@ -42,6 +43,7 @@ public class UIThemesManager : MonoBehaviour
         foreach (AvailableTheme themeData in _availableThemes)
         {
             UITheme uiTheme = Instantiate(_uiThemePrefab, _uiThemesParent);
+            uiTheme.CachedButton.onClick.AddListener(_clickAudio.Play);
             uiTheme.SetData(themeData.Theme, themeData.IsAvailable);
             uiTheme.ThemeAvailableClicked.AddListener(ChangeTheme);
             _availableThemeUIObjects.Add(uiTheme);

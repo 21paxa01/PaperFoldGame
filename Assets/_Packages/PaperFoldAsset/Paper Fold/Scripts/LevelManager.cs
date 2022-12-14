@@ -159,14 +159,17 @@ public class LevelManager : MonoBehaviour
         {
             Debug.LogError(ex.Message);
         }
-
-        if(AdManager.instance != null)
-            AdManager.instance.ShowInterstitialAd();
     }
 
     public void RetryLevel()
     {
         currentPaper.UnfoldAllFoldings();
+    }
+
+    public void SkipLevel()
+    {
+        SpawnNextLevel();
+        YandexSDK.instance.ShowRewarded("SkipLevel");
     }
 
     private void DecreaseEarnedCoins()
