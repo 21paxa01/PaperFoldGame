@@ -103,7 +103,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: dca7afcde023a8a4a8aa8debbdbd5427, type: 3}
+    m_Font: {fileID: 12800000, guid: 34a1667291cd73e439a287b0f4eb445d, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _themeImage: {fileID: 9213423717923945043}
-  _themeText: {fileID: 8685185580244426185}
+  _themeText: {fileID: 4547682644618417719}
   _themePriceText: {fileID: 2715063399318603624}
   _errorColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &8685185580244426187
@@ -462,6 +462,7 @@ GameObject:
   - component: {fileID: 8685185580244426184}
   - component: {fileID: 8685185580244426198}
   - component: {fileID: 8685185580244426185}
+  - component: {fileID: 4547682644618417719}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -517,9 +518,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: dca7afcde023a8a4a8aa8debbdbd5427, type: 3}
+    m_Font: {fileID: 12800000, guid: 34a1667291cd73e439a287b0f4eb445d, type: 3}
     m_FontSize: 40
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -532,3 +533,19 @@ MonoBehaviour:
   m_Text: '0
 
 '
+--- !u!114 &4547682644618417719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685185580244426187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3f7901903a5674f8ca3ad04d64cd8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textTmp: {fileID: 0}
+  text: {fileID: 8685185580244426185}
+  ru: 
+  en: 

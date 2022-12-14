@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UITheme : MonoBehaviour
 {
     [SerializeField] private Image _themeImage;
-    [SerializeField] private Text _themeText;
+    [SerializeField] private LangSwitcher _themeText;
     [SerializeField] private Text _themePriceText;
     [SerializeField] private Color _errorColor;
 
@@ -92,7 +92,10 @@ public class UITheme : MonoBehaviour
         else
         {
             _themeImage.gameObject.SetActive(false);
-            _themeText.text = themeData.Name;
+
+            _themeText.en = themeData.Name_EN;
+            _themeText.ru = themeData.Name_RU;
+
             _themeText.gameObject.SetActive(true);
         }
 

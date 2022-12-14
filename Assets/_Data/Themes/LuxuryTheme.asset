@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: LuxuryTheme
   m_EditorClassIdentifier: 
   _id: 8c6d9f11-ce28-4571-a49d-c7c9fe044a36
-  _name: Luxury
+  _name_RU: "\u0420\u043E\u0441\u043A\u043E\u0448\u044C"
+  _name_EN: Luxury
   _sprite: {fileID: 21300000, guid: 2cb3cb6c486553d40961ae924566a64e, type: 3}
-  _price: 325
+  _price: 300
   _boardTheme: {fileID: 21300000, guid: e1a53d2c25cd56440839b33906791133, type: 3}

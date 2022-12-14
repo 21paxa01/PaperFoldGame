@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using JetSystems;
+using Eiko.YaSDK;
 
 public class Paper : MonoBehaviour
 {
@@ -44,8 +45,8 @@ public class Paper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(!FindObjectOfType<DecalMaster>())
-            paperFrontRenderer.material.mainTexture = paperTexture;
+        //if(!FindObjectOfType<DecalMaster>())
+        paperFrontRenderer.material.mainTexture = paperTexture;
 
         foldings = GetFoldings();
     }
@@ -287,10 +288,14 @@ public class Paper : MonoBehaviour
     private IEnumerator SetLevelComplete()
     {
         Debug.Log("Level Complete");
-        canFold = false;
+
         if (_decalPaper)
             yield break;
 
+        YandexSDK.instance.ShowInterstitial();
+
+        canFold = false;
+        
         LeanTween.moveZ(gameObject, -20f, 0.7f).setEaseInBack().setOnComplete(() =>
         {
 
@@ -316,6 +321,9 @@ public class Paper : MonoBehaviour
             return;
 
         UnfoldAllFoldings();
+
+        YandexSDK.instance.ShowInterstitial();
+
         UIManager.wrongPaperFolded?.Invoke();
     }
 

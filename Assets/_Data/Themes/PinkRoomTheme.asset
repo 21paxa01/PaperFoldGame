@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PinkRoomTheme
   m_EditorClassIdentifier: 
   _id: 7cf20f19-165c-42ba-9e44-754ed596003f
-  _name: Pink Room
+  _name_RU: "\u0420\u043E\u0437\u043E\u0432\u0430\u044F \u041A\u043E\u043C\u043D\u0430\u0442\u0430"
+  _name_EN: Pink Room
   _sprite: {fileID: 21300000, guid: 82ce14ddc6e4c1c4c820eec0926d5847, type: 3}
-  _price: 400
+  _price: 300
   _boardTheme: {fileID: 21300000, guid: ef9cae49ae21c5848b947a2a328237ce, type: 3}

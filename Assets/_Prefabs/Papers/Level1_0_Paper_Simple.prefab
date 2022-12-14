@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1160567183935796154, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2079044984652724692, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
       propertyPath: m_Name
       value: Level1_0_Paper_Simple

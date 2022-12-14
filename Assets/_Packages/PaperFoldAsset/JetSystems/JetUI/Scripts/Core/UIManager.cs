@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Eiko.YaSDK;
 
 namespace JetSystems
 {
@@ -161,7 +162,7 @@ namespace JetSystems
             uiThemeUnlcokProgress.gameObject.SetActive(false);
 
             // Update the level text
-            levelText.text = "Level " + (PlayerPrefsManager.GetLevel() + 1);
+            levelText.text = (PlayerPrefsManager.GetLevel() + 1).ToString();
         }
 
         public void SetLevelComplete(int starsCount = 3)
@@ -212,6 +213,7 @@ namespace JetSystems
 
         public void NextLevelButtonWithAddCallback()
         {
+            YandexSDK.instance.ShowRewarded("CoinTripleBonus");
             onNextLevelButtonPressedWithAd?.Invoke();
         }
 
@@ -242,13 +244,13 @@ namespace JetSystems
             shopCoinsText.text = coinsString;
         }
 
-        public void UpdateEarnedCoins(int earnedCoins)
+        public void UpdateEarnedCoins(int earnedCoins, int earnedCoinsWithAd)
         {
             if (levelCompleteEarnedCoinsText != null)
-                levelCompleteEarnedCoinsText.text = $"+ {earnedCoins}";
+                levelCompleteEarnedCoinsText.text = $"+{earnedCoins}";
 
             if (levelCompleteEarnedCoinsTextAd != null)
-                levelCompleteEarnedCoinsTextAd.text = $"+ {earnedCoins * LevelManager.SCALE_EARNNED_COINS_WITH_AD_VALUE}";
+                levelCompleteEarnedCoinsTextAd.text = $"+{earnedCoinsWithAd}";
         }
 
         #region Static Methods

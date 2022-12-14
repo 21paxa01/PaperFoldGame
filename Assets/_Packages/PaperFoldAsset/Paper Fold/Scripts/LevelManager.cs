@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using JetSystems;
+using Eiko.YaSDK;
 
 public class LevelManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class LevelManager : MonoBehaviour
     public static ThemeUnlockProgressUpdated themeUnlockProgressUpdated;
 
     [Header(" Settings ")]
+    [SerializeField] private int adCoinsCount = 45;
     [SerializeField] private int maxCoinsCount = 15;
     [SerializeField] private int minCoinsCount = 5;
     [Min(1)]
@@ -35,7 +37,6 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefsManager.ClearAllData();
         level = PlayerPrefsManager.GetLevel();
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
         UIManager.onNextLevelButtonPressedWithAd += SpawnNextLevelWithAdditionalCoins;
@@ -73,11 +74,13 @@ public class LevelManager : MonoBehaviour
         {
             Debug.LogError(ex.Message);
         }
+
+        YandexSDK.instance.ShowInterstitial();
     }
 
     private void SpawnNextLevelWithAdditionalCoins()
     {
-        earnedCoins *= SCALE_EARNNED_COINS_WITH_AD_VALUE;
+        earnedCoins = adCoinsCount;
         SpawnNextLevel();
     }
 
@@ -119,8 +122,11 @@ public class LevelManager : MonoBehaviour
     private void SpawnLevel()
     {
         earnedCoins = maxCoinsCount;
-        UIManager.instance.UpdateEarnedCoins(earnedCoins);
-        int correctedLevelIndex = level % papersPrefabs.Length;
+        UIManager.instance.UpdateEarnedCoins(earnedCoins, adCoinsCount);
+        int correctedLevelIndex = level;
+
+        if (level > papersPrefabs.Length-1)
+            correctedLevelIndex = Random.Range(0, papersPrefabs.Length - 1);
 
         transform.Clear();
         currentPaper = Instantiate(papersPrefabs[correctedLevelIndex], transform);
@@ -173,6 +179,6 @@ public class LevelManager : MonoBehaviour
         if (earnedCoins < minCoinsCount)
             earnedCoins = minCoinsCount;
 
-        UIManager.instance?.UpdateEarnedCoins(earnedCoins);
+        UIManager.instance?.UpdateEarnedCoins(earnedCoins, adCoinsCount);
     }
 }
