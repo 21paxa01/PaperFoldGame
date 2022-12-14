@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class DecalMaster : MonoBehaviour
 {
-    private Camera camera;
-
     [SerializeField] private MeshRenderer decalRenderer;
     [SerializeField] private MeshRenderer targetObjectRenderer;
     [SerializeField] private Transform papersParent;
@@ -19,17 +17,12 @@ public class DecalMaster : MonoBehaviour
 
     [Header(" Settings ")]
     private bool projecting;
+    
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        camera = Camera.main;
-    }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.P) && !projecting)
             StartCoroutine("Project");
         else if (Input.GetKeyDown(KeyCode.P) && projecting)

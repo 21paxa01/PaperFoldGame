@@ -52,8 +52,10 @@ public class Paper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if(!FindObjectOfType<DecalMaster>())
-        paperFrontRenderer.material.mainTexture = paperTexture;
+#if UNITY_EDITOR
+        if(!FindObjectOfType<DecalMaster>())
+#endif
+            paperFrontRenderer.material.mainTexture = paperTexture;
 
         foldings = GetFoldings();
     }
@@ -185,9 +187,9 @@ public class Paper : MonoBehaviour
     IEnumerator FoldCoroutine(bool folding)
     {
         if(folding)
-            paperStartFold.Invoke();
+            paperStartFold?.Invoke();
         else
-            paperStartUnfold.Invoke();
+            paperStartUnfold?.Invoke();
 
 
         int[] backVerticesToMove = folding ? GetVerticesToMove(backFilter, currentFolding) : currentFolding.GetBackFoldedVerticesIndices();

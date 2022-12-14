@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
+  m_IndirectSpecularColor: {r: 0.5651617, g: 0.63572097, b: 0.7219673, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -267,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3782771135623739096, guid: 6b64a78e9d2464b45b261e8cfc46b273, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3782771135623739098, guid: 6b64a78e9d2464b45b261e8cfc46b273, type: 3}
       propertyPath: _decalPaper
@@ -373,16 +373,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decalRenderer: {fileID: 1181656821}
-  targetObjectRenderer: {fileID: 1552890830}
+  targetObjectRenderer: {fileID: 1931246475}
   papersParent: {fileID: 2060032533}
   coloredPapers:
-  - {fileID: 2800000, guid: 202b2cc56fefc4f35bc00112407973b3, type: 3}
-  - {fileID: 2800000, guid: 7b0340dc1666c467bb66ecd91ccc4f34, type: 3}
-  - {fileID: 2800000, guid: 09f4fd623e2414d48b14dbf797db94ee, type: 3}
   - {fileID: 2800000, guid: 822e0c2fb5e804857a040139ebb6f29d, type: 3}
+  - {fileID: 2800000, guid: 202b2cc56fefc4f35bc00112407973b3, type: 3}
+  - {fileID: 2800000, guid: 09f4fd623e2414d48b14dbf797db94ee, type: 3}
+  - {fileID: 2800000, guid: a2462363429dd4bec805cb2f85664095, type: 3}
+  - {fileID: 2800000, guid: 7b0340dc1666c467bb66ecd91ccc4f34, type: 3}
   - {fileID: 2800000, guid: 4c920dffe93464e2a9280dfb14721655, type: 3}
   - {fileID: 2800000, guid: e4167113b65814baf830311e40afc373, type: 3}
-  - {fileID: 2800000, guid: a2462363429dd4bec805cb2f85664095, type: 3}
 --- !u!1001 &986609714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -534,7 +534,6 @@ GameObject:
   - component: {fileID: 1181656823}
   - component: {fileID: 1181656822}
   - component: {fileID: 1181656821}
-  - component: {fileID: 1181656824}
   m_Layer: 4
   m_Name: Decal
   m_TagString: Untagged
@@ -600,26 +599,11 @@ Transform:
   m_GameObject: {fileID: 1181656820}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.841, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 605242948}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1181656824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181656820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 600, y: 100}
-  m_UseGraphicAlpha: 1
 --- !u!1001 &1377491784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -747,7 +731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9185652514474903348, guid: bb7e9e769d3a04fcfbe479c6a7b9527d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9185652514474903350, guid: bb7e9e769d3a04fcfbe479c6a7b9527d, type: 3}
       propertyPath: _decalPaper
@@ -802,11 +786,6 @@ PrefabInstance:
 --- !u!4 &1552890829 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9185652514474903351, guid: bb7e9e769d3a04fcfbe479c6a7b9527d, type: 3}
-  m_PrefabInstance: {fileID: 1552890828}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1552890830 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 9185652514991480440, guid: bb7e9e769d3a04fcfbe479c6a7b9527d, type: 3}
   m_PrefabInstance: {fileID: 1552890828}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1687258581
@@ -972,6 +951,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playTesting: 1
+--- !u!23 &1931246475 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3782771136140078996, guid: 6b64a78e9d2464b45b261e8cfc46b273, type: 3}
+  m_PrefabInstance: {fileID: 477251506}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2060032532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1097,7 @@ GameObject:
   - component: {fileID: 2140821346}
   - component: {fileID: 2140821345}
   - component: {fileID: 2140821344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tap Detection Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

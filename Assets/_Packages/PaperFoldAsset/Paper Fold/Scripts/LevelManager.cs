@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        PlayerPrefsManager.ClearAllData();
         level = PlayerPrefsManager.GetLevel();
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
         UIManager.onNextLevelButtonPressedWithAd += SpawnNextLevelWithAdditionalCoins;
