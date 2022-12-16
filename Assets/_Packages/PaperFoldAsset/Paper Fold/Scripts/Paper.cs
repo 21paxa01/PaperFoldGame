@@ -371,9 +371,9 @@ public class Paper : MonoBehaviour
         return rotatedLocalVertex;
     }
 
-    public Folding[] GetFoldings()
+    public Folding[] GetFoldings(bool includeInactive = true)
     {
-        return foldingsParent.GetComponentsInChildren<Folding>();
+        return foldingsParent.GetComponentsInChildren<Folding>(includeInactive);
     }
 
     public MeshRenderer GetFrontRenderer()

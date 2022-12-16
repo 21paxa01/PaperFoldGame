@@ -51,6 +51,11 @@ public class Folding : MonoBehaviour
 
     public void SetFoldedState(bool folded)
     {
+        for(int i = 0; i < requiredFoldings.Length; i++)
+        {
+            requiredFoldings[i].gameObject.SetActive(folded);   
+        }
+
         this.folded = folded;
     }
 

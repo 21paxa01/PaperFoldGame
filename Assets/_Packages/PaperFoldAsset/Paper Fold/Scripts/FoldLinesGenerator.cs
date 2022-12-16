@@ -54,7 +54,7 @@ public class FoldLinesGenerator : MonoBehaviour
 
         if (currentPaper == null) return;
 
-        Folding[] foldings = currentPaper.GetFoldings();
+        Folding[] foldings = currentPaper.GetFoldings(false);
 
         foreach (Folding folding in foldings)
             if (!folding.IsFolded())

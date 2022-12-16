@@ -40,7 +40,7 @@ public class DetectFoldings : MonoBehaviour, IPointerUpHandler, IPointerClickHan
         if (hit.collider == null)
             return;
 
-        Folding[] detectedFoldings = FindObjectsOfType<Folding>();
+        Folding[] detectedFoldings = FindObjectsOfType<Folding>(true);
 
         int closestFoldingIndex = -1;
         float minDistance = 5000;
@@ -58,10 +58,16 @@ public class DetectFoldings : MonoBehaviour, IPointerUpHandler, IPointerClickHan
             }
         }
 
+
+        Folding colsestFolding = detectedFoldings[closestFoldingIndex];
+
+        if (!colsestFolding.gameObject.activeInHierarchy)
+            return;
+
         if (closestFoldingIndex >= 0)
         {
-            Paper currentPaper = detectedFoldings[closestFoldingIndex].GetComponentInParent<Paper>();
-            currentPaper.TryFold(detectedFoldings[closestFoldingIndex]);
+            Paper currentPaper = colsestFolding.GetComponentInParent<Paper>();
+            currentPaper.TryFold(colsestFolding);
         }
     }
 
