@@ -24,7 +24,7 @@ public class DecalMaster : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) && !projecting)
-            StartCoroutine("Project");
+            StartCoroutine(Project());
         else if (Input.GetKeyDown(KeyCode.P) && projecting)
             Debug.Log("Already projecting a texture");
     }
