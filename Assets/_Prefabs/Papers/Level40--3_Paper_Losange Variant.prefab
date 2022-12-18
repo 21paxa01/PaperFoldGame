@@ -60,6 +60,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3041974685000305521, guid: 2a847dc2dc5d44ed6bbf5ea559e10757, type: 3}
+      propertyPath: _test
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3041974685000305521, guid: 2a847dc2dc5d44ed6bbf5ea559e10757, type: 3}
       propertyPath: paperTexture
       value: 
       objectReference: {fileID: 2800000, guid: 417f0b91191cfdf48a7eec06f1819081, type: 3}

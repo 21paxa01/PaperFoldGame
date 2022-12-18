@@ -5,6 +5,7 @@ using System.IO;
 
 #if UNITY_EDITOR
 using UnityEditor;
+using System.Threading.Tasks;
 using UnityEngine.UI;
 #endif
 

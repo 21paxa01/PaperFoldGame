@@ -25,6 +25,27 @@ public class DecalMasterEditor : Editor
         {
             RandomizeNextPaper();
         }
+
+        GUILayout.Space(30);
+
+        if(GUILayout.Button("Project Single Paper") && !decalMaster.ProjectingActive)
+        {
+            Debug.Log("Project Single Paper");
+            decalMaster.ProjectSinglePaper();
+        }
+
+        if (GUILayout.Button("Project All Papers") && !decalMaster.ProjectingActive)
+        {
+            Debug.Log("Projecting All Papers");
+            decalMaster.ProjectAllPapers();
+        }
+
+        if(GUILayout.Button("Stop") && decalMaster.ProjectingActive)
+        {
+            Debug.Log("Stoped");
+            decalMaster.StopCurrentProjecting();
+        }
+            
     }
 
     private void RandomizeNextPaper()

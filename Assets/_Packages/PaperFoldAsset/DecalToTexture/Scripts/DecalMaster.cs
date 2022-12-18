@@ -3,37 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 
 #if UNITY_EDITOR
-
 public class DecalMaster : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer decalRenderer;
+    [Header("General")]
+    [SerializeField] private DecalObject[] _decalObjects;
+
+    [Header("Single Paper Mode Settings")]
+    [SerializeField] private SpriteRenderer decalRenderer;
     [SerializeField] private MeshRenderer targetObjectRenderer;
     [SerializeField] private Transform papersParent;
-
-    [Header(" Elements ")]
     [SerializeField] private Texture2D[] coloredPapers;
-
-    Texture2D newTargetObjectTexture;
-
-    [Header(" Settings ")]
-    private bool projecting;
     
+    
+    private Texture2D newTargetObjectTexture;
+    private bool projectingActive;
+    private Coroutine currentProjectingCoroutine = null;
 
 
-    // Update is called once per frame
-    void Update()
+    public bool ProjectingActive => projectingActive;
+
+
+    private IEnumerator ProjectPapersCoroutine()
     {
-        if (Input.GetKeyDown(KeyCode.P) && !projecting)
-            StartCoroutine(Project());
-        else if (Input.GetKeyDown(KeyCode.P) && projecting)
-            Debug.Log("Already projecting a texture");
+        if (_decalObjects == null || _decalObjects.Length < 0)
+        {
+            Debug.LogWarning("Not found decal objects!");
+            yield break;
+        }
+
+        for(int i = 0; i < _decalObjects.Length; i++)
+        {
+            if (_decalObjects[i].gameObject.activeInHierarchy)
+                _decalObjects[i].gameObject.SetActive(false);
+        }
+
+
+        projectingActive = true;
+
+        for (int i = 0; i < _decalObjects.Length; i++)
+        {
+            _decalObjects[i].gameObject.SetActive(true);
+            yield return currentProjectingCoroutine = StartCoroutine(_decalObjects[i].Project());
+            _decalObjects[i].gameObject.SetActive(false);
+            Debug.LogWarning($"Finished Printing");
+            yield return null;
+        }
+
+        projectingActive = false;
+
+        yield break;
     }
 
-    IEnumerator Project()
+    private IEnumerator ProjectSinglePaperCoroutine()
     {
-        projecting = true;
+        projectingActive = true;
+        yield return currentProjectingCoroutine = StartCoroutine(Project());
+        projectingActive = false;
+    }
 
-        Texture2D decalTexture = decalRenderer.material.mainTexture as Texture2D;
+    private IEnumerator Project()
+    {
+        Texture2D decalTexture = decalRenderer.sprite.texture;
 
         newTargetObjectTexture = new Texture2D(targetObjectRenderer.material.mainTexture.width, targetObjectRenderer.material.mainTexture.height, TextureFormat.RGBA32, false);
         Graphics.CopyTexture(targetObjectRenderer.material.mainTexture, newTargetObjectTexture);
@@ -50,8 +80,7 @@ public class DecalMaster : MonoBehaviour
                 {
                     continue;
                 }
-
-                ProjectPixel(x, y, decalTexture);                
+                ProjectPixel(x, y, decalTexture);
             }
 
             Debug.Log("Pixel printed");
@@ -59,10 +88,13 @@ public class DecalMaster : MonoBehaviour
         }
 
         newTargetObjectTexture.Apply();
-        projecting = false;
+
 
         SaveTexture();
-        Debug.LogWarning("Finished Printing");
+
+        yield return new WaitForSeconds(10f);
+        yield return null;
+        yield break;
     }
 
     private void ProjectPixel(int x, int y, Texture2D decalTexture)
@@ -90,13 +122,8 @@ public class DecalMaster : MonoBehaviour
         pixelUV.x *= tex.width;
         pixelUV.y *= tex.height;
 
-        tex.SetPixel((int)pixelUV.x, (int)pixelUV.y, decalTexture.GetPixel(x,y));
+        tex.SetPixel((int)pixelUV.x, (int)pixelUV.y, decalTexture.GetPixel(x, y));
         tex.Apply();
-    }
-
-    private void SaveTexture()
-    {
-        JetSystems.Utils.SaveTexture(newTargetObjectTexture, "/DecalToTexture/Created Textures/");
     }
 
     private Vector3 GetRayOrigin(int x, int y, Texture2D decalTexture)
@@ -111,17 +138,36 @@ public class DecalMaster : MonoBehaviour
         return startPosition;
     }
 
+    private void SaveTexture()
+    {
+        JetSystems.Utils.SaveTexture(newTargetObjectTexture, "/DecalToTexture/Created Textures/");
+    }
+
+    private void ConfigureChild(int paperIndex)
+    {
+        Paper currentPaper = papersParent.GetChild(paperIndex).GetComponent<Paper>();
+        targetObjectRenderer = currentPaper.GetFrontRenderer();
+
+        currentPaper.GetFrontRenderer().sharedMaterial.mainTexture = GetRandomColoredPaper();
+    }
+
+    private Texture2D GetRandomColoredPaper()
+    {
+        return coloredPapers[Random.Range(0, coloredPapers.Length)];
+    }
+
+
     public void EnableNextPaper()
     {
         int currentActivePaperIndex = 0;
 
         for (int i = 0; i < papersParent.childCount; i++)
         {
-            if(papersParent.GetChild(i).gameObject.activeSelf)
+            if (papersParent.GetChild(i).gameObject.activeSelf)
             {
                 currentActivePaperIndex = i;
                 break;
-            }    
+            }
         }
 
         currentActivePaperIndex++;
@@ -139,17 +185,21 @@ public class DecalMaster : MonoBehaviour
         ConfigureChild(currentActivePaperIndex);
     }
 
-    private void ConfigureChild(int paperIndex)
+    public void ProjectSinglePaper()
     {
-        Paper currentPaper = papersParent.GetChild(paperIndex).GetComponent<Paper>();
-        targetObjectRenderer = currentPaper.GetFrontRenderer();
-
-        currentPaper.GetFrontRenderer().sharedMaterial.mainTexture = GetRandomColoredPaper();
+        currentProjectingCoroutine = StartCoroutine(ProjectSinglePaperCoroutine());
     }
 
-    private Texture2D GetRandomColoredPaper()
+    public void ProjectAllPapers()
     {
-        return coloredPapers[Random.Range(0, coloredPapers.Length)];
+        currentProjectingCoroutine = StartCoroutine(ProjectPapersCoroutine());
+    }
+
+    public void StopCurrentProjecting()
+    {
+        StopAllCoroutines();
+        currentProjectingCoroutine = null;
+        projectingActive = false;
     }
 }
 #endif

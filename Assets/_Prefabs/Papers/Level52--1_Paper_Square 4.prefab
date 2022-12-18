@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb596f139b4d43c2bf13c9c376ac0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _test: 0
   _decalPaper: 0
   foldingsParent: {fileID: 3184906821392313936}
   paperTexture: {fileID: 2800000, guid: 2fd90a1a0aa0d485f9fe28a164b71538, type: 3}

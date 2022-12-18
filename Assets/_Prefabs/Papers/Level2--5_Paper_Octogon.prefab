@@ -9,11 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6026566952714108156, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: m_Name
-      value: Level2_5_Paper_Octogon
+      value: Level2--5_Paper_Octogon
       objectReference: {fileID: 0}
     - target: {fileID: 6026566952714108156, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: _test
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: paperTexture
