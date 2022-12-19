@@ -54,7 +54,7 @@ MonoBehaviour:
   stickerEffect: {fileID: 0}
   paperBackRenderer: {fileID: 1131202272619758154}
   paperFrontRenderer: {fileID: 2386523154077911345}
-  verticesElevationStep: 0.0001
+  verticesElevationStep: 0.005
   foldingDuration: 0.2
   possibleCombinations: []
 --- !u!1 &797656623288315939
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: -0.7335, y: 0, z: 0.7335}
+    position: {x: -0.725, y: 0, z: 0.725}
     angle: 45
-  foldingAngle: 181
+  foldingAngle: 180
   requiredFoldings: []
 --- !u!1 &797656623592100716
 GameObject:
@@ -151,9 +151,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: -0.7335, y: 0, z: -0.7335}
+    position: {x: -0.733, y: 0, z: -0.733}
     angle: 135
-  foldingAngle: 181
+  foldingAngle: 180
   requiredFoldings: []
 --- !u!1 &797656624048912391
 GameObject:
@@ -233,9 +233,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0.7335, y: 0, z: 0}
+    position: {x: 0.733, y: 0, z: 0}
     angle: 270
-  foldingAngle: 182
+  foldingAngle: 180
   requiredFoldings: []
 --- !u!1 &8112047950655806547
 GameObject:
@@ -277,7 +277,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8112047950655806547}
-  m_Mesh: {fileID: 2220435505363910934, guid: 4f4339be78116904aabb617d450b8e19, type: 3}
+  m_Mesh: {fileID: 2220435505363910934, guid: e69bd5e3bd619224591790a7ec1a472c, type: 3}
 --- !u!23 &2386523154077911345
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -372,7 +372,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8291737801575348816}
-  m_Mesh: {fileID: 9177309187985183439, guid: 4f4339be78116904aabb617d450b8e19, type: 3}
+  m_Mesh: {fileID: 9177309187985183439, guid: e69bd5e3bd619224591790a7ec1a472c, type: 3}
 --- !u!23 &1131202272619758154
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -67,8 +67,8 @@ public class FoldLinesGenerator : MonoBehaviour
 
         Vector3[] foldingDirection = folding.GetRotationAxis().AsLine();
 
-        Vector3 p0 = foldingDirection[0].With(y: -0.05f);
-        Vector3 p1 = foldingDirection[1].With(y: -0.05f);
+        Vector3 p0 = foldingDirection[0].With(y: currentPaper.transform.position.y + -0.05f);
+        Vector3 p1 = foldingDirection[1].With(y: currentPaper.transform.position.y + -0.05f);
 
         line.SetPosition(0, p0);
         line.SetPosition(1, p1);

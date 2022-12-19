@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3613247240731002334}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1845201841490775990}
@@ -54,7 +54,7 @@ MonoBehaviour:
   stickerEffect: {fileID: 0}
   paperBackRenderer: {fileID: 4199240417667795260}
   paperFrontRenderer: {fileID: 1507235529591079495}
-  verticesElevationStep: 0.0001
+  verticesElevationStep: 0.005
   foldingDuration: 0.2
   possibleCombinations: []
 --- !u!1 &4532236308987828407
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0, y: 0, z: 0.7335}
+    position: {x: 0, y: 0, z: 0.733}
     angle: 0
-  foldingAngle: 182
+  foldingAngle: 180
   requiredFoldings: []
 --- !u!1 &4532236310009410417
 GameObject:
@@ -184,9 +184,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0.7335, y: 0, z: -0.7335}
+    position: {x: 0.733, y: 0, z: -0.733}
     angle: 225
-  foldingAngle: 181
+  foldingAngle: 180
   requiredFoldings: []
 --- !u!1 &4532236310857300821
 GameObject:
@@ -233,9 +233,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: -0.7335, y: 0, z: -0.7335}
+    position: {x: -0.725, y: 0, z: -0.725}
     angle: 135
-  foldingAngle: 181
+  foldingAngle: 180
   requiredFoldings: []
 --- !u!1 &5001155240940443429
 GameObject:
@@ -277,7 +277,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5001155240940443429}
-  m_Mesh: {fileID: 2220435505363910934, guid: 4f4339be78116904aabb617d450b8e19, type: 3}
+  m_Mesh: {fileID: 2220435505363910934, guid: e69bd5e3bd619224591790a7ec1a472c, type: 3}
 --- !u!23 &1507235529591079495
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -372,7 +372,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5108857728051409190}
-  m_Mesh: {fileID: 9177309187985183439, guid: 4f4339be78116904aabb617d450b8e19, type: 3}
+  m_Mesh: {fileID: 9177309187985183439, guid: e69bd5e3bd619224591790a7ec1a472c, type: 3}
 --- !u!23 &4199240417667795260
 MeshRenderer:
   m_ObjectHideFlags: 0

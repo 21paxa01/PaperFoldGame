@@ -1731,7 +1731,6 @@ GameObject:
   - component: {fileID: 515929059}
   - component: {fileID: 515929062}
   - component: {fileID: 515929061}
-  - component: {fileID: 515929060}
   m_Layer: 5
   m_Name: Coins Container
   m_TagString: Untagged
@@ -1760,20 +1759,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -180}
   m_SizeDelta: {x: 180, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &515929060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515929058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9504c2d356316468eb8f092de04347db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweenType: 33
-  duration: 0.2
 --- !u!114 &515929061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3232,7 +3217,6 @@ GameObject:
   - component: {fileID: 1206384292}
   - component: {fileID: 1206384295}
   - component: {fileID: 1206384294}
-  - component: {fileID: 1206384293}
   m_Layer: 5
   m_Name: Coins Container
   m_TagString: Untagged
@@ -3261,20 +3245,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 180, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1206384293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206384291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9504c2d356316468eb8f092de04347db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweenType: 33
-  duration: 0.2
 --- !u!114 &1206384294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5132,7 +5102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 4}
+  m_AnchoredPosition: {x: 0, y: 4.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1687258586
@@ -6363,7 +6333,7 @@ MonoBehaviour:
   takenCoinsCount: 5
   unlockThemeLevelStep: 10
   papersPrefabs:
-  - {fileID: 3467851685808142694, guid: 5e4dc6113d8c6f949b0aef6342483290, type: 3}
+  - {fileID: 2170445186909471442, guid: 100d976d8d4369a46968921d61914bf7, type: 3}
   - {fileID: 4932097450208260917, guid: 503a7e2ed617a844db888330a9fb324a, type: 3}
   - {fileID: 5428528616680895833, guid: a538da699d1941743b6aafa3b314e722, type: 3}
   - {fileID: 5157229873784788591, guid: 1ba443c295bb5dd4db1a5e121fd422da, type: 3}
@@ -6902,7 +6872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140821343}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 4}
+  m_LocalPosition: {x: 0, y: 0, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1687258585}

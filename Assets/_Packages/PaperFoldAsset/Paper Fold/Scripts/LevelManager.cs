@@ -79,6 +79,15 @@ public class LevelManager : MonoBehaviour
         YandexSDK.instance.ShowInterstitial();
     }
 
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.C))
+            SpawnNextLevel();
+#endif
+
+    }
+
     private void SpawnNextLevelWithAdditionalCoins()
     {
         earnedCoins = adCoinsCount;

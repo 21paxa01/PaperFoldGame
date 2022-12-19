@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 797656623288315937, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: rotationAxis.position.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 797656623592100706, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: rotationAxis.position.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 797656623902585843, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: _test
       value: 0
@@ -131,6 +139,14 @@ PrefabInstance:
       propertyPath: possibleCombinations.Array.data[5].foldings.Array.data[2]
       value: 
       objectReference: {fileID: 1247728662511009270}
+    - target: {fileID: 797656624048912388, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 797656625141257159, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: rotationAxis.position.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -141,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_LocalPosition.z

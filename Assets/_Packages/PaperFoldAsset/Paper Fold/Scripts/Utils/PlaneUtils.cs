@@ -11,8 +11,8 @@ public static class PlaneUtils
         float cosAngle = Mathf.Cos(angle * Mathf.Deg2Rad);
         float sinAngle = Mathf.Sin(angle * Mathf.Deg2Rad);
 
-        Vector3 rightUnit = Vector3.right * cosAngle;
-        Vector3 forwardUnit = Vector3.forward * sinAngle;
+        Vector3 rightUnit = Vector3.right * cosAngle * 2;
+        Vector3 forwardUnit = Vector3.forward  * sinAngle * 2;
 
         points[0] = position + rightUnit + forwardUnit + Vector3.up;
         points[1] = points[0] + Vector3.down * 2;

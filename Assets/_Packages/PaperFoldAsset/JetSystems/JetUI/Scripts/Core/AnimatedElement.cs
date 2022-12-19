@@ -6,32 +6,23 @@ using UnityEngine.EventSystems;
 
 namespace JetSystems
 {
-
-    public class AnimatedElement : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class AnimatedElement : MonoBehaviour, IPointerDownHandler
     {
         public LeanTweenType tweenType;
         public float duration;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        private bool _buttonDowned = false;
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            LeanTween.scale(gameObject, Vector3.one * 0.9f, duration).setEase(tweenType);
-        }
+            if (_buttonDowned)
+                return;
 
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            LeanTween.scale(gameObject, Vector3.one, duration).setEase(tweenType);
+            _buttonDowned = true;
+            LeanTween.scale(gameObject, Vector3.one * 0.9f, duration).setEase(tweenType).setOnComplete(() =>
+            {
+                _buttonDowned = false;
+            });
         }
     }
 }

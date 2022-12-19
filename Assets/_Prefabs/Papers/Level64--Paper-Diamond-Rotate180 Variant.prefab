@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 03eb288838e61ad4cbbc1533b7bb8ad2, type: 3}
     - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
       propertyPath: possibleCombinations.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
       propertyPath: possibleCombinations.Array.data[0].foldings.Array.size
@@ -85,6 +85,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
       propertyPath: possibleCombinations.Array.data[1].foldings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: possibleCombinations.Array.data[2].foldings.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
@@ -117,6 +121,22 @@ PrefabInstance:
       objectReference: {fileID: 4458414551417051843}
     - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
       propertyPath: possibleCombinations.Array.data[1].foldings.Array.data[3]
+      value: 
+      objectReference: {fileID: 4458414551971883597}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[0]
+      value: 
+      objectReference: {fileID: 4458414552514978386}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[1]
+      value: 
+      objectReference: {fileID: 4458414551916244459}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[2]
+      value: 
+      objectReference: {fileID: 4458414551417051843}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[3]
       value: 
       objectReference: {fileID: 4458414551971883597}
     m_RemovedComponents: []

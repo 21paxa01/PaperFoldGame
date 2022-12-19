@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2079044983854570337, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
+      propertyPath: rotationAxis.position.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2079044984652724692, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
       propertyPath: m_Name
       value: Level1--0_Paper_Simple

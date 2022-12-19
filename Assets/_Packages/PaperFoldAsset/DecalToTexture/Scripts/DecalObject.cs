@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#if UNITY_EDITOR
 public class DecalObject : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer decalRenderer;
@@ -108,3 +108,4 @@ public class DecalObject : MonoBehaviour
     }
 
 }
+#endif

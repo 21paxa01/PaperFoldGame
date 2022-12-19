@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4138532716458991460, guid: 0ea8bf324c39851479b7cbfc31e12d45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4138532716458991460, guid: 0ea8bf324c39851479b7cbfc31e12d45, type: 3}
       propertyPath: m_LocalPosition.z
@@ -58,6 +58,10 @@ PrefabInstance:
     - target: {fileID: 4138532716458991460, guid: 0ea8bf324c39851479b7cbfc31e12d45, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532236308987828401, guid: 0ea8bf324c39851479b7cbfc31e12d45, type: 3}
+      propertyPath: rotationAxis.position.y
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4532236310431381637, guid: 0ea8bf324c39851479b7cbfc31e12d45, type: 3}
       propertyPath: _test
@@ -175,6 +179,14 @@ PrefabInstance:
       propertyPath: possibleCombinations.Array.data[5].foldings.Array.data[2]
       value: 
       objectReference: {fileID: 6030872360591818011}
+    - target: {fileID: 4532236310624147476, guid: 0ea8bf324c39851479b7cbfc31e12d45, type: 3}
+      propertyPath: rotationAxis.position.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532236310857300823, guid: 0ea8bf324c39851479b7cbfc31e12d45, type: 3}
+      propertyPath: rotationAxis.position.y
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea8bf324c39851479b7cbfc31e12d45, type: 3}
 --- !u!114 &6030872360895929944 stripped
