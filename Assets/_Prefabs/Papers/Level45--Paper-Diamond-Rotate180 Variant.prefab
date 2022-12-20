@@ -76,6 +76,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 7915f22209313f64cb94ae1e9db9fa3a, type: 3}
     - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: effect._spriteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 7915f22209313f64cb94ae1e9db9fa3a, type: 3}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: effect._spriteSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: effect._spriteSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: effect._spriteSize.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: effect._stickerEffect
+      value: 
+      objectReference: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
       propertyPath: possibleCombinations.Array.size
       value: 8
       objectReference: {fileID: 0}

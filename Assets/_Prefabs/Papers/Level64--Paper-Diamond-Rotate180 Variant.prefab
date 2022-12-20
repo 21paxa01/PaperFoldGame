@@ -76,8 +76,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 03eb288838e61ad4cbbc1533b7bb8ad2, type: 3}
     - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: effect._spriteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 03eb288838e61ad4cbbc1533b7bb8ad2, type: 3}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: effect._spriteSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: effect._spriteSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: effect._spriteSize.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: effect._stickerEffect
+      value: 
+      objectReference: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
       propertyPath: possibleCombinations.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
       propertyPath: possibleCombinations.Array.data[0].foldings.Array.size
@@ -89,6 +109,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
       propertyPath: possibleCombinations.Array.data[2].foldings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: possibleCombinations.Array.data[3].foldings.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
@@ -139,6 +163,22 @@ PrefabInstance:
       propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[3]
       value: 
       objectReference: {fileID: 4458414551971883597}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: possibleCombinations.Array.data[3].foldings.Array.data[0]
+      value: 
+      objectReference: {fileID: 4458414551916244459}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: possibleCombinations.Array.data[3].foldings.Array.data[1]
+      value: 
+      objectReference: {fileID: 4458414551417051843}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: possibleCombinations.Array.data[3].foldings.Array.data[2]
+      value: 
+      objectReference: {fileID: 4458414551971883597}
+    - target: {fileID: 6761089369160027917, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
+      propertyPath: possibleCombinations.Array.data[3].foldings.Array.data[3]
+      value: 
+      objectReference: {fileID: 4458414552514978386}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00a6380a2ad6a584cbf7f0e58c65e3f4, type: 3}
 --- !u!114 &4458414551417051843 stripped

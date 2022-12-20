@@ -99,8 +99,12 @@ MonoBehaviour:
   _decalPaper: 0
   foldingsParent: {fileID: 3459915496086811664}
   paperTexture: {fileID: 2800000, guid: f3ab8c8ead742448a823b057e4276e1f, type: 3}
-  stickerEffectImage: {fileID: 21300000, guid: afbf850e1485f436381cfce7dc4858e0, type: 3}
-  stickerEffect: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
+  effect:
+    _stickerEffect: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
+    _spriteImage: {fileID: 21300000, guid: afbf850e1485f436381cfce7dc4858e0, type: 3}
+    _spriteSize: {x: 1, y: 1, z: 1}
+    _flipX: 0
+    _flipY: 0
   paperBackRenderer: {fileID: 2865841246917423171}
   paperFrontRenderer: {fileID: 3459915495010075316}
   verticesElevationStep: 0.005

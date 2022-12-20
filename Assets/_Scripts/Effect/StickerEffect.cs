@@ -34,14 +34,14 @@ public class StickerEffect : MonoBehaviour
     }
 
 
-    private IEnumerator ShowEffectCoroutine(Sprite stickerImage)
+    private IEnumerator ShowEffectCoroutine(Sprite stickerImage, Vector2 scale)
     {
         bool endEffect = false;
 
         CachedSpriteRenderer.sprite = stickerImage;
         gameObject.SetActive(true);
 
-        LeanTween.scale(gameObject, Vector2.one, 1f).setEaseInOutElastic().setOnComplete(() =>
+        LeanTween.scale(gameObject, scale, 1f).setEaseInOutElastic().setOnComplete(() =>
         {
             endEffect = true;
         });
@@ -50,8 +50,8 @@ public class StickerEffect : MonoBehaviour
         yield break;
     }
 
-    public Coroutine ShowEffect(Sprite stickerImage)
+    public Coroutine ShowEffect(Sprite stickerImage, Vector2 scale)
     {
-        return StartCoroutine(ShowEffectCoroutine(stickerImage));
+        return StartCoroutine(ShowEffectCoroutine(stickerImage, scale));
     }
 }

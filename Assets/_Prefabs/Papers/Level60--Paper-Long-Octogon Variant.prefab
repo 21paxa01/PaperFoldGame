@@ -32,8 +32,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 4284e1a4eb2f51043ad9c2dac293dbd7, type: 3}
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
+      propertyPath: effect._spriteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 4284e1a4eb2f51043ad9c2dac293dbd7, type: 3}
+    - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
+      propertyPath: effect._spriteSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
+      propertyPath: effect._spriteSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
+      propertyPath: effect._spriteSize.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
+      propertyPath: effect._stickerEffect
+      value: 
+      objectReference: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
+    - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[0].foldings.Array.size
@@ -154,15 +174,15 @@ PrefabInstance:
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[1].foldings.Array.data[1]
       value: 
-      objectReference: {fileID: 4686195638436229325}
+      objectReference: {fileID: 4686195639152638318}
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[1].foldings.Array.data[2]
       value: 
-      objectReference: {fileID: 4686195639103038582}
+      objectReference: {fileID: 4686195638436229325}
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[1].foldings.Array.data[3]
       value: 
-      objectReference: {fileID: 4686195639152638318}
+      objectReference: {fileID: 4686195639103038582}
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[0]
       value: 
@@ -174,11 +194,11 @@ PrefabInstance:
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[2]
       value: 
-      objectReference: {fileID: 4686195639103038582}
+      objectReference: {fileID: 4686195639152638318}
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[3]
       value: 
-      objectReference: {fileID: 4686195639152638318}
+      objectReference: {fileID: 4686195639103038582}
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[3].foldings.Array.data[0]
       value: 
@@ -186,15 +206,15 @@ PrefabInstance:
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[3].foldings.Array.data[1]
       value: 
-      objectReference: {fileID: 4686195639152638318}
+      objectReference: {fileID: 4686195638436229325}
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[3].foldings.Array.data[2]
       value: 
-      objectReference: {fileID: 4686195638436229325}
+      objectReference: {fileID: 4686195639103038582}
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[3].foldings.Array.data[3]
       value: 
-      objectReference: {fileID: 4686195639103038582}
+      objectReference: {fileID: 4686195639152638318}
     - target: {fileID: 8719997753822518006, guid: b151ae44ecb0ac84694c6e76cc43ae97, type: 3}
       propertyPath: possibleCombinations.Array.data[4].foldings.Array.data[0]
       value: 

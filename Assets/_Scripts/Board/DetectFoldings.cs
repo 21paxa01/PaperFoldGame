@@ -58,14 +58,13 @@ public class DetectFoldings : MonoBehaviour, IPointerUpHandler, IPointerClickHan
             }
         }
 
-
-        Folding colsestFolding = detectedFoldings[closestFoldingIndex];
-
-        if (!colsestFolding.gameObject.activeInHierarchy)
-            return;
-
         if (closestFoldingIndex >= 0)
         {
+            Folding colsestFolding = detectedFoldings[closestFoldingIndex];
+
+            if (!colsestFolding.gameObject.activeInHierarchy)
+                return;
+
             Paper currentPaper = colsestFolding.GetComponentInParent<Paper>();
             currentPaper.TryFold(colsestFolding);
         }

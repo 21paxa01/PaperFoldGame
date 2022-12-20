@@ -36,6 +36,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 609aa105ec6febc4c82218d6ab46fd56, type: 3}
     - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: effect._spriteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 609aa105ec6febc4c82218d6ab46fd56, type: 3}
+    - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: effect._spriteSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: effect._spriteSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: effect._spriteSize.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: effect._stickerEffect
+      value: 
+      objectReference: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
+    - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: possibleCombinations.Array.size
       value: 4
       objectReference: {fileID: 0}

@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level1--0_Paper_Simple
       objectReference: {fileID: 0}
+    - target: {fileID: 2079044984652724692, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
       propertyPath: _test
       value: 0
@@ -28,9 +32,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2800000, guid: 7a1f8d932d579864395b9ed6fe56de88, type: 3}
     - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
+      propertyPath: effect._flipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
       propertyPath: stickerEffectImage
       value: 
       objectReference: {fileID: 21300000, guid: 42e3f02627febaa4d957625adfbaa9c6, type: 3}
+    - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
+      propertyPath: effect._spriteImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 42e3f02627febaa4d957625adfbaa9c6, type: 3}
+    - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
+      propertyPath: effect._spriteSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
+      propertyPath: effect._spriteSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
+      propertyPath: effect._spriteSize.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
+      propertyPath: effect._stickerEffect
+      value: 
+      objectReference: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
     - target: {fileID: 2079044984652724695, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
       propertyPath: m_RootOrder
       value: 0

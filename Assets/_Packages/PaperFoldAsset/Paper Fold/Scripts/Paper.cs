@@ -26,8 +26,7 @@ public class Paper : MonoBehaviour
     List<Folding> foldedFoldings = new List<Folding>();
     bool canFold = true;
     [SerializeField] private Texture2D paperTexture;
-    [SerializeField] private Sprite stickerEffectImage;
-    [SerializeField] private StickerEffect stickerEffect;
+    [SerializeField] private PaperEffect effect;
 
     [Header(" Rendering ")]
     [SerializeField] private MeshRenderer paperBackRenderer;
@@ -318,13 +317,18 @@ public class Paper : MonoBehaviour
 
         });
 
-        if(stickerEffect != null)
+        if(effect.StickerEffect != null)
         {
-            StickerEffect effect = Instantiate(stickerEffect);
-            effect.CachedTransform.position = transform.position;
-            yield return effect.ShowEffect(stickerEffectImage);
+
+            StickerEffect stickerEffect = Instantiate(effect.StickerEffect);
+            stickerEffect.CachedTransform.position = transform.position;
+
+            stickerEffect.CachedSpriteRenderer.flipX = effect.FlipX;
+            stickerEffect.CachedSpriteRenderer.flipY = effect.FlipY;
+
+            yield return stickerEffect.ShowEffect(effect.SpriteImage, effect.SpriteSize);
             yield return new WaitForSeconds(0.5f);
-            Destroy(effect.gameObject);
+            Destroy(stickerEffect.gameObject);
         }
 
         UIManager.setLevelCompleteDelegate?.Invoke();
@@ -408,4 +412,21 @@ public struct PossibleCombination
     {
         return foldings;
     }
+}
+
+[System.Serializable]
+public struct PaperEffect
+{
+    [SerializeField] private StickerEffect _stickerEffect;
+    [SerializeField] private Sprite _spriteImage;
+    [SerializeField] private Vector3 _spriteSize;
+    [SerializeField] private bool _flipX;
+    [SerializeField] private bool _flipY;
+
+
+    public StickerEffect StickerEffect => _stickerEffect;
+    public Sprite SpriteImage => _spriteImage;
+    public Vector3 SpriteSize => _spriteSize;
+    public bool FlipX => _flipX;
+    public bool FlipY => _flipY;
 }

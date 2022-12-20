@@ -42,7 +42,9 @@ public class Raycaster : MonoBehaviour
             Ray ray = new Ray(hit.point, (Vector3.zero - hit.point));
             float maxDistance = Vector3.Distance(hit.point, Vector3.zero);
 
-            Folding[] detectedFoldings = FindObjectsOfType<Folding>();
+
+            Paper currentPaper = FindObjectOfType<Paper>(false);
+            Folding[] detectedFoldings = currentPaper.GetComponentsInChildren<Folding>(true);
 
             int closestFoldingIndex = -1;
             float minDistance = 5000;
@@ -66,9 +68,15 @@ public class Raycaster : MonoBehaviour
                 }
             }
 
-            if(closestFoldingIndex >= 0)
+
+            
+
+            if (closestFoldingIndex >= 0)
             {
-                Paper currentPaper = detectedFoldings[closestFoldingIndex].GetComponentInParent<Paper>();
+                if (!detectedFoldings[closestFoldingIndex].gameObject.activeInHierarchy)
+                    return;
+
+                currentPaper = detectedFoldings[closestFoldingIndex].GetComponentInParent<Paper>();
                 currentPaper.TryFold(detectedFoldings[closestFoldingIndex]);
             }
 
