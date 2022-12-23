@@ -203,6 +203,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Folding_Top
       objectReference: {fileID: 0}
+    - target: {fileID: 8540459854611257419, guid: 2a847dc2dc5d44ed6bbf5ea559e10757, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c6cbad9bfc18664d90a2ae0072811a1, type: 3}
+    - target: {fileID: 8540459854611257421, guid: 2a847dc2dc5d44ed6bbf5ea559e10757, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540459854611257421, guid: 2a847dc2dc5d44ed6bbf5ea559e10757, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.056
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540459854611257421, guid: 2a847dc2dc5d44ed6bbf5ea559e10757, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.083
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a847dc2dc5d44ed6bbf5ea559e10757, type: 3}
 --- !u!114 &2275286554235675932 stripped

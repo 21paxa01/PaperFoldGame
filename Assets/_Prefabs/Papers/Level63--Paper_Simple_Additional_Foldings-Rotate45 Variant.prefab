@@ -51,6 +51,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4264894765590325447, guid: a043b8d53dddbf94c9b4d2046491cd26, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 667188af98615734f80805369a0127be, type: 3}
     - target: {fileID: 6349333868386245251, guid: a043b8d53dddbf94c9b4d2046491cd26, type: 3}
       propertyPath: _test
       value: 0
@@ -58,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 6349333868386245251, guid: a043b8d53dddbf94c9b4d2046491cd26, type: 3}
       propertyPath: paperTexture
       value: 
-      objectReference: {fileID: 2800000, guid: 8b1b1e33f3ddfd44fb63331ea16b4a04, type: 3}
+      objectReference: {fileID: 2800000, guid: be50681976c0aa64c8fa922b499c61de, type: 3}
     - target: {fileID: 6349333868386245251, guid: a043b8d53dddbf94c9b4d2046491cd26, type: 3}
       propertyPath: stickerEffectImage
       value: 

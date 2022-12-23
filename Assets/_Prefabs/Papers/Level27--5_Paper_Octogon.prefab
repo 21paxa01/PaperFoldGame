@@ -7,13 +7,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1944921358685496026, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 802ef36892fced84fb4e6833317f3baa, type: 3}
+    - target: {fileID: 1944921358685496028, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.145
+      objectReference: {fileID: 0}
+    - target: {fileID: 1944921358685496028, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.051
+      objectReference: {fileID: 0}
+    - target: {fileID: 1944921358685496028, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.004
+      objectReference: {fileID: 0}
     - target: {fileID: 6026566952355295063, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: m_Name
       value: Folding_Top
       objectReference: {fileID: 0}
+    - target: {fileID: 6026566952355295065, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: rotationAxis.position.z
+      value: 0.4988
+      objectReference: {fileID: 0}
     - target: {fileID: 6026566952478394864, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: m_Name
       value: Folding_Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026566952478394866, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: rotationAxis.position.x
+      value: 0.4988
       objectReference: {fileID: 0}
     - target: {fileID: 6026566952714108156, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: m_Name
@@ -187,9 +211,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Folding_Left
       objectReference: {fileID: 0}
+    - target: {fileID: 6026566952977964617, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: rotationAxis.position.x
+      value: -0.4988
+      objectReference: {fileID: 0}
     - target: {fileID: 6026566953861629911, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: m_Name
       value: Folding_Bottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026566953861629913, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: rotationAxis.position.z
+      value: -0.4988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}

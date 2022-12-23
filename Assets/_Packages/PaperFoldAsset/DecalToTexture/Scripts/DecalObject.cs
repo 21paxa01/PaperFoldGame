@@ -37,6 +37,8 @@ public class DecalObject : MonoBehaviour
         int width = decalTexture.width;
         int height = decalTexture.height;
 
+        var pixels = decalTexture.GetPixels32();
+
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
@@ -60,6 +62,9 @@ public class DecalObject : MonoBehaviour
         yield return null;
         yield break;
     }
+
+
+    
 
     private void ProjectPixel(int x, int y, Texture2D decalTexture)
     {
@@ -106,6 +111,13 @@ public class DecalObject : MonoBehaviour
     {
         JetSystems.Utils.SaveTexture(newTargetObjectTexture, "/DecalToTexture/Created Textures/");
     }
+
+}
+
+public struct Pixel
+{
+    public int x;
+    public int y;
 
 }
 #endif

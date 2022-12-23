@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4731726820642373970, guid: 7dcf4ac93aaf749ebaf69eaeb630ba87, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0cbd5b1af880b0d46b57bbc1db131c57, type: 3}
+    - target: {fileID: 4731726820642373972, guid: 7dcf4ac93aaf749ebaf69eaeb630ba87, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731726820642373972, guid: 7dcf4ac93aaf749ebaf69eaeb630ba87, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731726820642373972, guid: 7dcf4ac93aaf749ebaf69eaeb630ba87, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731726820642373972, guid: 7dcf4ac93aaf749ebaf69eaeb630ba87, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.169
+      objectReference: {fileID: 0}
     - target: {fileID: 5492429005328917679, guid: 7dcf4ac93aaf749ebaf69eaeb630ba87, type: 3}
       propertyPath: m_Name
       value: Folding_Top

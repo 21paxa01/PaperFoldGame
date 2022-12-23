@@ -7,6 +7,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 39750098396387730, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f4db568a4315eef4aa406cd13a165e2e, type: 3}
+    - target: {fileID: 39750098396387732, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 39750098396387732, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 39750098396387732, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.074
+      objectReference: {fileID: 0}
+    - target: {fileID: 39750098396387732, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 39750098396387732, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.018
+      objectReference: {fileID: 0}
     - target: {fileID: 563145291964763816, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_Name
       value: Level28--Paper-Triangle
@@ -30,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 797656623902585843, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: paperTexture
       value: 
-      objectReference: {fileID: 2800000, guid: 57b77a37eb4c4ca4d91d819ee18a43cc, type: 3}
+      objectReference: {fileID: 2800000, guid: e08f7eb04c43bd147bcc48222f01fc34, type: 3}
     - target: {fileID: 797656623902585843, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: stickerEffect
       value: 
@@ -172,16 +196,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.069
       objectReference: {fileID: 0}
     - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0.0005
       objectReference: {fileID: 0}
     - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.073
       objectReference: {fileID: 0}
     - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -201,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 908426421109396498, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

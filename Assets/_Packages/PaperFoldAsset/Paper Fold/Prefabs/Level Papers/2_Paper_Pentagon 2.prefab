@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0.476, y: 0, z: 0}
+    position: {x: 0.475, y: 0, z: 0}
     angle: -90
   foldingAngle: 180
   requiredFoldings: []
@@ -227,8 +227,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb596f139b4d43c2bf13c9c376ac0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _test: 0
+  _decalPaper: 0
   foldingsParent: {fileID: 3782771135093365040}
   paperTexture: {fileID: 2800000, guid: 17420c04b5f37468a9971fd76f16d550, type: 3}
+  effect:
+    _stickerEffect: {fileID: 0}
+    _spriteImage: {fileID: 0}
+    _spriteSize: {x: 0, y: 0, z: 0}
+    _flipX: 0
+    _flipY: 0
   paperBackRenderer: {fileID: 2575654297822043491}
   paperFrontRenderer: {fileID: 3782771136140078996}
   verticesElevationStep: 0.005
@@ -320,6 +328,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -344,6 +353,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &3782771136140078998
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -403,7 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0, y: 0, z: 0.655}
+    position: {x: 0, y: 0, z: 0.6535}
     angle: 0
   foldingAngle: 180
   requiredFoldings: []
@@ -462,6 +472,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -486,3 +497,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

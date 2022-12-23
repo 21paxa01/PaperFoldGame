@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 342983899658661499, guid: cc40971f02cd2244799309bd37b0dadb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d07c2e13814ac54aa2c1dc2fa40c903, type: 3}
     - target: {fileID: 1341560857243802502, guid: cc40971f02cd2244799309bd37b0dadb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -17,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1341560857243802502, guid: cc40971f02cd2244799309bd37b0dadb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1341560857243802502, guid: cc40971f02cd2244799309bd37b0dadb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -58,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 1519005003172854929, guid: cc40971f02cd2244799309bd37b0dadb, type: 3}
       propertyPath: paperTexture
       value: 
-      objectReference: {fileID: 2800000, guid: 483f51c667e448c4597c234f7e098cf8, type: 3}
+      objectReference: {fileID: 2800000, guid: 4374c5b68d2fa4941bc28c56cc7ee545, type: 3}
     - target: {fileID: 1519005003172854929, guid: cc40971f02cd2244799309bd37b0dadb, type: 3}
       propertyPath: stickerEffect
       value: 

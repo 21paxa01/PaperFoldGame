@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 535427090189074249, guid: 176d8304048ed4b01b123d52ef48272f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 535427090189074249, guid: 176d8304048ed4b01b123d52ef48272f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 535427090189074249, guid: 176d8304048ed4b01b123d52ef48272f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 535427090189074249, guid: 176d8304048ed4b01b123d52ef48272f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 535427090189074255, guid: 176d8304048ed4b01b123d52ef48272f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f646081be8bb10b40a493392a856aa40, type: 3}
     - target: {fileID: 7905087541032764080, guid: 176d8304048ed4b01b123d52ef48272f, type: 3}
       propertyPath: m_Name
       value: Level6--1_Paper_Square Variant

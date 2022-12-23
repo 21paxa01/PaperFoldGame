@@ -51,6 +51,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4724110774225122834, guid: 75a5eee4a89e9b54dade7b1dea228a63, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724110774225122834, guid: 75a5eee4a89e9b54dade7b1dea228a63, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724110774225122836, guid: 75a5eee4a89e9b54dade7b1dea228a63, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9083fd8566d28214d9dc3ee36042991a, type: 3}
     - target: {fileID: 5951292431793854203, guid: 75a5eee4a89e9b54dade7b1dea228a63, type: 3}
       propertyPath: m_Name
       value: Level68--Paper_Simple_Additional_Foldings
@@ -66,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 6333499148330559794, guid: 75a5eee4a89e9b54dade7b1dea228a63, type: 3}
       propertyPath: paperTexture
       value: 
-      objectReference: {fileID: 2800000, guid: 15445ff20602b0c44b8383d1625b34ea, type: 3}
+      objectReference: {fileID: 2800000, guid: bb8cc27c0f75b744bb26137a3f85be1b, type: 3}
     - target: {fileID: 6333499148330559794, guid: 75a5eee4a89e9b54dade7b1dea228a63, type: 3}
       propertyPath: stickerEffectImage
       value: 

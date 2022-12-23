@@ -38,9 +38,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
 
-#if UNITY_EDITOR
         PlayerPrefsManager.ClearAllData();
-#endif
 
         level = PlayerPrefsManager.GetLevel();
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
@@ -182,7 +180,19 @@ public class LevelManager : MonoBehaviour
 
     public void SkipLevel()
     {
-        SpawnNextLevel();
+        level++;
+        PlayerPrefsManager.SaveLevel(level);
+        SpawnLevel();
+
+        try
+        {
+            UIManager.instance.SetGame();
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError(ex.Message);
+        }
+
         YandexSDK.instance.ShowRewarded("SkipLevel");
     }
 

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1944921358685496026, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ebbfc5985b6226644b5ac6416039fb8b, type: 3}
     - target: {fileID: 6026566952355295063, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: m_Name
       value: Folding_Top

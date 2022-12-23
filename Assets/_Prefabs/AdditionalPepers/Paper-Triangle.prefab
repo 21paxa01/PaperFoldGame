@@ -25,12 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563145291964763816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3201810691315238080}
   - {fileID: 8144058335261192982}
   - {fileID: 797656624048912388}
+  - {fileID: 39750098396387732}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,8 +51,12 @@ MonoBehaviour:
   _decalPaper: 0
   foldingsParent: {fileID: 797656624048912388}
   paperTexture: {fileID: 2800000, guid: 4490a3d9829b14fa6853de58314cd9b8, type: 3}
-  stickerEffectImage: {fileID: 0}
-  stickerEffect: {fileID: 0}
+  effect:
+    _stickerEffect: {fileID: 0}
+    _spriteImage: {fileID: 0}
+    _spriteSize: {x: 0, y: 0, z: 0}
+    _flipX: 0
+    _flipY: 0
   paperBackRenderer: {fileID: 1131202272619758154}
   paperFrontRenderer: {fileID: 2386523154077911345}
   verticesElevationStep: 0.005
@@ -102,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: -0.725, y: 0, z: 0.725}
+    position: {x: -0.5, y: 0, z: 0.5}
     angle: 45
   foldingAngle: 180
   requiredFoldings: []
@@ -151,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: -0.733, y: 0, z: -0.733}
+    position: {x: -0.5, y: 0, z: -0.5}
     angle: 135
   foldingAngle: 180
   requiredFoldings: []
@@ -233,7 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0.733, y: 0, z: 0}
+    position: {x: 0.5, y: 0, z: 0}
     angle: 270
   foldingAngle: 180
   requiredFoldings: []
@@ -277,7 +282,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8112047950655806547}
-  m_Mesh: {fileID: 2220435505363910934, guid: e69bd5e3bd619224591790a7ec1a472c, type: 3}
+  m_Mesh: {fileID: 7023787094449635046, guid: a7dd8f9657ad25142a57539583a450bf, type: 3}
 --- !u!23 &2386523154077911345
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -372,7 +377,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8291737801575348816}
-  m_Mesh: {fileID: 9177309187985183439, guid: e69bd5e3bd619224591790a7ec1a472c, type: 3}
+  m_Mesh: {fileID: 8227948467288827900, guid: a7dd8f9657ad25142a57539583a450bf, type: 3}
 --- !u!23 &1131202272619758154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -414,3 +419,53 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &6627415059936054167
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 908426421109396498}
+    m_Modifications:
+    - target: {fileID: 6590022321587884544, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_Name
+      value: Contour
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+--- !u!4 &39750098396387732 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+  m_PrefabInstance: {fileID: 6627415059936054167}
+  m_PrefabAsset: {fileID: 0}

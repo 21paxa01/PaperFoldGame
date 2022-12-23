@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 395526436276584040, guid: a4546b7bb35b842449a54cad5c548cf6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c84232e906f4d5c4ebfbec3af096747c, type: 3}
+    - target: {fileID: 395526436276584046, guid: a4546b7bb35b842449a54cad5c548cf6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.214
+      objectReference: {fileID: 0}
+    - target: {fileID: 395526436276584046, guid: a4546b7bb35b842449a54cad5c548cf6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.009
+      objectReference: {fileID: 0}
     - target: {fileID: 5048623651338340525, guid: a4546b7bb35b842449a54cad5c548cf6, type: 3}
       propertyPath: m_Name
       value: Level69--2-Paper-Simple-Rotate-180 Variant

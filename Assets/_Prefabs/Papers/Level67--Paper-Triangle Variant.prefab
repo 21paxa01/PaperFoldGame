@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 39750098396387732, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 39750098396387732, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 563145291964763816, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: m_Name
       value: Level67--Paper-Triangle Variant
@@ -30,7 +38,7 @@ PrefabInstance:
     - target: {fileID: 797656623902585843, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: paperTexture
       value: 
-      objectReference: {fileID: 2800000, guid: f9a682dc662b5e944a9ed98192e5b054, type: 3}
+      objectReference: {fileID: 2800000, guid: 256cbe43c14a17e47b90db37a408e9c8, type: 3}
     - target: {fileID: 797656623902585843, guid: 72ba910c4fb2e7448af5bec97d9d657e, type: 3}
       propertyPath: stickerEffect
       value: 
