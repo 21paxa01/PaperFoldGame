@@ -19,10 +19,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.11
       objectReference: {fileID: 0}
-    - target: {fileID: 746494737028047132, guid: 0ea8bf324c39851479b7cbfc31e12d45, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0005
-      objectReference: {fileID: 0}
     - target: {fileID: 3613247240731002334, guid: 0ea8bf324c39851479b7cbfc31e12d45, type: 3}
       propertyPath: m_Name
       value: Level49--Paper-Triangle-Rotate-90 Variant

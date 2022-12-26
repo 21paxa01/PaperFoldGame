@@ -74,7 +74,7 @@ PrefabInstance:
     - target: {fileID: 5492429006128236053, guid: 7dcf4ac93aaf749ebaf69eaeb630ba87, type: 3}
       propertyPath: paperTexture
       value: 
-      objectReference: {fileID: 2800000, guid: 055d86b737afdde47a67acd6ac86be3c, type: 3}
+      objectReference: {fileID: 2800000, guid: 8e22508fcb5306e499fa18f5bc7f8ecf, type: 3}
     - target: {fileID: 5492429006128236053, guid: 7dcf4ac93aaf749ebaf69eaeb630ba87, type: 3}
       propertyPath: stickerEffectImage
       value: 

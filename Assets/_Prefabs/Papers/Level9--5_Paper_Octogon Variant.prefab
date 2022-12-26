@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ebbfc5985b6226644b5ac6416039fb8b, type: 3}
+    - target: {fileID: 1944921358685496028, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 1944921358685496028, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 6026566952355295063, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: m_Name
       value: Folding_Top
@@ -34,7 +42,7 @@ PrefabInstance:
     - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: paperTexture
       value: 
-      objectReference: {fileID: 2800000, guid: cc0d0307f07750a4992ca43359d07c8a, type: 3}
+      objectReference: {fileID: 2800000, guid: 4b553f44211eb854fbcf22472b523ea3, type: 3}
     - target: {fileID: 6026566952714108158, guid: 92c8294bbb61d45fa94fd3bef771d046, type: 3}
       propertyPath: stickerEffectImage
       value: 

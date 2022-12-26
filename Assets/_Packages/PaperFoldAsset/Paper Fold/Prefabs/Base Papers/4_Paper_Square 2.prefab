@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278871346968774708}
-  m_Mesh: {fileID: 8717367731306886114, guid: f4b143a6580b040f494772ca19aee432, type: 3}
+  m_Mesh: {fileID: 7682730894380738303, guid: 1ee3dec914831e648b4fa472a099972c, type: 3}
 --- !u!23 &1791936166370765281
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: -0.5, y: 0, z: 0}
+    position: {x: -0.4995, y: 0, z: 0}
     angle: 90
   foldingAngle: 180
   requiredFoldings: []
@@ -170,7 +170,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089776356694858504}
-  m_Mesh: {fileID: -4647201171841953973, guid: ed61a038dfe904ab48c3d8ca0ef85783, type: 3}
+  m_Mesh: {fileID: 1797534568084129236, guid: 1ee3dec914831e648b4fa472a099972c, type: 3}
 --- !u!23 &1089776356694858518
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   foldingsParent: {fileID: 1089776357753695666}
   paperTexture: {fileID: 0}
   effect:
-    _stickerEffect: {fileID: 0}
+    _stickerEffect: {fileID: 8899684137575976443, guid: 38228c07100e79d4d941208d9a17a948, type: 3}
     _spriteImage: {fileID: 0}
     _spriteSize: {x: 0, y: 0, z: 0}
     _flipX: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0.5, y: 0, z: 0.5}
+    position: {x: 0.4995, y: 0, z: 0.4995}
     angle: 315
   foldingAngle: 180
   requiredFoldings: []
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0, y: 0, z: -0.5}
+    position: {x: 0, y: 0, z: -0.4995}
     angle: 180
   foldingAngle: 180
   requiredFoldings: []
@@ -433,6 +433,22 @@ PrefabInstance:
     - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6590022321587884547, guid: 4dd6d1a052f98d842aec1989cc4777c0, type: 3}
       propertyPath: m_LocalRotation.w

@@ -22,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
       propertyPath: paperTexture
       value: 
-      objectReference: {fileID: 2800000, guid: 5dab959243f865842bb465683d5c3454, type: 3}
+      objectReference: {fileID: 2800000, guid: d8dce684f21695e459f3d8368e495136, type: 3}
     - target: {fileID: 2079044984652724694, guid: 210c4c568386b4195a2ec81ac1076eb3, type: 3}
       propertyPath: effect._flipX
       value: 0

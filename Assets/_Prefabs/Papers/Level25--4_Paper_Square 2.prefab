@@ -7,10 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1089776356416921839, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
-      propertyPath: rotationAxis.position.x
-      value: -0.4988
-      objectReference: {fileID: 0}
     - target: {fileID: 1089776357210341976, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: _test
       value: 0
@@ -62,7 +58,7 @@ PrefabInstance:
     - target: {fileID: 1089776357210341976, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: possibleCombinations.Array.data[0].foldings.Array.data[0]
       value: 
-      objectReference: {fileID: 4403254647221169442}
+      objectReference: {fileID: 4403254647950025481}
     - target: {fileID: 1089776357210341976, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: possibleCombinations.Array.data[0].foldings.Array.data[1]
       value: 
@@ -70,31 +66,31 @@ PrefabInstance:
     - target: {fileID: 1089776357210341976, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: possibleCombinations.Array.data[0].foldings.Array.data[2]
       value: 
-      objectReference: {fileID: 4403254647950025481}
+      objectReference: {fileID: 4403254647221169442}
     - target: {fileID: 1089776357210341976, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: possibleCombinations.Array.data[1].foldings.Array.data[0]
       value: 
-      objectReference: {fileID: 4403254647950025481}
+      objectReference: {fileID: 4403254648114214066}
     - target: {fileID: 1089776357210341976, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: possibleCombinations.Array.data[1].foldings.Array.data[1]
       value: 
-      objectReference: {fileID: 4403254647221169442}
+      objectReference: {fileID: 4403254647950025481}
     - target: {fileID: 1089776357210341976, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: possibleCombinations.Array.data[1].foldings.Array.data[2]
       value: 
-      objectReference: {fileID: 4403254648114214066}
+      objectReference: {fileID: 4403254647221169442}
     - target: {fileID: 1089776357210341976, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[0]
       value: 
-      objectReference: {fileID: 4403254647221169442}
+      objectReference: {fileID: 4403254648114214066}
     - target: {fileID: 1089776357210341976, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[1]
       value: 
-      objectReference: {fileID: 4403254647950025481}
+      objectReference: {fileID: 4403254647221169442}
     - target: {fileID: 1089776357210341976, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: possibleCombinations.Array.data[2].foldings.Array.data[2]
       value: 
-      objectReference: {fileID: 4403254648114214066}
+      objectReference: {fileID: 4403254647950025481}
     - target: {fileID: 1089776357210341977, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -153,15 +149,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cb67a85aa4a494b4fbb66a4a221cdbca, type: 3}
     - target: {fileID: 5227393938147755214, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5227393938147755214, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.098
+      value: 0.085
       objectReference: {fileID: 0}
     - target: {fileID: 5227393938147755214, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.159
+      value: 0.186
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5769ee5ab0f354495b72ae2522489741, type: 3}

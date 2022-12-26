@@ -37,8 +37,9 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-
+#if UNITY_EDITOR
         PlayerPrefsManager.ClearAllData();
+#endif
 
         level = PlayerPrefsManager.GetLevel();
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;

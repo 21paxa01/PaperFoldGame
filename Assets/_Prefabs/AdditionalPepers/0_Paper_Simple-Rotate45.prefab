@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0.707, y: 0, z: 0}
+    position: {x: 0.7071, y: 0, z: 0}
     angle: 270
   foldingAngle: 180
   requiredFoldings: []
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: -0.707, y: 0, z: 0}
+    position: {x: -0.7071, y: 0, z: 0}
     angle: 90
   foldingAngle: 180
   requiredFoldings: []
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb596f139b4d43c2bf13c9c376ac0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _test: 1
+  _test: 0
   _decalPaper: 0
   foldingsParent: {fileID: 8383237223464527927}
   paperTexture: {fileID: 2800000, guid: 4490a3d9829b14fa6853de58314cd9b8, type: 3}
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0, y: 0, z: -0.707}
+    position: {x: 0, y: 0, z: -0.7071}
     angle: 180
   foldingAngle: 180
   requiredFoldings: []
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 8383237224556322450}
   - component: {fileID: 8383237224556322448}
   - component: {fileID: 8383237224556322451}
-  - component: {fileID: 8383237224556322449}
+  - component: {fileID: 9149071369805744900}
   m_Layer: 0
   m_Name: Paper Front Renderer
   m_TagString: Untagged
@@ -445,7 +445,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8383237224556322449
+--- !u!64 &9149071369805744900
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -458,7 +458,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -6296333951556723582, guid: 5d6cbc77d9a464a2698adfed39b5ed69, type: 3}
+  m_Mesh: {fileID: -6296333951556723582, guid: 996ea42058061a54cb4fc675c79831f6, type: 3}
 --- !u!1 &8383237224802674023
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0, y: 0, z: 0.707}
+    position: {x: 0, y: 0, z: 0.7071}
     angle: 0
   foldingAngle: 180
   requiredFoldings: []
