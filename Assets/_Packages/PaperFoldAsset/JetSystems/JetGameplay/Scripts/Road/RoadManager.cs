@@ -36,7 +36,7 @@ namespace JetSystems
             instance = this;
 
             UIManager.onLevelCompleteSet += IncreaseLevelIndex;
-            UIManager.onNextLevelButtonPressed += SpawnLevel;
+            //UIManager.onNextLevelButtonPressed += SpawnLevel;
             UIManager.onRetryButtonPressed += RetryLevel;
 
             SpawnLevel();

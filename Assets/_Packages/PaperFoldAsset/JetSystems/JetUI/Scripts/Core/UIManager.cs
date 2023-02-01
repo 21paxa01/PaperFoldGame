@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Eiko.YaSDK;
+using Cysharp.Threading.Tasks;
 
 namespace JetSystems
 {
@@ -11,7 +12,7 @@ namespace JetSystems
         public enum Orientation { Portrait, Landscape }
         public Orientation orientation;
 
-        public enum GameState { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS, SHOP }
+        public enum GameState { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS, SHOP, LOADING }
         public static GameState gameState;
 
         #region Static Variables
@@ -29,6 +30,8 @@ namespace JetSystems
         public delegate void OnMenuSet();
         public static OnMenuSet onMenuSet;
 
+        public delegate void OnLoadingSet();
+        public static OnLoadingSet onLoadingSet;
 
 
         public delegate void SetGameDelegate();
@@ -67,10 +70,10 @@ namespace JetSystems
         public delegate void UpdateProgressBarDelegate(float value);
         public static UpdateProgressBarDelegate updateProgressBarDelegate;
 
-        public delegate void OnNextLevelButtonPressed();
+        public delegate UniTask OnNextLevelButtonPressed();
         public static OnNextLevelButtonPressed onNextLevelButtonPressed;
 
-        public delegate void OnNextLevelButtonPressedWithAd();
+        public delegate UniTask OnNextLevelButtonPressedWithAd();
         public static OnNextLevelButtonPressedWithAd onNextLevelButtonPressedWithAd;
 
         public delegate void OnRetryButtonPressed();
@@ -85,6 +88,7 @@ namespace JetSystems
         public CanvasGroup LEVELCOMPLETE;
         public CanvasGroup GAMEOVER;
         public CanvasGroup SETTINGS;
+        public CanvasGroup LOADING;
         public UIThemesManager THEMES;
         public CanvasGroup[] canvases;
 
@@ -93,7 +97,7 @@ namespace JetSystems
 
         // Game UI
         public Text gameCoinsText;
-        public Text levelText;
+        public LevelLangSwitcher levelText;
 
         // Shop UI
         public Text shopCoinsText;
@@ -108,7 +112,7 @@ namespace JetSystems
                 instance = this;
 
             // Store the canvases
-            canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS, THEMES.CachedCanvasGroup };
+            canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS, THEMES.CachedCanvasGroup, LOADING };
 
             // Get the coins amount
             COINS = PlayerPrefsManager.GetCoins();
@@ -135,14 +139,13 @@ namespace JetSystems
             updateProgressBarDelegate += UpdateProgressBar;
         }
 
-		// Update is called once per frame
-		void Update()
-		{
-            /*
-            if (Input.GetKeyDown(KeyCode.C))
-                SetLevelComplete();
-            */
-		}
+        public void SetLoading()
+        {
+            gameState = GameState.LOADING;
+            Utils.HideAllCGs(canvases, LOADING);
+
+            onLoadingSet?.Invoke();
+        }
 
         public void SetMenu()
         {
@@ -164,7 +167,7 @@ namespace JetSystems
             uiThemeUnlcokProgress.gameObject.SetActive(false);
 
             // Update the level text
-            levelText.text = (PlayerPrefsManager.GetLevel() + 1).ToString();
+            levelText.UpdateLevelNumber(PlayerPrefsManager.GetLevel() + 1);
         }
 
         public void SetLevelComplete(int starsCount = 3)

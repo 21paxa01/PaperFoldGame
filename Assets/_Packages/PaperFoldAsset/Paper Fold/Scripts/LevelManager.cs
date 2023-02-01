@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using JetSystems;
 using Eiko.YaSDK;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using Cysharp.Threading.Tasks;
 
 public class LevelManager : MonoBehaviour
 {
@@ -26,37 +29,35 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int takenCoinsCount = 5;
     [Min(1)]
     [SerializeField] private int unlockThemeLevelStep;
-    [SerializeField] private Paper[] papersPrefabs;
+    [SerializeField] private AssetReference[] papers;
     [SerializeField] private ThemeData[] unlockableThemes;
 
 
-    private int level;
+
     private Paper currentPaper;
+    private int level;
     private int earnedCoins;
     private readonly Queue<ThemeData> unlockableThemesQueue = new Queue<ThemeData>();
+    private int currentLoadedLevelIndex = -1;
+    private int nextLoadedLevelIndex = -1;
 
     private void Awake()
     {
-#if UNITY_EDITOR
-        PlayerPrefsManager.ClearAllData();
-#endif
-
         level = PlayerPrefsManager.GetLevel();
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
         UIManager.onNextLevelButtonPressedWithAd += SpawnNextLevelWithAdditionalCoins;
         UIManager.wrongPaperFolded += DecreaseEarnedCoins;
         UIManager.onLevelCompleteSet += IncrementThemeUnlockProgress;
 
-
-        foreach(ThemeData unlockableTheme in unlockableThemes)
+        foreach (ThemeData unlockableTheme in unlockableThemes)
         {
             if (PlayerPrefsManager.HasUnlokedTheme(unlockableTheme.Id))
                 continue;
 
             unlockableThemesQueue.Enqueue(unlockableTheme);
         }
-
     }
+
 
     private void OnDestroy()
     {
@@ -66,9 +67,13 @@ public class LevelManager : MonoBehaviour
         UIManager.onLevelCompleteSet -= IncrementThemeUnlockProgress;
     }
 
-    void Start()
+    private async void Start()
     {
-        SpawnLevel();
+        UpdateEarnedCoins();
+
+        UIManager.instance.SetLoading();
+
+        await SpawnLevel();
 
         try
         {
@@ -86,15 +91,15 @@ public class LevelManager : MonoBehaviour
     {
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.C))
-            SpawnNextLevel();
+            SpawnNextLevel().Forget();
 #endif
 
     }
 
-    private void SpawnNextLevelWithAdditionalCoins()
+    private async UniTask SpawnNextLevelWithAdditionalCoins()
     {
         earnedCoins = adCoinsCount;
-        SpawnNextLevel();
+        await SpawnNextLevel();
     }
 
     private void IncrementThemeUnlockProgress(int starsCount)
@@ -132,37 +137,80 @@ public class LevelManager : MonoBehaviour
         unlockableThemesQueue.Dequeue();
     }
 
-    private void SpawnLevel()
+    private async UniTask SpawnLevel()
     {
-        earnedCoins = maxCoinsCount;
-        UIManager.instance.UpdateEarnedCoins(earnedCoins, adCoinsCount);
+        transform.Clear();
+
+        // Просчитали индекс уровня
         int correctedLevelIndex = level;
+        if (level > papers.Length - 1)
+            correctedLevelIndex = Random.Range(0, papers.Length - 1);
 
-        if (level > papersPrefabs.Length-1)
-            correctedLevelIndex = Random.Range(0, papersPrefabs.Length - 1);
+        // Выгружаем текущий левел если он есть и не равен 
+        if (currentLoadedLevelIndex > -1 && nextLoadedLevelIndex > -1 && currentLoadedLevelIndex != nextLoadedLevelIndex)
+        {
+            UnloadLevelPaper(currentLoadedLevelIndex);
+            currentLoadedLevelIndex = nextLoadedLevelIndex;
+        }
 
-        transform.Clear();
-        currentPaper = Instantiate(papersPrefabs[correctedLevelIndex], transform);
+        // Загружаем текущий если его нету
+        if (currentLoadedLevelIndex <= -1)
+        {
+            currentLoadedLevelIndex = correctedLevelIndex;
+        }
 
+        currentPaper = Instantiate(await LoadPaperLevel(currentLoadedLevelIndex), transform);
         onPaperInstantiated?.Invoke(currentPaper);
+
+        // Загружаем в фоне следующий
+        LoadNextLevel(level + 1).Forget();
     }
 
-    private void SpawnLevel(int levelIndex)
+    private async UniTask LoadNextLevel(int level)
     {
-        transform.Clear();
-        
-        currentPaper = Instantiate(papersPrefabs[levelIndex], transform);
+        int correctedLevelIndex = level;
+        if (level > papers.Length - 1)
+            correctedLevelIndex = Random.Range(0, papers.Length - 1);
 
-        onPaperInstantiated?.Invoke(currentPaper);
+        if (correctedLevelIndex == currentLoadedLevelIndex)
+        {
+            nextLoadedLevelIndex = currentLoadedLevelIndex;
+        }
+        else
+        {
+            await LoadPaperLevel(correctedLevelIndex);
+            nextLoadedLevelIndex = correctedLevelIndex;
+        }
     }
 
-    private void SpawnNextLevel()
+    private async UniTask<Paper> LoadPaperLevel(int level)
+    {
+        GameObject paperGameObject = null;
+        if (papers[level].Asset is GameObject)
+            paperGameObject = papers[level].Asset as GameObject;
+
+        if(paperGameObject == null)
+        {
+            AsyncOperationHandle<GameObject> paperHandler = papers[level].LoadAssetAsync<GameObject>();
+            paperGameObject = await paperHandler.Task;
+        }
+
+        return paperGameObject.GetComponent<Paper>();
+    }
+
+    private void UnloadLevelPaper(int level)
+    {
+        papers[level].ReleaseAsset();
+    }
+
+    private async UniTask SpawnNextLevel()
     {
         UIManager.AddCoins(earnedCoins);
-
         level++;
         PlayerPrefsManager.SaveLevel(level);
-        SpawnLevel();
+
+        UpdateEarnedCoins();
+        await SpawnLevel();
 
         try
         {
@@ -174,16 +222,25 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void UpdateEarnedCoins()
+    {
+        earnedCoins = maxCoinsCount;
+        UIManager.instance.UpdateEarnedCoins(earnedCoins, adCoinsCount);
+    }
+
     public void RetryLevel()
     {
         currentPaper.UnfoldAllFoldings();
     }
 
-    public void SkipLevel()
+    public async void SkipLevel()
     {
         level++;
         PlayerPrefsManager.SaveLevel(level);
-        SpawnLevel();
+
+        earnedCoins = maxCoinsCount;
+        UIManager.instance.UpdateEarnedCoins(earnedCoins, adCoinsCount);
+        await SpawnLevel();
 
         try
         {
@@ -208,5 +265,18 @@ public class LevelManager : MonoBehaviour
             earnedCoins = minCoinsCount;
 
         UIManager.instance?.UpdateEarnedCoins(earnedCoins, adCoinsCount);
+    }
+}
+
+
+public class LoadedLevel
+{
+    public int LevelIndex { get; private set; }
+    public Paper PaperLevel { get; private set; }
+
+    public LoadedLevel(int levelIndex, Paper paperLevel)
+    {
+        LevelIndex = levelIndex;
+        PaperLevel = paperLevel;
     }
 }

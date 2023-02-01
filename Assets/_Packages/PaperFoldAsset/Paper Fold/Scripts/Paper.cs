@@ -12,6 +12,9 @@ public class Paper : MonoBehaviour
     public delegate void OnPaperEvolving();
     public OnPaperEvolving onPaperEvolving;
 
+    public delegate void OnPaperShowEffect();
+    public OnPaperShowEffect onPaperShowEffect;
+
     public delegate void PaperStartFold();
     public PaperStartFold paperStartFold;
 
@@ -307,11 +310,11 @@ public class Paper : MonoBehaviour
             yield break;
 
 
-        if(YandexSDK.instance != null)
+        canFold = false;
+
+        if (YandexSDK.instance != null)
             YandexSDK.instance.ShowInterstitial();
 
-        canFold = false;
-        
         LeanTween.moveZ(gameObject, -20f, 0.7f).setEaseInBack().setOnComplete(() =>
         {
 
@@ -319,14 +322,13 @@ public class Paper : MonoBehaviour
 
         if(effect.StickerEffect != null)
         {
-
             StickerEffect stickerEffect = Instantiate(effect.StickerEffect);
             stickerEffect.CachedTransform.position = transform.position;
 
             stickerEffect.CachedSpriteRenderer.flipX = effect.FlipX;
             stickerEffect.CachedSpriteRenderer.flipY = effect.FlipY;
-
-            yield return stickerEffect.ShowEffect(effect.SpriteImage, effect.SpriteSize);
+            onPaperShowEffect?.Invoke();
+            yield return stickerEffect.ShowEffect(effect.SpriteImage, effect.SpriteSize, effect.SpriteRotate);
             yield return new WaitForSeconds(0.5f);
             Destroy(stickerEffect.gameObject);
         }
@@ -420,6 +422,7 @@ public struct PaperEffect
     [SerializeField] private StickerEffect _stickerEffect;
     [SerializeField] private Sprite _spriteImage;
     [SerializeField] private Vector3 _spriteSize;
+    [SerializeField] private Quaternion _spriteRotate;
     [SerializeField] private bool _flipX;
     [SerializeField] private bool _flipY;
 
@@ -427,6 +430,7 @@ public struct PaperEffect
     public StickerEffect StickerEffect => _stickerEffect;
     public Sprite SpriteImage => _spriteImage;
     public Vector3 SpriteSize => _spriteSize;
+    public Quaternion SpriteRotate => _spriteRotate;
     public bool FlipX => _flipX;
     public bool FlipY => _flipY;
 }

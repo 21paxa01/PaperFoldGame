@@ -6,13 +6,14 @@ public class SoundsManager : MonoBehaviour
     [Header(" Sounds ")]
     [SerializeField] private AudioSource paperSoundFold;
     [SerializeField] private AudioSource paperSoundUnfold;
+    [SerializeField] private AudioSource paperSoundStickerEffect;
     [SerializeField] private AudioSource levelCompleteSound;
     Paper currentPaper;
 
     // Start is called before the first frame update
     void Start()
     {
-        UIManager.onGameSet += StoreCurrentPaper;
+        //UIManager.onGameSet += StoreCurrentPaper;
         UIManager.onLevelCompleteSet += ResetCurrentPaper;
         LevelManager.onPaperInstantiated += StoreCurrentPaper;
     }
@@ -30,14 +31,18 @@ public class SoundsManager : MonoBehaviour
         currentPaper = paper;
         currentPaper.paperStartFold += PlayPaperFoldSound;
         currentPaper.paperStartUnfold += PlayPaperUnfoldSound;
+        currentPaper.onPaperShowEffect += PlayPaperShowStickerEffectSound;
     }
 
+    /*
     private void StoreCurrentPaper()
     {
         currentPaper = FindObjectOfType<Paper>();
         currentPaper.paperStartFold += PlayPaperFoldSound;
         currentPaper.paperStartUnfold += PlayPaperUnfoldSound;
+        currentPaper.onPaperShowEffect += PlayPaperShowStickerEffectSound;
     }
+    */
 
     private void ResetCurrentPaper(int none)
     {
@@ -45,6 +50,7 @@ public class SoundsManager : MonoBehaviour
 
         currentPaper.paperStartFold -= PlayPaperFoldSound;
         currentPaper.paperStartUnfold -= PlayPaperUnfoldSound;
+        currentPaper.onPaperShowEffect -= PlayPaperShowStickerEffectSound;
         currentPaper = null;
 
         levelCompleteSound.Play();
@@ -61,5 +67,10 @@ public class SoundsManager : MonoBehaviour
     {
         paperSoundUnfold.pitch = Random.Range(0.9f, 1.2f);
         paperSoundUnfold.Play();
+    }
+
+    private void PlayPaperShowStickerEffectSound()
+    {
+        paperSoundStickerEffect.Play();
     }
 }
