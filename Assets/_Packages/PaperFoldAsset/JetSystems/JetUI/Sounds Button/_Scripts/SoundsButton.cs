@@ -21,7 +21,7 @@ namespace JetSystems
 
         private void Awake()
         {
-            state = PlayerPrefsManager.GetSoundState() == 0 ? true : false;
+            state = YanGamesSaveManager.GetSoundState() == 0 ? true : false;
 
             if (state)
                 TurnSoundOn();
@@ -65,7 +65,7 @@ namespace JetSystems
 
         void SaveState()
         {
-            PlayerPrefsManager.SetSoundState(state ? 0 : 1);
+            YanGamesSaveManager.SetSoundState(state ? 0 : 1);
         }
 
         void SetSounds(float volume)

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: KitchenTheme
   m_EditorClassIdentifier: 
   _id: ac219c8f-da3a-4e4e-924b-34b244a68331
+  _purchaseId: 2
   _name_RU: "\u041A\u0443\u0445\u043D\u044F"
   _name_EN: Kitchen
   _sprite: {fileID: 21300000, guid: 601a390e830565942b3704d830838665, type: 3}
   _price: 300
+  _inAppPrice: 2
   _boardTheme: {fileID: 21300000, guid: b2827f602184da147a5ffd4f3e374655, type: 3}

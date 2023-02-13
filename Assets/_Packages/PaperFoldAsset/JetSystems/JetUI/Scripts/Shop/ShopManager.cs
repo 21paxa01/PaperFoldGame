@@ -328,13 +328,13 @@ namespace JetSystems
 
         bool IsItemUnlocked(int itemIndex)
         {
-            return PlayerPrefsManager.GetItemUnlockedState(itemIndex) == 1;
+            return YanGamesSaveManager.GetItemUnlockedState(itemIndex) == 1;
             //return (PlayerPrefs.GetInt("ITEMUNLOCKED" + itemIndex) == 1);
         }
 
         void UnlockItem(int itemIndex)
         {
-            PlayerPrefsManager.SetItemUnlockedState(itemIndex, 1);
+            YanGamesSaveManager.SetItemUnlockedState(itemIndex, 1);
             //PlayerPrefs.SetInt("ITEMUNLOCKED" + itemIndex, 1);
         }
     }

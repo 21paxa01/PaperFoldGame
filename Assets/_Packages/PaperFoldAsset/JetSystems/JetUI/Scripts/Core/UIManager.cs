@@ -115,13 +115,15 @@ namespace JetSystems
             canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS, THEMES.CachedCanvasGroup, LOADING };
 
             // Get the coins amount
-            COINS = PlayerPrefsManager.GetCoins();
-            UpdateCoins();
+            
         }
 
         // Start is called before the first frame update
         void Start()
 		{
+            COINS = YanGamesSaveManager.GetCoins();
+            UpdateCoins();
+
             // Configure the delegates
             ConfigureDelegates();
 		}
@@ -167,7 +169,7 @@ namespace JetSystems
             uiThemeUnlcokProgress.gameObject.SetActive(false);
 
             // Update the level text
-            levelText.UpdateLevelNumber(PlayerPrefsManager.GetLevel() + 1);
+            levelText.UpdateLevelNumber(YanGamesSaveManager.GetLevel() + 1);
         }
 
         public void SetLevelComplete(int starsCount = 3)
@@ -269,7 +271,7 @@ namespace JetSystems
             instance.UpdateCoins();
 
             // Save the amount of coins
-            PlayerPrefsManager.SaveCoins(COINS);
+            YanGamesSaveManager.SaveCoins(COINS);
         }
 
         public static void RemoveCoins(int amount)
@@ -282,7 +284,7 @@ namespace JetSystems
 
             COINS -= amount;
             instance.UpdateCoins();
-            PlayerPrefsManager.SaveCoins(COINS);
+            YanGamesSaveManager.SaveCoins(COINS);
                 
         }
 

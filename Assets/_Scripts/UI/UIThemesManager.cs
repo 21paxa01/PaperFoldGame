@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using JetSystems;
 using System.Linq;
+using Eiko.YaSDK;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class UIThemesManager : MonoBehaviour
@@ -38,12 +39,12 @@ public class UIThemesManager : MonoBehaviour
 
     private void CreateThemesUI()
     {
-        string activeThemeId = PlayerPrefsManager.GetUsedTheme();
+        string activeThemeId = YanGamesSaveManager.GetUsedTheme();
 
         foreach (AvailableTheme themeData in _availableThemes)
         {
             UITheme uiTheme = Instantiate(_uiThemePrefab, _uiThemesParent);
-            uiTheme.CachedButton.onClick.AddListener(_clickAudio.Play);
+            uiTheme.CachedThemeButton.onClick.AddListener(_clickAudio.Play);
             uiTheme.SetData(themeData.Theme, themeData.IsAvailable);
             uiTheme.ThemeAvailableClicked.AddListener(ChangeTheme);
             _availableThemeUIObjects.Add(uiTheme);
@@ -73,9 +74,9 @@ public class UIThemesManager : MonoBehaviour
     public void ChangeTheme(UITheme uiTheme, ThemeData themeData)
     {
         if (_uiActiveTheme != null)
-            _uiActiveTheme.CachedButton.interactable = true;
+            _uiActiveTheme.CachedThemeButton.interactable = true;
 
-        uiTheme.CachedButton.interactable = false;
+        uiTheme.CachedThemeButton.interactable = false;
         _uiActiveTheme = uiTheme;
 
         _changebleBoard.ChangeTheme(themeData);
@@ -101,7 +102,7 @@ public class UIThemesManager : MonoBehaviour
 
             uiTheme.SetData(themeData.Theme, themeData.IsAvailable);
         }
-    }
+    }  
 }
 
 

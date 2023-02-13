@@ -24,7 +24,7 @@ public class LevelLangSwitcher : MonoBehaviour
                 break;
         }
 
-        UpdateLevelNumber(PlayerPrefsManager.GetLevel());
+        UpdateLevelNumber(YanGamesSaveManager.GetLevel());
     }
 
     public void UpdateLevelNumber(int level)

@@ -6,6 +6,8 @@ using Eiko.YaSDK;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Cysharp.Threading.Tasks;
+using Eiko.YaSDK.Data;
+using System.Threading.Tasks;
 
 public class LevelManager : MonoBehaviour
 {
@@ -33,7 +35,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private ThemeData[] unlockableThemes;
 
 
-
     private Paper currentPaper;
     private int level;
     private int earnedCoins;
@@ -43,7 +44,16 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        level = PlayerPrefsManager.GetLevel();
+        YandexPrefs.Init();
+        YandexSDK.instance.InitializePurchases();
+        
+        if (YanGamesSaveManager.GetAdOff())
+            YandexSDK.instance.AdsOff();
+
+        level = YanGamesSaveManager.GetLevel();
+
+        Debug.Log("fdfdfd");
+
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
         UIManager.onNextLevelButtonPressedWithAd += SpawnNextLevelWithAdditionalCoins;
         UIManager.wrongPaperFolded += DecreaseEarnedCoins;
@@ -51,7 +61,7 @@ public class LevelManager : MonoBehaviour
 
         foreach (ThemeData unlockableTheme in unlockableThemes)
         {
-            if (PlayerPrefsManager.HasUnlokedTheme(unlockableTheme.Id))
+            if (YanGamesSaveManager.HasUnlokedTheme(unlockableTheme.Id))
                 continue;
 
             unlockableThemesQueue.Enqueue(unlockableTheme);
@@ -107,28 +117,28 @@ public class LevelManager : MonoBehaviour
         if (unlockableThemesQueue.Count <= 0)
             return;
 
-        if (PlayerPrefsManager.HasUnlokedTheme(unlockableThemesQueue.Peek().Id))
+        if (YanGamesSaveManager.HasUnlokedTheme(unlockableThemesQueue.Peek().Id))
         {
             ChangeUnlockableTheme();
             IncrementThemeUnlockProgress(starsCount);
             return;
         }
             
-        int unlockThemeProgress = PlayerPrefsManager.GetUnlockThemeProgress();
+        int unlockThemeProgress = YanGamesSaveManager.GetUnlockThemeProgress();
         unlockThemeProgress++;
 
         if(unlockThemeProgress >= unlockThemeLevelStep)
         {
             themeUnlocked?.Invoke(unlockableThemesQueue.Peek(), unlockThemeLevelStep);
-            PlayerPrefsManager.AddUnlockedTheme(unlockableThemesQueue.Peek().Id);
+            YanGamesSaveManager.AddUnlockedTheme(unlockableThemesQueue.Peek().Id);
             UIManager.instance?.THEMES.ChangeTheme(unlockableThemesQueue.Peek());
             ChangeUnlockableTheme();
-            PlayerPrefsManager.SetUnlockThemeProgress(0);
+            YanGamesSaveManager.SetUnlockThemeProgress(0);
         }
         else
         {
             themeUnlockProgressUpdated?.Invoke(unlockThemeProgress, unlockThemeLevelStep);
-            PlayerPrefsManager.SetUnlockThemeProgress(unlockThemeProgress);
+            YanGamesSaveManager.SetUnlockThemeProgress(unlockThemeProgress);
         }
     }
 
@@ -207,7 +217,7 @@ public class LevelManager : MonoBehaviour
     {
         UIManager.AddCoins(earnedCoins);
         level++;
-        PlayerPrefsManager.SaveLevel(level);
+        YanGamesSaveManager.SaveLevel(level);
 
         UpdateEarnedCoins();
         await SpawnLevel();
@@ -236,7 +246,7 @@ public class LevelManager : MonoBehaviour
     public async void SkipLevel()
     {
         level++;
-        PlayerPrefsManager.SaveLevel(level);
+        YanGamesSaveManager.SaveLevel(level);
 
         earnedCoins = maxCoinsCount;
         UIManager.instance.UpdateEarnedCoins(earnedCoins, adCoinsCount);

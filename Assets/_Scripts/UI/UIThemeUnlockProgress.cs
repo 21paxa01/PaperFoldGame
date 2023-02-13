@@ -27,7 +27,7 @@ public class UIThemeUnlockProgress : MonoBehaviour
 
     private void ThemeUnlockProgressUpdate(int themeUnlockProgress, int themeUnlockProgressLevelStep)
     {
-        _progressBar.value = PlayerPrefsManager.GetUnlockThemeProgress();
+        _progressBar.value = YanGamesSaveManager.GetUnlockThemeProgress();
         gameObject.SetActive(true);
 
         _progressBar.maxValue = themeUnlockProgressLevelStep;
@@ -36,7 +36,7 @@ public class UIThemeUnlockProgress : MonoBehaviour
 
     private void ThemeUnlock(ThemeData themeData, int themeUnlockProgressLevelStep)
     {
-        _progressBar.value = PlayerPrefsManager.GetUnlockThemeProgress();
+        _progressBar.value = YanGamesSaveManager.GetUnlockThemeProgress();
         gameObject.SetActive(true);
         _progressBar.maxValue = themeUnlockProgressLevelStep;
         StartCoroutine(UpdateProgressBarCoroutine(themeUnlockProgressLevelStep));

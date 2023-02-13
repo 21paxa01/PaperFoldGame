@@ -6,17 +6,21 @@ using UnityEngine;
 public class ThemeData : ScriptableObject
 {
     [SerializeField] private string _id;
+    [SerializeField] private string _purchaseId;
     [SerializeField] private string _name_RU;
     [SerializeField] private string _name_EN;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private int _price;
+    [SerializeField] private int _inAppPrice;
     [SerializeField] private Sprite _boardTheme;
 
     public string Id => _id;
+    public string PurchaseId => _purchaseId;
     public string Name_RU => _name_RU;
     public string Name_EN => _name_EN;
     public Sprite Sprite => _sprite;
     public int Price => _price;
+    public int InAppPrice => _inAppPrice;
     public Sprite Texture => _boardTheme;
 
     private void OnValidate()

@@ -12,8 +12,8 @@ public class Board : MonoBehaviour
     {
         string changedThemeId = themeData.Id;
 
-        if (changedThemeId != PlayerPrefsManager.GetUsedTheme())
-            PlayerPrefsManager.SetUsedTheme(changedThemeId);
+        if (changedThemeId != YanGamesSaveManager.GetUsedTheme())
+            YanGamesSaveManager.SetUsedTheme(changedThemeId);
 
         _boardImage.sprite = themeData.Texture;
     }

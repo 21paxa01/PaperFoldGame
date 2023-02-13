@@ -98,6 +98,8 @@
             var player;
             var sdk;
             var payments = null;
+            var playerData = null;
+            var playerStats = null;
 
             YaGames.init({
                 adv: {
@@ -124,10 +126,70 @@
             }
 
             function initPlayer() {
-                return sdk.getPlayer().then(_player => {
+                return sdk.getPlayer({ scopes: false }).then(_player => {
                     player = _player;
+                    return player;
                 }).catch(err => {
                     // Если игрок не авторизован, выбрасывает исключение USER_NOT_AUTHORIZED.
+                });
+            }
+            function setScore(key, value) {
+                playerStats[key] = value;
+                console.log('Set score' + key + value);
+                player.setStats(playerStats).then(() => { console.log('setted data!'); }).catch(err => { console.log('not setted' + err) });
+            }
+            function setData(key, value) {
+                playerData[key] = value;
+                console.log('Set Data' + key + value);
+                player.setData(playerData, true).then(() => { console.log('setted data!'); }).catch(err => { console.log('not setted' + err) });
+
+            }
+            function initPlayerData() {
+                initPlayer().then(_player => {
+                    if (_player.getMode() != 'lite') {
+                        var sendData = {};
+                        player.getData().then(datas => {
+                            var i = 0;
+                            playerData = datas;
+                            var adata = Array();
+                            for (var key in datas) {
+                                adata[i] = { key: key, value: datas[key] };
+                                i++;
+                            }
+                            sendData.data = adata;
+
+                            player.getStats().then(stats => {
+                                i = 0;
+                                playerStats = stats;
+                                var astats = Array();
+                                for (var keya in stats) {
+                                    astats[i] = { key: keya, value: stats[keya] };
+                                    i++;
+                                }
+                                sendData.score = astats;
+                                console.log('Geted data' + JSON.stringify(sendData));
+                                window.unityInstance.SendMessage('YandexSDK', 'OnGetData', JSON.stringify(sendData));
+                            }).catch(err => {
+                                console.log('No get data score' + err);
+                                window.unityInstance.SendMessage('YandexSDK', 'OnGetData', JSON.stringify(sendData));
+                            });
+
+
+
+                        }).catch(err => {
+                            console.log('NoNoAutorized' + err);
+                            window.unityInstance.SendMessage('YandexSDK', 'NoAutorized');
+                        });
+
+                    }
+                    else {
+                        console.log('NoNoAutorized');
+                        window.unityInstance.SendMessage('YandexSDK', 'NoAutorized');
+                    }
+                }).catch(err => {
+                    console.log('NoNoAutorized' + err);
+                    window.unityInstance.SendMessage('YandexSDK', 'NoAutorized');
+                    // Ошибка при инициализации объекта Player.
                 });
             }
 
@@ -145,7 +207,7 @@
                             window.unityInstance.SendMessage('YandexSDK', 'OnInterstitialShown');
                         },
                         onError: function (error) {
-                            window.unityInstance.SendMessage('YandexSDK', 'OnInterstitialFailed', error);
+                            window.unityInstance.SendMessage('YandexSDK', 'OnInterstitialError', JSON.stringify(error));
                         }
                     }
                 })
@@ -166,10 +228,10 @@
                             window.unityInstance.SendMessage('YandexSDK', 'OnRewardedClose', id);
                             console.log('Video ad closed. Id: ' + id);
                         },
-                        onError: (e) => {
+                        onError: (error )=> {
                             var data = { "id": id, "error": error };
                             window.unityInstance.SendMessage('YandexSDK', 'OnRewardedError', JSON.stringify(data));
-                            console.log('Error while open video ad:', e);
+                            console.log('Error while open video ad:', error);
                         }
                     }
                 })
@@ -180,7 +242,7 @@
                     // Покупки доступны.
                     payments = _payments;
                 }).catch(err => {
-                })
+                });
             }
 
             function buy(id) {
@@ -211,13 +273,13 @@
                             sdk.feedback.requestReview()
                                 .then(({ feedbackSent }) => {
                                     var data = { "CanReview": value, "Reason": "Success", "FeedbackSent": feedbackSent };
-                                    SendCallback('OnReview',data);
+                                    SendCallback('OnReview', data);
                                 })
                         } else {
                             var data = { "CanReview": value, "Reason": reason, "FeedbackSent": false };
                             SendCallback('OnReview', data);
                         }
-                    })
+                    });
             }
             function SendCallback(target, data) {
                 window.unityInstance.SendMessage('YandexSDK', target, JSON.stringify(data));

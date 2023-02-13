@@ -3,51 +3,58 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Eiko.YaSDK;
 
 [RequireComponent(typeof(Button))]
 public class UITheme : MonoBehaviour
 {
+    [Header("General")]
     [SerializeField] private Image _themeImage;
     [SerializeField] private LangSwitcher _themeText;
-    [SerializeField] private Text _themePriceText;
     [SerializeField] private Color _errorColor;
+    [Header("Buy Buttons")]
+    [SerializeField] private Text _defaultPriceText;
+    [SerializeField] private Button _buyDefault;
+    [Space]
+    [SerializeField] private Text _inAppPriceText;
+    [SerializeField] private Button _buyInApp;
+
 
     private readonly UnityEvent<UITheme, ThemeData> _themeAvailableClicked = new UnityEvent<UITheme, ThemeData>();
 
     private ThemeData _themeData;
+    private Button _cachedThemeButton;
     private bool _isAvaialble;
     private bool _isBlockClick = false;
 
 
     public UnityEvent<UITheme, ThemeData> ThemeAvailableClicked => _themeAvailableClicked;
     public ThemeData ThemeData => _themeData;
-
-
-    private Button _cachedButton;
-    public Button CachedButton
-    {
-        get
-        {
-            if (_cachedButton == null)
-                _cachedButton = GetComponent<Button>();
-            return _cachedButton;
-        }
-    }
+    public Button CachedThemeButton => _cachedThemeButton;
 
 
     private void Awake()
     {
-        CachedButton.onClick.AddListener(OnThemeButtonClick);
+        _cachedThemeButton = GetComponent<Button>();
+        _buyDefault.onClick.AddListener(OnBuyDefault);
+        _buyInApp.onClick.AddListener(OnBuyInApp);
+        _cachedThemeButton.onClick.AddListener(OnThemeClick);
+    }
+
+    private void Start()
+    {
+        YandexSDK.instance.onPurchaseSuccess += OnThemePurchaseDone;
     }
 
     private void OnDestroy()
     {
-        CachedButton.onClick.RemoveListener(OnThemeButtonClick);
+        _buyDefault.onClick.RemoveListener(OnBuyDefault);
+        _buyInApp.onClick.RemoveListener(OnBuyInApp);
+        _cachedThemeButton.onClick.RemoveListener(OnThemeClick);
         ThemeAvailableClicked.RemoveAllListeners();
     }
 
-
-    private void OnThemeButtonClick()
+    private void OnThemeClick()
     {
         if (_isBlockClick)
             return;
@@ -57,17 +64,24 @@ public class UITheme : MonoBehaviour
             ThemeAvailableClicked.Invoke(this, _themeData);
             return;
         }
+    }
+
+
+    private void OnBuyDefault()
+    {
+        if (_isBlockClick)
+            return;
 
         if (UIManager.COINS < _themeData.Price)
         {
             _isBlockClick = true;
 
-            Color defaultColor = CachedButton.image.color;
-            LeanTween.color(CachedButton.image.rectTransform, _errorColor, 0.2f)
+            Color defaultColor = _buyDefault.image.color;
+            LeanTween.color(_buyDefault.image.rectTransform, _errorColor, 0.2f)
                 .setEaseLinear()
                 .setOnComplete(() =>
                 {
-                    LeanTween.color(CachedButton.image.rectTransform, defaultColor, 0.2f)
+                    LeanTween.color(_buyDefault.image.rectTransform, defaultColor, 0.2f)
                     .setEaseLinear()
                     .setOnComplete(() => _isBlockClick = false);
                 });
@@ -76,9 +90,16 @@ public class UITheme : MonoBehaviour
         {
             UIManager.RemoveCoins(_themeData.Price);
             SetAvailable(true);
-            PlayerPrefsManager.AddUnlockedTheme(_themeData.Id);
+            YanGamesSaveManager.AddUnlockedTheme(_themeData.Id);
             ThemeAvailableClicked.Invoke(this, _themeData);
         }
+    }
+
+    private void OnBuyInApp()
+    {
+        if (_isBlockClick)
+            return;
+        YandexSDK.instance.ProcessPurchase(_themeData.PurchaseId);
     }
 
     public void SetData(ThemeData themeData, bool isAvailable)
@@ -99,9 +120,10 @@ public class UITheme : MonoBehaviour
             _themeText.gameObject.SetActive(true);
         }
 
-        _themePriceText.text = themeData.Price.ToString();
+        _defaultPriceText.text = themeData.Price.ToString();
+        _inAppPriceText.text = themeData.InAppPrice.ToString();
 
-        if (PlayerPrefsManager.HasUnlokedTheme(themeData.Id))
+        if (YanGamesSaveManager.HasUnlokedTheme(themeData.Id))
             isAvailable = true;
 
         SetAvailable(isAvailable);
@@ -111,8 +133,19 @@ public class UITheme : MonoBehaviour
 
     public void SetAvailable(bool available)
     {
-        _themePriceText.transform.parent.gameObject.SetActive(!available);
+        _buyDefault.gameObject.SetActive(!available);
+        _buyInApp.gameObject.SetActive(!available);
         _isAvaialble = available;
+    }
+
+    private void OnThemePurchaseDone(Purchase purchase)
+    {
+        if(purchase.productID == _themeData.PurchaseId)
+        {
+            SetAvailable(true);
+            YanGamesSaveManager.AddUnlockedTheme(_themeData.Id);
+            ThemeAvailableClicked.Invoke(this, _themeData);
+        }
     }
 }
 
