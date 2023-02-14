@@ -89,7 +89,7 @@ namespace Eiko.YaSDK
 
         public event Action onClose;
         public event Action onPurchaseInitialize;
-        public event Action onPurchaseInitializeFailed;
+        public event Action<string> onPurchaseInitializeFailed;
         public Queue<int> rewardedAdPlacementsAsInt = new Queue<int>();
         public Queue<string> rewardedAdsPlacements = new Queue<string>();
         private Action<ReviewCallback> actionReview;
@@ -390,9 +390,16 @@ namespace Eiko.YaSDK
 #if !UNITY_EDITOR
             InitPlayerData();
 #else
-            NoAutorized();
+            StartCoroutine(InitDataEmit());
 #endif
         }
+#if UNITY_EDITOR
+        private IEnumerator InitDataEmit()
+        {
+            yield return new WaitForSeconds(1);
+            NoAutorized();
+        }
+#endif
         public void OnPurchaseInitialize()
         {
             onPurchaseInitialize?.Invoke();
@@ -408,9 +415,9 @@ namespace Eiko.YaSDK
             }
         }
 
-        public void OnPurchaseInitializeFailed()
+        public void OnPurchaseInitializeFailed(string error)
         {
-            onPurchaseInitializeFailed?.Invoke();
+            onPurchaseInitializeFailed?.Invoke(error);
         }
         public event Action onGetPurchaseFailed;
         public void OnGetPurchaseFailed()

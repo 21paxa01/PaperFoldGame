@@ -241,7 +241,11 @@
                 sdk.getPayments().then(_payments => {
                     // Покупки доступны.
                     payments = _payments;
+                    console.log('Purchases initialized!');
+                    window.unityInstance.SendMessage('YandexSDK', 'OnPurchaseInitialize');
                 }).catch(err => {
+                    console.log(err);
+                    window.unityInstance.SendMessage('YandexSDK', 'OnPurchaseInitializeFailed', err);
                 });
             }
 

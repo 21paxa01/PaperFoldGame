@@ -26,8 +26,9 @@ namespace Eiko.YaSDK.Data
         }
     }
     public static class YandexPrefs
-    {        
+    {   
         private static YandexPrefsParams param;
+        private static IPrefsProvider prefs = new NoInitializePrefsProvider();
         public static InitAsyncOperation Init()
         { 
             param = new YandexPrefsParams();
@@ -38,6 +39,7 @@ namespace Eiko.YaSDK.Data
         public static void SetInt(string key, int value)
         {
             Debug.Log(key + " " + value);
+            prefs.SetInt(key, value);
             if (param.IsAutorised)
             {
                 param.score[key] = value;
@@ -50,7 +52,8 @@ namespace Eiko.YaSDK.Data
         }
         public static void SetString(string key, string value)
         {
-            Debug.Log(key+" " +value);
+            Debug.Log(key + " " + value);
+            prefs.SetString(key, value);
             if (param.IsAutorised)
             {
 
@@ -64,6 +67,8 @@ namespace Eiko.YaSDK.Data
         }
         public static int GetInt(string key)
         {
+            //Debug.Log(key + " " + value);
+            return prefs.GetInt(key);
             if (param.IsAutorised)
             {
                 if (param.score.TryGetValue(key, out var value))
@@ -78,6 +83,7 @@ namespace Eiko.YaSDK.Data
         }
         public static string GetString(string key)
         {
+            return prefs.GetString(key);
             if (param.IsAutorised)
             {
                 if (param.data.TryGetValue(key, out var value))
@@ -90,37 +96,127 @@ namespace Eiko.YaSDK.Data
                 return PlayerPrefs.GetString(key, "");
             }
         }
-    }
-    public class InitAsyncOperation : CustomYieldInstruction
-    {
-        public InitAsyncOperation(YandexPrefsParams param)
+        public class InitAsyncOperation : CustomYieldInstruction
         {
-            YandexSDK.instance.noAutorized += Instance_noAutorized;
-            YandexSDK.instance.onDataRecived += Instance_onDataRecived; ;
+            public InitAsyncOperation(YandexPrefsParams param)
+            {
+                YandexSDK.instance.noAutorized += Instance_noAutorized;
+                YandexSDK.instance.onDataRecived += Instance_onDataRecived; ;
+                this.param = param;
+            }
+
+            private void Instance_onDataRecived(GetDataCallback obj)
+            {
+                param.Fill(obj);
+                Callback(true);
+            }
+
+            private void Instance_noAutorized()
+            {
+                Callback(false);
+            }
+
+            private YandexPrefsParams param;
+            public bool IsSuccess;
+            public override bool keepWaiting => _keepWaiting;
+            private bool _keepWaiting = true;
+            private void Callback(bool success)
+            {
+                param.IsInit = true;
+                _keepWaiting = false;
+                param.IsAutorised = success;
+                IsSuccess = success;
+
+                if (success)
+                    prefs = new YandexPrefsProvider(param);
+                else
+                    prefs = new PlayerPrefsProvider();
+            }
+        }
+    }
+    
+    public interface IPrefsProvider {
+        public void SetInt(string key, int value);
+        public void SetString(string key, string value);
+        public int GetInt(string key);
+        public string GetString(string key);
+    }
+    public class NoInitializePrefsProvider : IPrefsProvider
+    {
+        private const string ErrorMessage = "YandexPrefs no init!";
+        public int GetInt(string key)
+        {
+            Debug.LogError(ErrorMessage);
+            return 0;
+        }
+
+        public string GetString(string key)
+        {
+            Debug.LogError(ErrorMessage);
+            return "";
+        }
+
+        public void SetInt(string key, int value)
+        {
+            Debug.LogError(ErrorMessage);
+        }
+
+        public void SetString(string key, string value)
+        {
+            Debug.LogError(ErrorMessage);
+        }
+    }
+    public class YandexPrefsProvider : IPrefsProvider
+    {
+        private YandexPrefsParams param;
+        public YandexPrefsProvider(YandexPrefsParams param)
+        {
             this.param = param;
         }
-
-        private void Instance_onDataRecived(GetDataCallback obj)
+            
+        public void SetInt(string key, int value)
         {
-            param.Fill(obj);
-            Callback(true);
+            param.score[key] = value;
+            YandexSDK.instance.SetPlayerScore(key, value);
         }
-
-        private void Instance_noAutorized()
+        public void SetString(string key, string value)
         {
-            Callback(false);
+
+            param.data[key] = value;
+            YandexSDK.instance.SetPlayerData(key, value);
         }
-
-        private YandexPrefsParams param;
-        public bool IsSuccess;
-        public override bool keepWaiting =>_keepWaiting;
-        private bool _keepWaiting = true;
-        private void Callback(bool success)
+        public int GetInt(string key)
         {
-            param.IsInit = true;
-            _keepWaiting = false;
-            param.IsAutorised = success;
-            IsSuccess = success;
+            if (param.score.TryGetValue(key, out var value))
+                return value;
+            else
+                return 0;
+        }
+        public string GetString(string key)
+        {
+            if (param.data.TryGetValue(key, out var value))
+                return value;
+            else
+                return "";
+        }
+    }
+    public class PlayerPrefsProvider: IPrefsProvider
+    {
+        public void SetInt(string key, int value)
+        {
+            PlayerPrefs.SetInt(key, value);   
+        }
+        public void SetString(string key, string value)
+        {
+            PlayerPrefs.SetString(key, value);   
+        }
+        public int GetInt(string key)
+        {
+            return PlayerPrefs.GetInt(key, 0);   
+        }
+        public string GetString(string key)
+        {
+            return PlayerPrefs.GetString(key, "");   
         }
     }
 

@@ -137,7 +137,7 @@ namespace JetSystems
         private void ShowCanvases()
         {
             Utils.CategoryHeader("Canvases");
-            Utils.ShowSerializedField(serializedObject, "LOADING", "Loading");
+            //Utils.ShowSerializedField(serializedObject, "LOADING", "Loading");
             Utils.ShowSerializedField(serializedObject, "MENU", "Menu");
             Utils.ShowSerializedField(serializedObject, "GAME", "Game");
             Utils.ShowSerializedField(serializedObject, "LEVELCOMPLETE", "Level Complete");

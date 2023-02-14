@@ -44,9 +44,6 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        YandexPrefs.Init();
-        YandexSDK.instance.InitializePurchases();
-        
         if (YanGamesSaveManager.GetAdOff())
             YandexSDK.instance.AdsOff();
 
@@ -80,10 +77,8 @@ public class LevelManager : MonoBehaviour
     private async void Start()
     {
         UpdateEarnedCoins();
-
-        UIManager.instance.SetLoading();
-
         await SpawnLevel();
+        StartUp.EndLoad();
 
         try
         {
