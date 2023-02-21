@@ -313,7 +313,11 @@ public class Paper : MonoBehaviour
         canFold = false;
 
         if (YandexSDK.instance != null)
+        {
             YandexSDK.instance.ShowInterstitial();
+        }
+
+            
 
         LeanTween.moveZ(gameObject, -20f, 0.7f).setEaseInBack().setOnComplete(() =>
         {

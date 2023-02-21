@@ -1,13 +1,10 @@
-﻿using System.Collections;
+﻿using Cysharp.Threading.Tasks;
+using Eiko.YaSDK;
+using JetSystems;
 using System.Collections.Generic;
 using UnityEngine;
-using JetSystems;
-using Eiko.YaSDK;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using Cysharp.Threading.Tasks;
-using Eiko.YaSDK.Data;
-using System.Threading.Tasks;
 
 public class LevelManager : MonoBehaviour
 {
@@ -48,6 +45,9 @@ public class LevelManager : MonoBehaviour
             YandexSDK.instance.AdsOff();
 
         level = YanGamesSaveManager.GetLevel();
+
+        if (YandexSDK.instance != null)
+            YandexSDK.instance.onInterstitialShown += OnOtherAdShown;
 
         Debug.Log("fdfdfd");
 
@@ -105,6 +105,7 @@ public class LevelManager : MonoBehaviour
     {
         earnedCoins = adCoinsCount;
         await SpawnNextLevel();
+        AppMetricaWeb.Event("45coinsAd");
     }
 
     private void IncrementThemeUnlockProgress(int starsCount)
@@ -148,8 +149,11 @@ public class LevelManager : MonoBehaviour
 
         // Просчитали индекс уровня
         int correctedLevelIndex = level;
+
         if (level > papers.Length - 1)
             correctedLevelIndex = Random.Range(0, papers.Length - 1);
+        else
+            AppMetricaWeb.Event($"lvl{level + 1}");
 
         // Выгружаем текущий левел если он есть и не равен 
         if (currentLoadedLevelIndex > -1 && nextLoadedLevelIndex > -1 && currentLoadedLevelIndex != nextLoadedLevelIndex)
@@ -257,6 +261,7 @@ public class LevelManager : MonoBehaviour
         }
 
         YandexSDK.instance.ShowRewarded("SkipLevel");
+        AppMetricaWeb.Event("skipAd");
     }
 
     private void DecreaseEarnedCoins()
@@ -270,6 +275,11 @@ public class LevelManager : MonoBehaviour
             earnedCoins = minCoinsCount;
 
         UIManager.instance?.UpdateEarnedCoins(earnedCoins, adCoinsCount);
+    }
+
+    private void OnOtherAdShown()
+    {
+        AppMetricaWeb.Event("otherAd");
     }
 }
 

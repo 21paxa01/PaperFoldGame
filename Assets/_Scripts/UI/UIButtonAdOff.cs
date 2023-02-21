@@ -54,6 +54,7 @@ public class UIButtonAdOff : MonoBehaviour
             gameObject.SetActive(false);
             YandexSDK.instance.AdsOff();
             YanGamesSaveManager.SetAdOff(true);
+            AppMetricaWeb.Event("buyDisable9Yn");
         }
     }
 }

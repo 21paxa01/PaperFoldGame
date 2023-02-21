@@ -1,9 +1,8 @@
+using Eiko.YaSDK;
 using JetSystems;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using Eiko.YaSDK;
 
 [RequireComponent(typeof(Button))]
 public class UITheme : MonoBehaviour
@@ -92,6 +91,7 @@ public class UITheme : MonoBehaviour
             SetAvailable(true);
             YanGamesSaveManager.AddUnlockedTheme(_themeData.Id);
             ThemeAvailableClicked.Invoke(this, _themeData);
+            AppMetricaWeb.Event("buyTheme300Gold");
         }
     }
 
@@ -135,6 +135,7 @@ public class UITheme : MonoBehaviour
     {
         _buyDefault.gameObject.SetActive(!available);
         _buyInApp.gameObject.SetActive(!available);
+        _buyDefault.transform.parent.gameObject.SetActive(!available);
         _isAvaialble = available;
     }
 
@@ -145,6 +146,7 @@ public class UITheme : MonoBehaviour
             SetAvailable(true);
             YanGamesSaveManager.AddUnlockedTheme(_themeData.Id);
             ThemeAvailableClicked.Invoke(this, _themeData);
+            AppMetricaWeb.Event("buyTheme2Yn");
         }
     }
 }

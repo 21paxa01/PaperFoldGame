@@ -141,7 +141,6 @@ namespace JetSystems
             Utils.ShowSerializedField(serializedObject, "MENU", "Menu");
             Utils.ShowSerializedField(serializedObject, "GAME", "Game");
             Utils.ShowSerializedField(serializedObject, "LEVELCOMPLETE", "Level Complete");
-            Utils.ShowSerializedField(serializedObject, "GAMEOVER", "Gameover");
             Utils.ShowSerializedField(serializedObject, "SETTINGS", "Settings");
             Utils.ShowSerializedField(serializedObject, "THEMES");
         }

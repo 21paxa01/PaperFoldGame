@@ -86,7 +86,6 @@ namespace JetSystems
         public CanvasGroup MENU;
         public CanvasGroup GAME;
         public CanvasGroup LEVELCOMPLETE;
-        public CanvasGroup GAMEOVER;
         public CanvasGroup SETTINGS;
         public UIThemesManager THEMES;
         public CanvasGroup[] canvases;
@@ -111,7 +110,7 @@ namespace JetSystems
                 instance = this;
 
             // Store the canvases
-            canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS, THEMES.CachedCanvasGroup};
+            canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, SETTINGS, THEMES.CachedCanvasGroup};
 
             // Get the coins amount
             
@@ -133,7 +132,6 @@ namespace JetSystems
             setMenuDelegate += SetMenu;
             setGameDelegate += SetGame;
             setLevelCompleteDelegate += SetLevelComplete;
-            setGameoverDelegate += SetGameover;
             setSettingsDelegate += SetSettings;
 
             // Progress bar events
@@ -161,6 +159,8 @@ namespace JetSystems
 
             // Update the level text
             levelText.UpdateLevelNumber(YanGamesSaveManager.GetLevel() + 1);
+
+            
         }
 
         public void SetLevelComplete(int starsCount = 3)
@@ -170,15 +170,6 @@ namespace JetSystems
 
             // Invoke the delegate
             onLevelCompleteSet?.Invoke(starsCount);
-        }
-
-        public void SetGameover()
-        {
-            gameState = GameState.GAMEOVER;
-            Utils.HideAllCGs(canvases, GAMEOVER);
-
-            // Invoke the delegate
-            onGameoverSet?.Invoke();
         }
 
         public void SetSettings()
@@ -231,6 +222,11 @@ namespace JetSystems
         public void UpdateProgressBar(float value)
         {
             
+        }
+
+        public void OnClickPlay()
+        {
+            AppMetricaWeb.Event("play");
         }
 
         private void UpdateCoins()
