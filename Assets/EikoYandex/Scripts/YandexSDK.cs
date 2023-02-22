@@ -133,6 +133,7 @@ namespace Eiko.YaSDK
         public void ShowInterstitial() {
             if(addsAvailable)
             {
+                AudioListener.pause = true;
                 StartCoroutine(WaitAddReload());
 #if !UNITY_EDITOR && UNITY_WEBGL
                 ShowFullscreenAd();
@@ -224,6 +225,7 @@ namespace Eiko.YaSDK
         /// </summary>
         public void OnInterstitialShown() {
             Time.timeScale = 1;
+            AudioListener.pause = false;
             onInterstitialShown?.Invoke();
         }
 
@@ -233,6 +235,7 @@ namespace Eiko.YaSDK
         /// <param name="error"></param>
         public void OnInterstitialError(string error) {
             Time.timeScale = 1;
+            AudioListener.pause = false;
             onInterstitialFailed?.Invoke(error);
         }
 
