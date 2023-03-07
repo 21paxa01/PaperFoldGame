@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0, y: 0, z: 0.707}
+    position: {x: 0, y: -1.5, z: 0.707}
     angle: 0
   foldingAngle: 180
   requiredFoldings: []
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0.707, y: 0, z: 0}
+    position: {x: 0.707, y: -1.5, z: 0}
     angle: 270
   foldingAngle: 180
   requiredFoldings: []
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: -0.707, y: 0, z: 0}
+    position: {x: -0.707, y: -1.5, z: 0}
     angle: 90
   foldingAngle: 180
   requiredFoldings:
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0, y: 0, z: -0.707}
+    position: {x: 0, y: -1.5, z: -0.707}
     angle: 180
   foldingAngle: 180
   requiredFoldings:
@@ -434,7 +434,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6732734689917052234}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9065355319280512245}
@@ -464,6 +464,7 @@ MonoBehaviour:
     _stickerEffect: {fileID: 0}
     _spriteImage: {fileID: 0}
     _spriteSize: {x: 0, y: 0, z: 0}
+    _spriteRotate: {x: 0, y: 0, z: 0, w: 0}
     _flipX: 0
     _flipY: 0
   paperBackRenderer: {fileID: 1971093656863575818}

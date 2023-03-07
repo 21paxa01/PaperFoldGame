@@ -136,18 +136,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2668339097939583829, guid: 54df82a2da46be042a4ab5ba40381d1a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2668339097939583829, guid: 54df82a2da46be042a4ab5ba40381d1a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2668339097939583829, guid: 54df82a2da46be042a4ab5ba40381d1a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2668339097939583829, guid: 54df82a2da46be042a4ab5ba40381d1a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
@@ -177,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2668339097939583830, guid: 54df82a2da46be042a4ab5ba40381d1a, type: 3}
       propertyPath: m_Name
-      value: Level29--2_Paper_Pentagon-R180 Variant
+      value: Level29--2_Paper_Pentagon-R180
       objectReference: {fileID: 0}
     - target: {fileID: 2668339097939583830, guid: 54df82a2da46be042a4ab5ba40381d1a, type: 3}
       propertyPath: m_IsActive

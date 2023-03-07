@@ -222,7 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0.0001, y: 0, z: 0.0001}
+    position: {x: 0.0001, y: -1.5, z: 0.0001}
     angle: 225
   foldingAngle: 180
   requiredFoldings: []
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: 0.708, y: 0, z: 0.708}
+    position: {x: 0.708, y: -1.5, z: 0.708}
     angle: -18.4
   foldingAngle: 180
   requiredFoldings: []
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmos: 1
   rotationAxis:
-    position: {x: -0.708, y: 0, z: -0.708}
+    position: {x: -0.708, y: -1.5, z: -0.708}
     angle: -251.6
   foldingAngle: 180
   requiredFoldings: []
@@ -382,7 +382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5553611264008784784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 177228235657686402}
