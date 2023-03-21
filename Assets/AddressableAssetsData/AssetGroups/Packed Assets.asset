@@ -16,7 +16,143 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: d8c17abaa8f35c242897e1cc58d321e9
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 716d94ae04c7ec64886010c2b55289e9
+    m_Address: Assets/_Prefabs/AdditionalPepers/Easy/0_Paper_Simple
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 642031071163db846a61bf8de667419f
+    m_Address: Assets/_Prefabs/AdditionalPepers/Hard/Paper-Diamond/Paper-Diamond-R45.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 33dcc3eceab5112418649d30266345d2
+    m_Address: Assets/_Prefabs/AdditionalPepers/Hard/Octogon-Diagonal-Triangle/Octogon-Diagonal-Triangle-R180.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7dcf4ac93aaf749ebaf69eaeb630ba87
+    m_Address: Assets/_Prefabs/AdditionalPepers/Hard/2_Paper_Pentagon/2_Paper_Pentagon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 54df82a2da46be042a4ab5ba40381d1a
+    m_Address: Assets/_Prefabs/AdditionalPepers/Hard/2_Paper_Pentagon/2_Paper_Pentagon-R180.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e76e1f6b71dc4724fb8ffb9a63a632e8
+    m_Address: Assets/_Prefabs/AdditionalPepers/Hard/Paper-Hard/Paper-Hard-R45.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a8e4ed50b627d94449c68d18a41ea127
+    m_Address: Assets/_Prefabs/AdditionalPepers/Hard/Paper-Hard/Paper-Hard.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5d60827ae4b666940a5048553097cb66
+    m_Address: Assets/_Prefabs/AdditionalPepers/Hard/Pentagon-Fold/Pentagon-Fold.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 12280fcb5edde9647a7451607f28f492
+    m_Address: Assets/_Prefabs/AdditionalPepers/Hard/Octogon-Diagonal-Triangle/Octogon-Diagonal-Triangle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 158dea118b3123e4fa18f129850e53ea
+    m_Address: Assets/_Prefabs/AdditionalPepers/Expert/Paper-Expert-1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 15c6d9341540f0442bc5e99da6e52755
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper-Expert-1 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7e26fbf9f5bd51645a6dfadca8032b44
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper-Expert-2 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ac9726c41d12deb4581b3b6686efd650
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper-Expert-3 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ace9eb242835ffb47ae421183126be70
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper-Expert-4 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e7a566e03d0376e45bca3f448cd9512d
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_5 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2cd0e20c6147eb8458ce38fddc622232
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_6 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2c62886739e8d274bba44f7222e06842
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_7 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5d34af39aa6620046952bb061b2c0912
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_8 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ddf0291934958a54bbd83836183be621
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_9 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c047cc0f7f5578647a8737d44b675d93
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_10 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 017b286d23452f94cbe446b7cacda51d
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_11 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4700d45be6c1fe04a91a8b0b727210c3
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_12 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1e21e923b1cce7e41b2811fecc465ae1
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_13 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 17dcb9571864eaf41a01af39ce507178
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_14 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 51b2a86c252ec674c83bfaf3ca10d1e0
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_15 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d44b0688d39258840ad6ac3ed7d3d905
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_16 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 333f01a444695a94aa3bcfa7949f88fa
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_17 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 423bac706c4d54b4099873dde517594f
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_18 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1f510d40df2f89b4597089b350ccc762
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_19 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a18051c8fc715a543a0afd965922649c
+    m_Address: Assets/_Prefabs/Level Papers/ExpertLevels/Paper_Expert_20 Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e4bafbaa6f8979b4bb0f782008750958
+    m_Address: Assets/_Prefabs/AdditionalPepers/Expert/Paper-Expert-3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 32238b6da4b3bd24b8424ead14a7c1b1
+    m_Address: Assets/_Prefabs/AdditionalPepers/Expert/Paper_Expert_16.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a370a6b9726d5524eb3c0ec8b9a69112
+    m_Address: Assets/_Prefabs/Level Papers/Part1 1 - 22/Level14--Octogon-Diagonal-Triangle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bdfee2fd5639ae54f9e6d7153aa5f8f5
+    m_Address: Assets/_Prefabs/AdditionalPepers/Expert/Paper_Expert_8.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c52a1433758912642bab74b36240d360, type: 2}
   m_SchemaSet:

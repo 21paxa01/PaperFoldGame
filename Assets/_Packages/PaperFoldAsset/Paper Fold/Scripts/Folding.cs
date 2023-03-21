@@ -39,6 +39,10 @@ public class Folding : MonoBehaviour
 
     public void SetFoldedState(bool folded)
     {
+        if (folded)
+        {
+            Debug.Log($"Folding {gameObject.name} folded");
+        }
         for(int i = 0; i < requiredFoldings.Length; i++)
         {
             requiredFoldings[i].gameObject.SetActive(folded);   
@@ -61,8 +65,6 @@ public class Folding : MonoBehaviour
     {
         return rotationAxis.position;
     }
-
-
 
     public void SetBackFoldedVerticesIndices(int[] foldedVerticesIndices)
     {

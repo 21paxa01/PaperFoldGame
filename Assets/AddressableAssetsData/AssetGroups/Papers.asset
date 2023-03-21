@@ -89,10 +89,6 @@ MonoBehaviour:
     m_Address: L9
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 009a18f4ad266cb4c9d1862c788e3305
-    m_Address: L14
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 2690eef4ba64b714d8aba14752908884
     m_Address: L15
     m_ReadOnly: 0

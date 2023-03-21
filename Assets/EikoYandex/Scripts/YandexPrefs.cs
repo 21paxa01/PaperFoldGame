@@ -181,7 +181,6 @@ namespace Eiko.YaSDK.Data
         }
         public void SetString(string key, string value)
         {
-
             param.data[key] = value;
             YandexSDK.instance.SetPlayerData(key, value);
         }

@@ -8,6 +8,7 @@ public class DetectFoldings : MonoBehaviour, IPointerUpHandler, IPointerClickHan
     [Header(" Settings ")]
     [SerializeField] private LayerMask detectLayers;
     [SerializeField] private bool playTesting;
+    [SerializeField] private bool _includeInactiveInSearch = true;
     Camera mainCamera;
 
     private void Awake()
@@ -40,7 +41,7 @@ public class DetectFoldings : MonoBehaviour, IPointerUpHandler, IPointerClickHan
         if (hit.collider == null)
             return;
 
-        Folding[] detectedFoldings = FindObjectsOfType<Folding>(true);
+        Folding[] detectedFoldings = FindObjectsOfType<Folding>(_includeInactiveInSearch);
 
         int closestFoldingIndex = -1;
         float minDistance = 5000;

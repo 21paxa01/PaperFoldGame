@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Eiko.YaSDK.Data;
 using UnityEngine;
 
 namespace Eiko.YaSDK
@@ -134,6 +135,7 @@ namespace Eiko.YaSDK
             if(addsAvailable)
             {
                 AudioListener.pause = true;
+                AudioListener.volume = 0;
                 StartCoroutine(WaitAddReload());
 #if !UNITY_EDITOR && UNITY_WEBGL
                 ShowFullscreenAd();
@@ -162,9 +164,9 @@ namespace Eiko.YaSDK
             rewardedAdsPlacements.Enqueue(placement);
             Time.timeScale = 0;
             AudioListener.pause = true;
+            AudioListener.volume = 0;
 #if UNITY_EDITOR
             editorCanvas.OpenReward(placemantId);
-            
 #endif
         }
 
@@ -226,6 +228,7 @@ namespace Eiko.YaSDK
         public void OnInterstitialShown() {
             Time.timeScale = 1;
             AudioListener.pause = false;
+            AudioListener.volume = 1;
             onInterstitialShown?.Invoke();
         }
 
@@ -236,6 +239,7 @@ namespace Eiko.YaSDK
         public void OnInterstitialError(string error) {
             Time.timeScale = 1;
             AudioListener.pause = false;
+            AudioListener.volume = 1;
             onInterstitialFailed?.Invoke(error);
         }
 
@@ -265,6 +269,7 @@ namespace Eiko.YaSDK
         /// <param name="placement"></param>
         public void OnRewardedClose(int placement) {
             AudioListener.pause = false;
+            AudioListener.volume = 1;
             Time.timeScale = 1;
             onRewardedAdClosed?.Invoke(placement);
         }
@@ -276,6 +281,7 @@ namespace Eiko.YaSDK
         public void OnRewardedError(string placement) {
             Time.timeScale = 1;
             AudioListener.pause = false;
+            AudioListener.volume = 1;
             onRewardedAdError?.Invoke(placement);
             rewardedAdsPlacements.Clear();
             rewardedAdPlacementsAsInt.Clear();

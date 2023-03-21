@@ -1,10 +1,12 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using Eiko.YaSDK;
 using JetSystems;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
@@ -168,7 +170,10 @@ public class LevelManager : MonoBehaviour
             currentLoadedLevelIndex = correctedLevelIndex;
         }
 
-        currentPaper = Instantiate(await LoadPaperLevel(currentLoadedLevelIndex), transform);
+        var levelPrefab = await LoadPaperLevel(currentLoadedLevelIndex);
+        if (levelPrefab == null)
+            throw new InvalidOperationException($"Loading of level with index {currentLoadedLevelIndex}");
+        currentPaper = Instantiate(levelPrefab, transform);
         onPaperInstantiated?.Invoke(currentPaper);
 
         // Загружаем в фоне следующий

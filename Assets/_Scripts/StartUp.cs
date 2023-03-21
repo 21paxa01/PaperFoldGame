@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Eiko.YaSDK;
 using Eiko.YaSDK.Data;
+using JetSystems;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class StartUp : MonoBehaviour
 
     [SerializeField] private GameObject LoadScreen;
     [SerializeField] private Image loadingImage;
+    [SerializeField] private int _levelOverride;
 
     private const int gamePlaySceneIndex = 1;
 
@@ -22,12 +24,14 @@ public class StartUp : MonoBehaviour
         YandexSDK.instance.InitializePurchases();
 
         await YandexPrefs.Init();
+        if(_levelOverride > 0)
+        YanGamesSaveManager.SaveLevel(_levelOverride - 1);
         await SceneManager.LoadSceneAsync(gamePlaySceneIndex);
 
     }
 
     /// <summary>
-    /// ”ничтожает загрузочный экран
+    /// ?????????? ??????????? ?????
     /// </summary>
     public static void EndLoad()
     {

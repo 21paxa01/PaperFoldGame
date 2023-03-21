@@ -129,10 +129,7 @@ namespace JetSystems
         {
             YandexPrefs.SetInt(PrefsKeys.ITEM_UNLOCKED_KEY + itemIndex, state); 
         }
-
-
-
-
+        
         public static int GetSoundState()
         { 
             return YandexPrefs.GetInt(PrefsKeys.SOUND_KEY); 

@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using _Packages.PaperFoldAsset.Paper_Fold.Scripts;
+using _Packages.PaperFoldAsset.Paper_Fold.Scripts.RegexCombinationBuilder;
 using UnityEngine;
 using JetSystems;
 using Eiko.YaSDK;
 
 public class Paper : MonoBehaviour
 {
+    [HideInInspector] public PossibleCombinationBuilder Builder;
+    [HideInInspector] public RegexCombinationAnalyzer RegexAnalyzer;
     public delegate void OnPaperStateChanged();
     public OnPaperStateChanged onPaperStateChanged;
 
@@ -23,8 +27,8 @@ public class Paper : MonoBehaviour
 
     [Header(" Settings ")]
     [SerializeField] private bool _test;
-    [SerializeField] private bool _decalPaper;
-    [SerializeField] private Transform foldingsParent;
+    [SerializeField] private bool _decalPaper; 
+    public Transform foldingsParent;
     private Folding[] foldings;
     List<Folding> foldedFoldings = new List<Folding>();
     bool canFold = true;
@@ -176,7 +180,6 @@ public class Paper : MonoBehaviour
 
                 foldedFoldings.Remove(currentFolding);
             }
-            
         }
 
         canFold = true;
@@ -277,6 +280,18 @@ public class Paper : MonoBehaviour
 
     private void CheckForLevelComplete()
     {
+        if (Builder != null && Builder.Used && Builder.IsCorrect(foldedFoldings))
+        {
+            StartCoroutine(SetLevelComplete());
+            return;
+        }
+
+        if (RegexAnalyzer != null && RegexAnalyzer.IsCorrect(foldedFoldings))
+        {
+            StartCoroutine(SetLevelComplete());
+            return;
+        }
+        
         for (int i = 0; i < possibleCombinations.Length; i++)
         {
             if (MatchPossibleCombination(possibleCombinations[i]))
@@ -316,9 +331,7 @@ public class Paper : MonoBehaviour
         {
             YandexSDK.instance.ShowInterstitial();
         }
-
-            
-
+        
         LeanTween.moveZ(gameObject, -20f, 0.7f).setEaseInBack().setOnComplete(() =>
         {
 
