@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Eiko.YaSDK;
 using Cysharp.Threading.Tasks;
+using UI;
 
 namespace JetSystems
 {
@@ -106,10 +107,8 @@ namespace JetSystems
 
         private void Awake()
         {
-            if (instance == null)
-                instance = this;
-
-            // Store the canvases
+            instance = this;
+                // Store the canvases
             canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, SETTINGS, THEMES.CachedCanvasGroup};
 
             // Get the coins amount
@@ -157,10 +156,9 @@ namespace JetSystems
 
             uiThemeUnlcokProgress.gameObject.SetActive(false);
 
-            // Update the level text
-            levelText.UpdateLevelNumber(YanGamesSaveManager.GetLevel() + 1);
-
-            
+            var level = YanGamesSaveManager.GetLevel() + 1;
+            levelText.UpdateLevelNumber(level);
+            FindObjectOfType<UIExpertLevel>().UpdateLevel(level);
         }
 
         public void SetLevelComplete(int starsCount = 3)

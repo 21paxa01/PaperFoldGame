@@ -15,6 +15,17 @@ public class LevelLangSwitcher : MonoBehaviour
 
     private void Start()
     {
+        var level = YanGamesSaveManager.GetLevel() + 1;
+        UpdateLevelNumber(level);
+    }
+
+    public static bool IsCurrentLevelExpert(int level)
+    {
+        return (float) level % 10 == 0;
+    }
+
+    public void UpdateLevelNumber(int level)
+    {
         switch (YandexSDK.instance.Lang)
         {
             case "ru":
@@ -25,10 +36,7 @@ public class LevelLangSwitcher : MonoBehaviour
                 levelLabel = $"{en}";
                 break;
         }
-
-        var level = YanGamesSaveManager.GetLevel();
-        
-        if (level % 10 == 0)
+        if (IsCurrentLevelExpert(level))
         {
             switch (YandexSDK.instance.Lang)
             {
@@ -40,12 +48,6 @@ public class LevelLangSwitcher : MonoBehaviour
                     break;
             }
         }
-        
-        UpdateLevelNumber(level);
-    }
-
-    public void UpdateLevelNumber(int level)
-    {
         text.text = $"{levelLabel} {level}";
     }    
 }

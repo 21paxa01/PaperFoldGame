@@ -1,4 +1,5 @@
-﻿using JetSystems;
+﻿using System;
+using JetSystems;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,14 +13,19 @@ namespace UI
 
         private void Start()
         {
-            if ((YanGamesSaveManager.GetLevel() - 1) % 10 == 0)
-            {
+            Hide();
+        }
+
+        public void UpdateLevel(int level)
+        {
+            if (IsExpertLevel(level))
                 Show();
-            }
-            else
-            {
-                Hide();
-            }
+            else Hide();
+        }
+
+        private bool IsExpertLevel(int level)
+        {
+            return LevelLangSwitcher.IsCurrentLevelExpert(level);
         }
 
         private void OnPlaying()

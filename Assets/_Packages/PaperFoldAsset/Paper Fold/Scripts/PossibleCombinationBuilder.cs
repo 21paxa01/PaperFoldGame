@@ -45,14 +45,14 @@ namespace _Packages.PaperFoldAsset.Paper_Fold.Scripts
         private bool MatchAnyOrder(CombinationSequence expected, IEnumerable<Folding> actual)
         {
             Assert.AreEqual(expected.Length, actual.Count());
-            var foldings = new List<Folding>(expected.Foldings);
-            foreach (var folding in expected.Foldings)
+            var actualFoldings = new List<Folding>(actual);
+            foreach (var expectedFolding in expected.Foldings)
             {
-                if (foldings.Contains(folding) == false)
+                if (actualFoldings.Contains(expectedFolding) == false)
                 {
                     return false;
                 }
-                foldings.Remove(folding);
+                actualFoldings.Remove(expectedFolding);
             }
 
             return true;

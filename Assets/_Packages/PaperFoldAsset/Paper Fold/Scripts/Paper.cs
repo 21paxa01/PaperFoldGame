@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using _Packages.PaperFoldAsset.Paper_Fold.Scripts;
 using _Packages.PaperFoldAsset.Paper_Fold.Scripts.RegexCombinationBuilder;
 using UnityEngine;
 using JetSystems;
 using Eiko.YaSDK;
+using Testing;
 
 public class Paper : MonoBehaviour
 {
@@ -47,7 +49,10 @@ public class Paper : MonoBehaviour
     [SerializeField] private float foldingDuration;
 
     [Header(" Solution ")]
-    [SerializeField] private PossibleCombination[] possibleCombinations;
+    [SerializeField]
+    public PossibleCombination[] possibleCombinations;
+
+    public IEnumerable<Folding> Foldings => foldingsParent.Cast<Transform>().Select(x => x.GetComponent<Folding>());
 
     private void Awake()
     {
@@ -280,6 +285,7 @@ public class Paper : MonoBehaviour
 
     private void CheckForLevelComplete()
     {
+        WriteTestingInfo();
         if (Builder != null && Builder.Used && Builder.IsCorrect(foldedFoldings))
         {
             StartCoroutine(SetLevelComplete());
@@ -302,6 +308,14 @@ public class Paper : MonoBehaviour
         }
 
         StartCoroutine(SetWrongFoldPaper());
+    }
+
+    private void WriteTestingInfo()
+    {
+        var message = foldedFoldings
+            .Select(x => x.name)
+            .Aggregate((report, element) => report + "|" + element);
+        LastCombinationViewer.Write(name + ":" + message);
     }
 
     private bool MatchPossibleCombination(PossibleCombination foldingsCombination)

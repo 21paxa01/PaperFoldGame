@@ -145,7 +145,7 @@ public class LevelManager : MonoBehaviour
         unlockableThemesQueue.Dequeue();
     }
 
-    private async UniTask SpawnLevel()
+    public async UniTask SpawnLevel()
     {
         transform.Clear();
 
@@ -180,7 +180,7 @@ public class LevelManager : MonoBehaviour
         LoadNextLevel(level + 1).Forget();
     }
 
-    private async UniTask LoadNextLevel(int level)
+    public async UniTask LoadNextLevel(int level)
     {
         int correctedLevelIndex = level;
         if (level > papers.Length - 1)
