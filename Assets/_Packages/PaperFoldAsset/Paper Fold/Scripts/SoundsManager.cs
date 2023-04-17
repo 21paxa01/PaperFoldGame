@@ -1,5 +1,9 @@
-﻿using JetSystems;
+﻿using System;
+using System.Net;
+using Agava.WebUtility;
+using JetSystems;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SoundsManager : MonoBehaviour
 {
@@ -9,13 +13,18 @@ public class SoundsManager : MonoBehaviour
     [SerializeField] private AudioSource paperSoundStickerEffect;
     [SerializeField] private AudioSource levelCompleteSound;
     Paper currentPaper;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         //UIManager.onGameSet += StoreCurrentPaper;
         UIManager.onLevelCompleteSet += ResetCurrentPaper;
         LevelManager.onPaperInstantiated += StoreCurrentPaper;
+    }
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        AudioListener.volume = pauseStatus ? 0 : 1;
+        AudioListener.pause = pauseStatus;
     }
 
     private void OnDestroy()

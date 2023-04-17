@@ -79,5 +79,12 @@ namespace UI
             float clamped = Mathf.Clamp(value, min, max);
             _sizeCurve.MoveKey(index, new Keyframe(time, clamped));
         }
+
+        public void Stop()
+        {
+            if(_showing != null)
+                StopCoroutine(_showing);
+            _image.enabled = false;
+        }
     }
 }

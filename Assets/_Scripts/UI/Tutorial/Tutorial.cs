@@ -42,9 +42,20 @@ namespace UI
 
         private void OnPaperInstantiated(Paper paper)
         {
+            paper.onPaperStateChanged += OnPaperStateChanged;
             DestroyOld();
             _paper = paper;
             CreateAnimationInstances();
+        }
+
+        private void OnPaperStateChanged()
+        {
+            OnDisable();
+            foreach (var created in _created)
+            {
+                _created[created.Key].Stop();
+            }
+            DestroyOld();
         }
 
         private IEnumerator ShowAnimationOverTime()
@@ -77,8 +88,8 @@ namespace UI
             foreach (KeyValuePair<Folding, TutorialAnimation> keyValuePair in _created)
             {
                 Destroy(keyValuePair.Value.gameObject);
-                _created.Remove(keyValuePair.Key);
             }
+            _created.Clear();
         }
 
         private void CreateAnimationInstances()

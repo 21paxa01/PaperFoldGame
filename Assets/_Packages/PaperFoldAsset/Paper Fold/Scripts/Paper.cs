@@ -186,7 +186,7 @@ public class Paper : MonoBehaviour
                 foldedFoldings.Remove(currentFolding);
             }
         }
-
+    
         canFold = true;
 
         onPaperStateChanged?.Invoke();
