@@ -162,6 +162,7 @@ namespace JetSystems
 
         public void SetMenu()
         {
+            YandexSDK.instance.ShowInterstitial();
             gameState = GameState.MENU;
             Utils.HideAllCGs(canvases, MENU);
 
@@ -171,6 +172,7 @@ namespace JetSystems
 
         public void SetGame()
         {
+            YandexSDK.instance.ShowInterstitial();
             gameState = GameState.GAME;
             Utils.HideAllCGs(canvases, GAME);
 
@@ -186,6 +188,7 @@ namespace JetSystems
 
         public void SetLevelComplete(int starsCount = 3)
         {
+            YandexSDK.instance.ShowInterstitial();
             gameState = GameState.LEVELCOMPLETE;
             Utils.HideAllCGs(canvases, LEVELCOMPLETE);
 
@@ -195,6 +198,7 @@ namespace JetSystems
 
         public void SetSettings()
         {
+            YandexSDK.instance.ShowInterstitial();
             gameState = GameState.SETTINGS;
             Utils.EnableCG(MENU);
             Utils.HideAllCGs(canvases, SETTINGS);
@@ -205,6 +209,7 @@ namespace JetSystems
 
         public void SetShop()
         {
+            YandexSDK.instance.ShowInterstitial();
             gameState = GameState.SHOP;
             Utils.HideAllCGs(canvases, THEMES.CachedCanvasGroup);
         }
@@ -262,6 +267,11 @@ namespace JetSystems
 
             if (levelCompleteEarnedCoinsTextAd != null)
                 levelCompleteEarnedCoinsTextAd.text = $"+{earnedCoinsWithAd}";
+        }
+
+        public void ShowInterstitial()
+        {
+            YandexSDK.instance.ShowInterstitial();
         }
 
         #region Static Methods
