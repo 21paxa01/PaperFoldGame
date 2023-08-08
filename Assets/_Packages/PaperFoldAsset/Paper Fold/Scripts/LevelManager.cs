@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using Eiko.YaSDK;
 using JetSystems;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -14,22 +15,24 @@ public class LevelManager : MonoBehaviour
 
 
     public delegate void OnPaperInstantiated(Paper paper);
+
     public static OnPaperInstantiated onPaperInstantiated;
 
     public delegate void OnThemeUnlocked(ThemeData themeData, int themeUnlockLevelStep = 0);
+
     public static OnThemeUnlocked themeUnlocked;
 
     public delegate void ThemeUnlockProgressUpdated(int themeUnlockProgress, int themeUnlcokLevleStep);
+
     public static ThemeUnlockProgressUpdated themeUnlockProgressUpdated;
 
-    [Header(" Settings ")]
-    [SerializeField] private int adCoinsCount = 45;
+    [Header(" Settings ")] [SerializeField]
+    private int adCoinsCount = 45;
+
     [SerializeField] private int maxCoinsCount = 15;
     [SerializeField] private int minCoinsCount = 5;
-    [Min(1)]
-    [SerializeField] private int takenCoinsCount = 5;
-    [Min(1)]
-    [SerializeField] private int unlockThemeLevelStep;
+    [Min(1)] [SerializeField] private int takenCoinsCount = 5;
+    [Min(1)] [SerializeField] private int unlockThemeLevelStep;
     [SerializeField] private AssetReference[] papers;
     [SerializeField] private ThemeData[] unlockableThemes;
 
@@ -51,8 +54,6 @@ public class LevelManager : MonoBehaviour
         if (YandexSDK.instance != null)
             YandexSDK.instance.onInterstitialShown += OnOtherAdShown;
 
-        Debug.Log("fdfdfd");
-
         UIManager.onNextLevelButtonPressed += SpawnNextLevel;
         UIManager.onNextLevelButtonPressedWithAd += SpawnNextLevelWithAdditionalCoins;
         UIManager.wrongPaperFolded += DecreaseEarnedCoins;
@@ -66,7 +67,6 @@ public class LevelManager : MonoBehaviour
             unlockableThemesQueue.Enqueue(unlockableTheme);
         }
     }
-
 
     private void OnDestroy()
     {
@@ -86,23 +86,22 @@ public class LevelManager : MonoBehaviour
         {
             UIManager.instance.SetMenu();
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
             Debug.LogError(ex.Message);
         }
 
         YandexSDK.instance.ShowInterstitial();
     }
-
+    
+#if UNITY_EDITOR
     private void Update()
     {
-#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.C))
             SpawnNextLevel().Forget();
-#endif
-
     }
-
+#endif
+    
     private async UniTask SpawnNextLevelWithAdditionalCoins()
     {
         earnedCoins = adCoinsCount;
@@ -121,11 +120,11 @@ public class LevelManager : MonoBehaviour
             IncrementThemeUnlockProgress(starsCount);
             return;
         }
-            
+
         int unlockThemeProgress = YanGamesSaveManager.GetUnlockThemeProgress();
         unlockThemeProgress++;
 
-        if(unlockThemeProgress >= unlockThemeLevelStep)
+        if (unlockThemeProgress >= unlockThemeLevelStep)
         {
             themeUnlocked?.Invoke(unlockableThemesQueue.Peek(), unlockThemeLevelStep);
             YanGamesSaveManager.AddUnlockedTheme(unlockableThemesQueue.Peek().Id);
@@ -158,7 +157,8 @@ public class LevelManager : MonoBehaviour
             AppMetricaWeb.Event($"lvl{level + 1}");
 
         // Выгружаем текущий левел если он есть и не равен 
-        if (currentLoadedLevelIndex > -1 && nextLoadedLevelIndex > -1 && currentLoadedLevelIndex != nextLoadedLevelIndex)
+        if (currentLoadedLevelIndex > -1 && nextLoadedLevelIndex > -1 &&
+            currentLoadedLevelIndex != nextLoadedLevelIndex)
         {
             UnloadLevelPaper(currentLoadedLevelIndex);
             currentLoadedLevelIndex = nextLoadedLevelIndex;
@@ -170,9 +170,12 @@ public class LevelManager : MonoBehaviour
             currentLoadedLevelIndex = correctedLevelIndex;
         }
 
-        var levelPrefab = await LoadPaperLevel(currentLoadedLevelIndex);
+        Paper levelPrefab = await LoadPaperLevel(currentLoadedLevelIndex);
         if (levelPrefab == null)
+        {
             throw new InvalidOperationException($"Loading of level with index {currentLoadedLevelIndex}");
+        }
+
         currentPaper = Instantiate(levelPrefab, transform);
         onPaperInstantiated?.Invoke(currentPaper);
 
@@ -203,7 +206,7 @@ public class LevelManager : MonoBehaviour
         if (papers[level].Asset is GameObject)
             paperGameObject = papers[level].Asset as GameObject;
 
-        if(paperGameObject == null)
+        if (paperGameObject == null)
         {
             AsyncOperationHandle<GameObject> paperHandler = papers[level].LoadAssetAsync<GameObject>();
             paperGameObject = await paperHandler.Task;

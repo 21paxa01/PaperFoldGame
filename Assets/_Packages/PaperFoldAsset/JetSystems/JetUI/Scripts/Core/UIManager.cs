@@ -8,12 +8,27 @@ using UI;
 
 namespace JetSystems
 {
-	public class UIManager : MonoBehaviour
-	{
-        public enum Orientation { Portrait, Landscape }
+    public class UIManager : MonoBehaviour
+    {
+        public enum Orientation
+        {
+            Portrait,
+            Landscape
+        }
+
         public Orientation orientation;
 
-        public enum GameState { MENU, GAME, LEVELCOMPLETE, GAMEOVER, SETTINGS, SHOP, LOADING }
+        public enum GameState
+        {
+            MENU,
+            GAME,
+            LEVELCOMPLETE,
+            GAMEOVER,
+            SETTINGS,
+            SHOP,
+            LOADING
+        }
+
         public static GameState gameState;
 
         #region Static Variables
@@ -26,58 +41,72 @@ namespace JetSystems
         #region Delegates
 
         public delegate void SetMenuDelegate();
+
         public static SetMenuDelegate setMenuDelegate;
 
         public delegate void OnMenuSet();
+
         public static OnMenuSet onMenuSet;
 
         public delegate void OnLoadingSet();
+
         public static OnLoadingSet onLoadingSet;
 
 
         public delegate void SetGameDelegate();
+
         public static SetGameDelegate setGameDelegate;
 
         public delegate void OnGameSet();
+
         public static OnGameSet onGameSet;
 
 
-
         public delegate void SetLevelCompleteDelegate(int starsCount = 3);
+
         public static SetLevelCompleteDelegate setLevelCompleteDelegate;
 
         public delegate void OnLevelCompleteSet(int starsCount = 3);
+
         public static OnLevelCompleteSet onLevelCompleteSet;
 
         public delegate void WrongPaperFolded();
+
         public static WrongPaperFolded wrongPaperFolded;
 
 
         public delegate void SetGameoverDelegate();
+
         public static SetGameoverDelegate setGameoverDelegate;
 
         public delegate void OnGameoverSet();
+
         public static OnGameoverSet onGameoverSet;
 
 
         public delegate void SetSettingsDelegate();
+
         public static SetSettingsDelegate setSettingsDelegate;
 
         public delegate void OnSettingsSet();
+
         public static OnSettingsSet onSettingsSet;
 
 
-
         public delegate void UpdateProgressBarDelegate(float value);
+
         public static UpdateProgressBarDelegate updateProgressBarDelegate;
 
         public delegate UniTask OnNextLevelButtonPressed();
+
         public static OnNextLevelButtonPressed onNextLevelButtonPressed;
 
         public delegate UniTask OnNextLevelButtonPressedWithAd();
+
         public static OnNextLevelButtonPressedWithAd onNextLevelButtonPressedWithAd;
 
         public delegate void OnRetryButtonPressed();
+
         public static OnRetryButtonPressed onRetryButtonPressed;
 
         #endregion
@@ -108,22 +137,16 @@ namespace JetSystems
         private void Awake()
         {
             instance = this;
-                // Store the canvases
-            canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, SETTINGS, THEMES.CachedCanvasGroup};
-
-            // Get the coins amount
-            
+            // Store the canvases
+            canvases = new CanvasGroup[] { MENU, GAME, LEVELCOMPLETE, SETTINGS, THEMES.CachedCanvasGroup };
         }
 
-        // Start is called before the first frame update
-        void Start()
-		{
+        private void Start()
+        {
             COINS = YanGamesSaveManager.GetCoins();
             UpdateCoins();
-
-            // Configure the delegates
             ConfigureDelegates();
-		}
+        }
 
         private void ConfigureDelegates()
         {
@@ -194,7 +217,6 @@ namespace JetSystems
 
         public void NextLevelButtonCallback()
         {
-            // Invoke the next button delegate
             onNextLevelButtonPressed?.Invoke();
         }
 
@@ -207,8 +229,6 @@ namespace JetSystems
         public void RetryButtonCallback()
         {
             SetGame();
-
-            // Invoke the retry button delegate
             onRetryButtonPressed?.Invoke();
         }
 
@@ -219,7 +239,6 @@ namespace JetSystems
 
         public void UpdateProgressBar(float value)
         {
-            
         }
 
         public void OnClickPlay()
@@ -261,7 +280,7 @@ namespace JetSystems
 
         public static void RemoveCoins(int amount)
         {
-            if(amount < 0 || amount > COINS)
+            if (amount < 0 || amount > COINS)
             {
                 Debug.LogError("Removed coins value is less then 0 or greater then COINS");
                 return;
@@ -270,7 +289,6 @@ namespace JetSystems
             COINS -= amount;
             instance.UpdateCoins();
             YanGamesSaveManager.SaveCoins(COINS);
-                
         }
 
         public static bool IsGame()
@@ -290,6 +308,4 @@ namespace JetSystems
 
         #endregion
     }
-
-
 }

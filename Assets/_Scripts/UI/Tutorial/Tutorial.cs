@@ -94,7 +94,7 @@ namespace UI
 
         private void CreateAnimationInstances()
         {
-            Folding[] foldings = _paper.Foldings.ToArray();
+            Folding[] foldings = _paper.Folding.ToArray();
             _created = new Dictionary<Folding, TutorialAnimation>(foldings.Length);
             
             for (var i = 0; i < foldings.Length; i++)

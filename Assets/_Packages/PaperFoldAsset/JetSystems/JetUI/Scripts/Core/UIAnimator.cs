@@ -15,22 +15,15 @@ namespace JetSystems
 
         public AudioSource[] starSounds;
 
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             UIManager.onLevelCompleteSet += StartLevelCompleteAnimation;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         public void StartLevelCompleteAnimation(int starsCount)
         {
             // Start the level complete animation coroutine
-           StartCoroutine(LevelCompleteAnimationCoroutine(starsCount));
+            StartCoroutine(LevelCompleteAnimationCoroutine(starsCount));
         }
 
         IEnumerator LevelCompleteAnimationCoroutine(int starsCount)
@@ -59,7 +52,8 @@ namespace JetSystems
 
             // 3. Scale the level complete container
             float levelCompleteContainerDuration = 0.3f;
-            LeanTween.scale(levelCompleteTextContainer, Vector2.one, levelCompleteContainerDuration).setEase(LeanTweenType.easeSpring);
+            LeanTween.scale(levelCompleteTextContainer, Vector2.one, levelCompleteContainerDuration)
+                .setEase(LeanTweenType.easeSpring);
             yield return new WaitForSeconds(levelCompleteContainerDuration);
 
             // 4. Enable the amount of stars
@@ -73,18 +67,12 @@ namespace JetSystems
                 yield return new WaitForSeconds(bumpDuration);
             }
 
-
-            
-
             LeanTween.scale(nextButtonAd, Vector2.one, bumpDuration).setEase(LeanTweenType.easeSpring);
-            LeanTween.delayedCall(0.3f, () =>
+            LeanTween.delayedCall(1.5f, () =>
             {
                 // 5. Enable the next button
                 LeanTween.scale(nextButton, Vector2.one, bumpDuration).setEase(LeanTweenType.easeSpring);
             });
-
-
-            
         }
     }
 }

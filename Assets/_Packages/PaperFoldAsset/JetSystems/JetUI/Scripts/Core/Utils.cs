@@ -11,17 +11,15 @@ using UnityEngine.UI;
 
 namespace JetSystems
 {
-
-
     public static class Utils
     {
-
         public static Vector2 GetScreenCenter()
         {
             return new Vector2((float)Screen.width / 2, (float)Screen.height / 2);
         }
 
-        public static Transform GetClosestTransformInArray(Transform source, Transform[] objectsArray, float limitDistance = 50000)
+        public static Transform GetClosestTransformInArray(Transform source, Transform[] objectsArray,
+            float limitDistance = 50000)
         {
             int closestIndex = -1;
             float closestDistance = limitDistance;
@@ -42,7 +40,8 @@ namespace JetSystems
             return objectsArray[closestIndex];
         }
 
-        public static int GetClosestVectorIndexInArray(Vector3 source, Vector3[] objectsArray, float limitDistance = 50000)
+        public static int GetClosestVectorIndexInArray(Vector3 source, Vector3[] objectsArray,
+            float limitDistance = 50000)
         {
             int closestIndex = -1;
             float closestDistance = limitDistance;
@@ -70,12 +69,18 @@ namespace JetSystems
             {
                 transforms[i] = colliders[i].transform;
             }
+
             return transforms;
         }
 
         public static Texture2D LoadTexture(string path)
         {
-            if (!File.Exists(path)) { Debug.Log("File does not exist "); return null; }
+            if (!File.Exists(path))
+            {
+                Debug.Log("File does not exist ");
+                return null;
+            }
+
             byte[] bytes = File.ReadAllBytes(path);
             Texture2D result = new Texture2D(1, 1);
             FileInfo finfo = new FileInfo(path);
@@ -142,7 +147,8 @@ namespace JetSystems
             }
             else if (amount >= 1000 && amount < 1000000)
             {
-                formattedAmount = (amount / 1000).ToString() + " " + amount.ToString().Substring(amount.ToString().Length - 3, 3);
+                formattedAmount = (amount / 1000).ToString() + " " +
+                                  amount.ToString().Substring(amount.ToString().Length - 3, 3);
             }
 
             return formattedAmount;
@@ -220,7 +226,7 @@ namespace JetSystems
             Color[] colors = new Color[width * height];
             for (int i = 0; i < colors.Length; i++)
                 colors[i] = color;
-           
+
 
             Texture2D tex = new Texture2D(width, height);
             tex.SetPixels(colors);
@@ -238,6 +244,4 @@ namespace JetSystems
 #endif
         }
     }
-
-
 }

@@ -29,7 +29,7 @@ public class DetectFoldings : MonoBehaviour, IPointerUpHandler, IPointerClickHan
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (playTesting || UIManager.IsGame())
+        if ((playTesting || UIManager.IsGame()) && !LoadingState.IsLoading)
             DetectClosestFolding();
     }
 

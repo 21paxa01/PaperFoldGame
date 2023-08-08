@@ -12,52 +12,66 @@ public class Paper : MonoBehaviour
 {
     [HideInInspector] public PossibleCombinationBuilder Builder;
     [HideInInspector] public RegexCombinationAnalyzer RegexAnalyzer;
+
     public delegate void OnPaperStateChanged();
+
     public OnPaperStateChanged onPaperStateChanged;
 
     public delegate void OnPaperEvolving();
+
     public OnPaperEvolving onPaperEvolving;
 
     public delegate void OnPaperShowEffect();
+
     public OnPaperShowEffect onPaperShowEffect;
 
     public delegate void PaperStartFold();
+
     public PaperStartFold paperStartFold;
 
     public delegate void PaperStartUnfold();
+
     public PaperStartUnfold paperStartUnfold;
 
-    [Header(" Settings ")]
+    [Header(" Settings ")] 
     [SerializeField] private bool _test;
-    [SerializeField] private bool _decalPaper; 
+    [SerializeField] private bool _decalPaper;
     public Transform foldingsParent;
-    private Folding[] foldings;
-    List<Folding> foldedFoldings = new List<Folding>();
-    bool canFold = true;
+    private readonly List<Folding> _foldedFolding = new List<Folding>();
+    private Folding[] _folding;
+    private bool _canFold = true;
     [SerializeField] private Texture2D paperTexture;
     [SerializeField] private PaperEffect effect;
 
-    [Header(" Rendering ")]
+    [Header(" Rendering ")] 
     [SerializeField] private MeshRenderer paperBackRenderer;
     [SerializeField] private MeshRenderer paperFrontRenderer;
     Folding currentFolding;
 
-    [Header(" Mesh Manipulation ")]
-    MeshFilter backFilter;
-    MeshFilter frontFilter;
+    [Header(" Mesh Manipulation ")] MeshFilter backFilter;
+    private MeshFilter _frontFilter;
     [SerializeField] private float verticesElevationStep;
     [SerializeField] private float foldingDuration;
 
-    [Header(" Solution ")]
-    [SerializeField]
+    [Header(" Solution ")] 
     public PossibleCombination[] possibleCombinations;
 
-    public IEnumerable<Folding> Foldings => foldingsParent.Cast<Transform>().Select(x => x.GetComponent<Folding>());
+    public IEnumerable<Folding> Folding => foldingsParent.Cast<Transform>().Select(x => x.GetComponent<Folding>());
 
     private void Awake()
     {
         backFilter = paperBackRenderer.GetComponent<MeshFilter>();
-        frontFilter = paperFrontRenderer.GetComponent<MeshFilter>();
+        _frontFilter = paperFrontRenderer.GetComponent<MeshFilter>();
+
+        // Анимация появления
+        float toPositionZ = transform.position.z;
+        Vector3 startPosition = transform.position;
+        startPosition.z = 10;
+        transform.position = startPosition;
+
+        LoadingState.IsLoading = true;
+        transform.LeanMoveZ(toPositionZ, 1f)
+                 .setOnComplete(() => LoadingState.IsLoading = false);
     }
 
     // Start is called before the first frame update
@@ -66,27 +80,27 @@ public class Paper : MonoBehaviour
 #if UNITY_EDITOR
         if(!FindObjectOfType<DecalMaster>())
 #endif
-            paperFrontRenderer.material.mainTexture = paperTexture;
+        paperFrontRenderer.material.mainTexture = paperTexture;
 
-        foldings = GetFoldings();
+        _folding = GetFoldings();
     }
 
     public void TryFold(Folding tappedFolding)
     {
-        if (!canFold) return;
-        canFold = false;
+        if (!_canFold) return;
+        _canFold = false;
 
         currentFolding = tappedFolding;
 
-        if(!tappedFolding.IsFolded())
+        if (!tappedFolding.IsFolded())
         {
-            foldedFoldings.Add(currentFolding);
+            _foldedFolding.Add(currentFolding);
             Fold();
         }
         else
         {
             // It is folded, unfold it
-            StartCoroutine(UnfoldingProcedureCoroutine());            
+            StartCoroutine(UnfoldingProcedureCoroutine());
         }
     }
 
@@ -145,18 +159,18 @@ public class Paper : MonoBehaviour
 
     public void StartUnfolding()
     {
-        if (!canFold) return;
-        canFold = false;
+        if (!_canFold) return;
+        _canFold = false;
 
         StartCoroutine(UnfoldingProcedureCoroutine());
     }
 
     IEnumerator UnfoldingProcedureCoroutine()
-    {      
+    {
         // 1. Check if there is any folding before this one
-        for (int i = foldedFoldings.Count - 1; i >= 0; i--)
+        for (int i = _foldedFolding.Count - 1; i >= 0; i--)
         {
-            Folding folding = foldedFoldings[i];
+            Folding folding = _foldedFolding[i];
             if (folding == currentFolding)
             {
                 //Unfold();
@@ -167,7 +181,7 @@ public class Paper : MonoBehaviour
 
                 currentFolding.SetFoldedState(false);
                 currentFolding.ClearFoldedVertices();
-                foldedFoldings.Remove(currentFolding);
+                _foldedFolding.Remove(currentFolding);
 
                 break;
             }
@@ -183,11 +197,11 @@ public class Paper : MonoBehaviour
                 currentFolding.SetFoldedState(false);
                 currentFolding.ClearFoldedVertices();
 
-                foldedFoldings.Remove(currentFolding);
+                _foldedFolding.Remove(currentFolding);
             }
         }
-    
-        canFold = true;
+
+        _canFold = true;
 
         onPaperStateChanged?.Invoke();
 
@@ -196,14 +210,18 @@ public class Paper : MonoBehaviour
 
     IEnumerator FoldCoroutine(bool folding)
     {
-        if(folding)
+        if (folding)
             paperStartFold?.Invoke();
         else
             paperStartUnfold?.Invoke();
 
 
-        int[] backVerticesToMove = folding ? GetVerticesToMove(backFilter, currentFolding) : currentFolding.GetBackFoldedVerticesIndices();
-        int[] frontVerticesToMove = folding ? GetVerticesToMove(frontFilter, currentFolding) : currentFolding.GetFrontFoldedVerticesIndices();
+        int[] backVerticesToMove = folding
+            ? GetVerticesToMove(backFilter, currentFolding)
+            : currentFolding.GetBackFoldedVerticesIndices();
+        int[] frontVerticesToMove = folding
+            ? GetVerticesToMove(_frontFilter, currentFolding)
+            : currentFolding.GetFrontFoldedVerticesIndices();
 
         if (folding)
         {
@@ -214,13 +232,13 @@ public class Paper : MonoBehaviour
         Vector3[] initialBackVertices = backFilter.mesh.vertices;
         Vector3[] backVertices = backFilter.mesh.vertices;
 
-        Vector3[] initialFrontVertices = frontFilter.mesh.vertices;
-        Vector3[] frontVertices = frontFilter.mesh.vertices;
+        Vector3[] initialFrontVertices = _frontFilter.mesh.vertices;
+        Vector3[] frontVertices = _frontFilter.mesh.vertices;
 
         if (folding)
         {
             for (int i = 0; i < frontVerticesToMove.Length; i++)
-                initialFrontVertices[frontVerticesToMove[i]].y -= verticesElevationStep * (1 + foldedFoldings.Count);
+                initialFrontVertices[frontVerticesToMove[i]].y -= verticesElevationStep * (1 + _foldedFolding.Count);
         }
 
         float angleMultiplier = folding ? 1 : -1;
@@ -232,72 +250,76 @@ public class Paper : MonoBehaviour
             float angle = Mathf.Clamp01((timer / foldingDuration)) * targetAngle;
 
             for (int i = 0; i < backVerticesToMove.Length; i++)
-                backVertices[backVerticesToMove[i]] = GetRotatedLocalVertex(initialBackVertices[backVerticesToMove[i]], angle);
-            
+                backVertices[backVerticesToMove[i]] =
+                    GetRotatedLocalVertex(initialBackVertices[backVerticesToMove[i]], angle);
+
 
             for (int i = 0; i < frontVerticesToMove.Length; i++)
-                frontVertices[frontVerticesToMove[i]] = GetRotatedLocalVertex(initialFrontVertices[frontVerticesToMove[i]], angle);
-            
+                frontVertices[frontVerticesToMove[i]] =
+                    GetRotatedLocalVertex(initialFrontVertices[frontVerticesToMove[i]], angle);
+
 
             if (!folding)
             {
                 for (int i = 0; i < frontVerticesToMove.Length; i++)
-                    frontVertices[frontVerticesToMove[i]].y += verticesElevationStep * (1 + foldedFoldings.Count);
+                    frontVertices[frontVerticesToMove[i]].y += verticesElevationStep * (1 + _foldedFolding.Count);
             }
 
             backFilter.mesh.vertices = backVertices;
-            frontFilter.mesh.vertices = frontVertices;
+            _frontFilter.mesh.vertices = frontVertices;
 
             timer += Time.deltaTime;
             yield return null;
         }
 
-        for (int i = 0; i < backVerticesToMove.Length; i++) 
-            backVertices[backVerticesToMove[i]] = GetRotatedLocalVertex(initialBackVertices[backVerticesToMove[i]], targetAngle);
-        
+        for (int i = 0; i < backVerticesToMove.Length; i++)
+            backVertices[backVerticesToMove[i]] =
+                GetRotatedLocalVertex(initialBackVertices[backVerticesToMove[i]], targetAngle);
 
-        for (int i = 0; i < frontVerticesToMove.Length; i++) 
-            frontVertices[frontVerticesToMove[i]] = GetRotatedLocalVertex(initialFrontVertices[frontVerticesToMove[i]], targetAngle);
-        
+
+        for (int i = 0; i < frontVerticesToMove.Length; i++)
+            frontVertices[frontVerticesToMove[i]] =
+                GetRotatedLocalVertex(initialFrontVertices[frontVerticesToMove[i]], targetAngle);
+
 
         if (!folding)
         {
             for (int i = 0; i < frontVerticesToMove.Length; i++)
-                frontVertices[frontVerticesToMove[i]].y += verticesElevationStep * (1 + foldedFoldings.Count);
+                frontVertices[frontVerticesToMove[i]].y += verticesElevationStep * (1 + _foldedFolding.Count);
         }
 
         backFilter.mesh.vertices = backVertices;
-        frontFilter.mesh.vertices = frontVertices;
+        _frontFilter.mesh.vertices = frontVertices;
 
-        frontFilter.GetComponent<MeshCollider>().sharedMesh = frontFilter.mesh;
+        _frontFilter.GetComponent<MeshCollider>().sharedMesh = _frontFilter.mesh;
 
-        if(folding)
-            canFold = true;
+        if (folding)
+            _canFold = true;
 
         if (AvailableFoldingsEnded() && folding)
         {
             yield return new WaitForSeconds(0.1f);
             CheckForLevelComplete();
         }
-            
+
         onPaperStateChanged?.Invoke();
     }
 
     private void CheckForLevelComplete()
     {
         WriteTestingInfo();
-        if (Builder != null && Builder.Used && Builder.IsCorrect(foldedFoldings))
+        if (Builder != null && Builder.Used && Builder.IsCorrect(_foldedFolding))
         {
             StartCoroutine(SetLevelComplete());
             return;
         }
 
-        if (RegexAnalyzer != null && RegexAnalyzer.IsCorrect(foldedFoldings))
+        if (RegexAnalyzer != null && RegexAnalyzer.IsCorrect(_foldedFolding))
         {
             StartCoroutine(SetLevelComplete());
             return;
         }
-        
+
         for (int i = 0; i < possibleCombinations.Length; i++)
         {
             if (MatchPossibleCombination(possibleCombinations[i]))
@@ -312,7 +334,7 @@ public class Paper : MonoBehaviour
 
     private void WriteTestingInfo()
     {
-        var message = foldedFoldings
+        var message = _foldedFolding
             .Select(x => x.name)
             .Aggregate((report, element) => report + "|" + element);
         LastCombinationViewer.Write(name + ":" + message);
@@ -320,11 +342,11 @@ public class Paper : MonoBehaviour
 
     private bool MatchPossibleCombination(PossibleCombination foldingsCombination)
     {
-        if (foldedFoldings.Count != foldingsCombination.GetFoldings().Length)
+        if (_foldedFolding.Count != foldingsCombination.GetFoldings().Length)
             return false;
 
-        for (int i = 0; i < foldedFoldings.Count; i++)
-            if (foldedFoldings[i] != foldingsCombination.GetFoldings()[i])
+        for (int i = 0; i < _foldedFolding.Count; i++)
+            if (_foldedFolding[i] != foldingsCombination.GetFoldings()[i])
                 return false;
 
         return true;
@@ -339,19 +361,16 @@ public class Paper : MonoBehaviour
             yield break;
 
 
-        canFold = false;
+        _canFold = false;
 
         if (YandexSDK.instance != null)
         {
             YandexSDK.instance.ShowInterstitial();
         }
-        
-        LeanTween.moveZ(gameObject, -20f, 0.7f).setEaseInBack().setOnComplete(() =>
-        {
 
-        });
+        LeanTween.moveZ(gameObject, -20f, 0.7f).setEaseInBack().setOnComplete(() => { });
 
-        if(effect.StickerEffect != null)
+        if (effect.StickerEffect != null)
         {
             StickerEffect stickerEffect = Instantiate(effect.StickerEffect);
             stickerEffect.CachedTransform.position = transform.position;
@@ -377,10 +396,7 @@ public class Paper : MonoBehaviour
         LeanTween.moveLocalX(gameObject, transform.position.x + 0.1f, 0.1f).setEaseShake().setOnComplete(() =>
         {
             LeanTween.moveLocalX(gameObject, transform.position.x - 0.1f, 0.1f).setEaseShake()
-            .setOnComplete(() =>
-            {
-                animationComplete = true;
-            });
+                .setOnComplete(() => { animationComplete = true; });
         });
 
         yield return new WaitUntil(() => animationComplete);
@@ -391,7 +407,7 @@ public class Paper : MonoBehaviour
 
         UnfoldAllFoldings();
 
-        if(YandexSDK.instance != null)
+        if (YandexSDK.instance != null)
             YandexSDK.instance.ShowInterstitial();
 
         UIManager.wrongPaperFolded?.Invoke();
@@ -420,17 +436,17 @@ public class Paper : MonoBehaviour
 
     public bool AvailableFoldingsEnded()
     {
-        return foldedFoldings.Count >= foldings.Length;
+        return _foldedFolding.Count >= _folding.Length;
     }
 
     public void UnfoldAllFoldings()
     {
-        if (foldedFoldings.Count <= 0 || !canFold)
+        if (_foldedFolding.Count <= 0 || !_canFold)
             return;
 
-        currentFolding = foldedFoldings[0];
+        currentFolding = _foldedFolding[0];
 
-        canFold = false;
+        _canFold = false;
 
         StartCoroutine(UnfoldingProcedureCoroutine());
     }
@@ -456,7 +472,6 @@ public struct PaperEffect
     [SerializeField] private Quaternion _spriteRotate;
     [SerializeField] private bool _flipX;
     [SerializeField] private bool _flipY;
-
 
     public StickerEffect StickerEffect => _stickerEffect;
     public Sprite SpriteImage => _spriteImage;
