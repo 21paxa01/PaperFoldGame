@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.56427526, g: 0.632573, b: 0.70732355, a: 1}
+  m_IndirectSpecularColor: {r: 0.56427544, g: 0.63257325, b: 0.70732397, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1266,6 +1266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paperSoundFold: {fileID: 381037}
+  main: {fileID: 1127973078}
   paperSoundUnfold: {fileID: 683306735}
   paperSoundStickerEffect: {fileID: 257109636}
   levelCompleteSound: {fileID: 2110697943}

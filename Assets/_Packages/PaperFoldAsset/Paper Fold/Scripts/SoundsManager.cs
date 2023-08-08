@@ -4,11 +4,13 @@ using Agava.WebUtility;
 using JetSystems;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Eiko.YaSDK;
 
 public class SoundsManager : MonoBehaviour
 {
     [Header(" Sounds ")]
     [SerializeField] private AudioSource paperSoundFold;
+    [SerializeField] public AudioSource main;
     [SerializeField] private AudioSource paperSoundUnfold;
     [SerializeField] private AudioSource paperSoundStickerEffect;
     [SerializeField] private AudioSource levelCompleteSound;
@@ -19,6 +21,7 @@ public class SoundsManager : MonoBehaviour
         //UIManager.onGameSet += StoreCurrentPaper;
         UIManager.onLevelCompleteSet += ResetCurrentPaper;
         LevelManager.onPaperInstantiated += StoreCurrentPaper;
+        YandexSDK.instance.audio = main;
     }
 
     private void OnApplicationPause(bool pauseStatus)

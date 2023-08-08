@@ -8,17 +8,17 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Eiko.YaSDK.Data;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Eiko.YaSDK
 {
     public class YandexSDK : MonoBehaviour {
-
+        public AudioSource audio;
     #if UNITY_EDITOR
         [HideInInspector]
         public CanvasAddEditor editorCanvas;
     #endif
         public const int ReloadAdsSeconds = 30;
-        public const string key = "AddsOff";
         public bool AdsEnabled { get; private set; }
 
         public static YandexSDK instance;
@@ -115,7 +115,6 @@ namespace Eiko.YaSDK
 #if UNITY_EDITOR
             editorCanvas =  Instantiate(editorCanvas);
 #endif
-            AdsEnabled = 0 == PlayerPrefs.GetInt(key, 0);
             onPurchaseSuccess += PurchizeCallbackAds;
         }
 
@@ -132,10 +131,11 @@ namespace Eiko.YaSDK
         /// Call this to show interstitial ad. Don't call frequently. There is a 3 minute delay after each show.
         /// </summary>
         public void ShowInterstitial() {
-            if(addsAvailable)
+            if(addsAvailable&& PlayerPrefs.GetInt("AdsOff")==0)
             {
                 AudioListener.pause = true;
                 AudioListener.volume = 0;
+                audio.volume = 0;
                 StartCoroutine(WaitAddReload());
 #if !UNITY_EDITOR && UNITY_WEBGL
                 ShowFullscreenAd();
@@ -163,8 +163,9 @@ namespace Eiko.YaSDK
             rewardedAdPlacementsAsInt.Enqueue(placemantId);
             rewardedAdsPlacements.Enqueue(placement);
             Time.timeScale = 0;
-            AudioListener.pause = true;
+              AudioListener.pause = true;
             AudioListener.volume = 0;
+            audio.volume=0;
 #if UNITY_EDITOR
             editorCanvas.OpenReward(placemantId);
 #endif
@@ -172,7 +173,7 @@ namespace Eiko.YaSDK
 
         public void AdsOff()
         {
-            PlayerPrefs.SetInt(key, 1);
+            PlayerPrefs.SetInt("AdsOff", 1);
             AdsEnabled = false;
             StopAllCoroutines();
             Debug.Log("AdsOff");
@@ -229,6 +230,7 @@ namespace Eiko.YaSDK
             Time.timeScale = 1;
             AudioListener.pause = false;
             AudioListener.volume = 1;
+            audio.volume = 1;
             onInterstitialShown?.Invoke();
         }
 
@@ -270,6 +272,7 @@ namespace Eiko.YaSDK
         public void OnRewardedClose(int placement) {
             AudioListener.pause = false;
             AudioListener.volume = 1;
+            audio.volume = 1;
             Time.timeScale = 1;
             onRewardedAdClosed?.Invoke(placement);
         }
@@ -282,6 +285,7 @@ namespace Eiko.YaSDK
             Time.timeScale = 1;
             AudioListener.pause = false;
             AudioListener.volume = 1;
+            audio.volume = 1;
             onRewardedAdError?.Invoke(placement);
             rewardedAdsPlacements.Clear();
             rewardedAdPlacementsAsInt.Clear();
